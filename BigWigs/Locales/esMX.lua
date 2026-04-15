@@ -4,17 +4,20 @@ if not L then return end
 
 -- API.lua
 L.showAddonBar = "El addon '|cFF436EEE%s|r' creó la barra '%s'."
---L.requestAddonProfile = "The addon '|cFF436EEE%s|r' just made a copy of your profile export string."
+L.requestAddonProfile = "El addon '|cFF436EEE%s|r' acaba de copiar una cadena de exportación de tu perfil."
+--L.shortMinutesAndSeconds = "%d Min %d Sec" -- 1 Minute 2 Seconds
+--L.shortSecondsOnly = "%d Sec" -- 28 Seconds
+--L.shortSubTenSeconds = "%.1f Sec" -- 3.2 Seconds
 
 -- Core.lua
 L.berserk = "Enfurecer"
-L.berserk_desc = "Muestra un contador que avisa cuando el jefe entrará en enfurecer"
+L.berserk_desc = "Muestra un contador que avisa cuando el jefe entrará en enfurecimiento."
 L.altpower = "Indicador de poder alternativo"
 L.altpower_desc = "Muestra la ventana de poder alternativo, que indica la cantidad de poder alternativo que tienen los miembros de tu grupo."
 L.infobox = "Caja de información"
 L.infobox_desc = "Muestra un marco con información relacionada con el encuentro."
 L.stages = "Fases"
-L.stages_desc = "Activa las funciones relacionadas con varias etapas/fases del jefe como cambios de etapa, barras de temporizador de duración de etapa, etc."
+L.stages_desc = "Activa las funciones relacionadas con varias etapas del jefe como cambios de etapa, barras de temporizador de duración de etapa, etc."
 L.warmup = "Calentamiento"
 L.warmup_desc = "Tiempo hasta que el combate con el jefe comience."
 L.proximity = "Pantalla de proximidad"
@@ -22,11 +25,11 @@ L.proximity_desc = "Muestra la ventana de proximidad cuando sea apropiado para e
 L.adds = "Esbirros"
 L.adds_desc = "Activa las funciones relacionadas con los esbirros que aparecerán durante un encuentro con un jefe."
 L.health = "Salud"
-L.health_desc = "Activa las funciones para mostrar varias informaciones de salud durante un encuentro con un jefe."
+L.health_desc = "Activa las funciones para mostrar varios datos de salud durante un encuentro con un jefe."
 L.energy = "Energía"
-L.energy_desc = "Activa las funciones para mostrar varias informaciones de energía durante un encuentro con un jefe."
+L.energy_desc = "Activa las funciones para mostrar varios datos de energía durante un encuentro con un jefe."
 
-L.already_registered = "|cffff0000ATENCIÓN:|r |cff00ff00%s|r (|cffffff00%s|r) ya existe ese módulo en BigWigs, pero sin embargo está intentando registrarlo de nuevo. Esto normalmente ocurre cuando tienes varias copias de este módulo en tu carpeta de addons posiblemente por una actualización fallida. Es recomendable que borres la carpeta de BigWigs y lo reinstales por completo."
+L.already_registered = "|cffff0000ATENCIÓN:|r |cff00ff00%s|r (|cffffff00%s|r) ya existe ese módulo en BigWigs, pero está intentando registrarlo de nuevo. Esto normalmente ocurre cuando tienes varias copias de este módulo en tu carpeta de addons posiblemente por una actualización fallida. Es recomendable que borres la carpeta de BigWigs y lo reinstales por completo."
 
 -- Loader / Options.lua
 L.okay = "Aceptar"
@@ -36,35 +39,35 @@ L.sourceCheckout = "Estás usando la versión de BigWigs %s directamente del rep
 L.littlewigsOfficialRelease = "Estás usando la versión oficial de LittleWigs (%s)."
 L.littlewigsAlphaRelease = "Estás usando la VERSIÓN ALFA de LittleWigs (%s)."
 L.littlewigsSourceCheckout = "Estás usando la versión de LittleWigs directamente del repositorio."
-L.guildRelease = "Estás usando la versión %d de BigWigs hecha para tu hermandad, basado en la versión %d del addon oficial."
+L.guildRelease = "Estás usando la versión %d de BigWigs hecha para tu hermandad, basada en la versión %d del addon oficial."
 L.getNewRelease = "Tu BigWigs está desactualizado (/bwv) pero puedes actualizarlo fácilmente con el cliente de CurseForge. También puedes actualizarlo manualmente desde curseforge.com o addons.wago.io."
-L.warnTwoReleases = "Tu BigWigs está 2 versiones desactualizado! Tu versión puede tener fallos, faltarle características, o temporizadores incorrectos. Es muy recomendable que lo actualices."
-L.warnSeveralReleases = "|cffff0000Tu BigWigs está desactualizado %d actualizaciones!! Te recomendamos MUCHÍSIMO que lo actualices cuanto antes para prevenir problemas de sincronización con otros jugadores!|r"
+L.warnTwoReleases = "¡Tu BigWigs está 2 versiones desactualizado! Tu versión puede tener fallos, faltarle características, o temporizadores incorrectos. Es muy recomendable que lo actualices."
+L.warnSeveralReleases = "¡|cffff0000Tu BigWigs está desactualizado %d actualizaciones! Te recomendamos MUCHÍSIMO que lo actualices cuanto antes para prevenir problemas de sincronización con otros jugadores.|r"
 L.warnOldBase = "Estás usando la versión de hermandad de BigWigs (%d), pero tu versión base (%d) está %d versiones desactualizada. Esto puede provocar problemas."
 
 L.tooltipHint = "|cffeda55fClic derecho|r para acceder a las opciones."
 L.activeBossModules = "Módulos de jefes activos:"
 
-L.oldVersionsInGroup = "Hay personas en tu grupo con |cffff0000versiones antiguas|r de BigWigs. Puedes obtener mas detalles con /bwv."
-L.upToDate = "Al día:"
+L.oldVersionsInGroup = "Hay personas en tu grupo con |cffff0000versiones antiguas|r de BigWigs. Puedes obtener más detalles con /bwv."
+L.upToDate = "Actualizado:"
 L.outOfDate = "Desactualizado"
 L.dbmUsers = "Jugadores con DBM:"
 L.noBossMod = "Sin boss mod:"
 L.offline = "Desconectado"
 
 L.missingAddOnPopup = "¡Falta el addon |cFF436EEE%s|r!"
-L.missingAddOnRaidWarning = "¡Falta el addon |cFF436EEE%s|r! No se mostraran contadores en esta zona!"
-L.outOfDateAddOnPopup = "El |cFF436EEE%s|r addon esta desactualizado!"
-L.outOfDateAddOnRaidWarning = "El |cFF436EEE%s|r addon esta desactualizado! Tienes la version v%d.%d.%d siendo que la última es v%d.%d.%d!"
+L.missingAddOnRaidWarning = "¡Falta el addon |cFF436EEE%s|r! No se mostrarán contadores en esta zona."
+L.outOfDateAddOnPopup = "¡El addon |cFF436EEE%s|r está desactualizado!"
+L.outOfDateAddOnRaidWarning = "¡El addon |cFF436EEE%s|r está desactualizado! Tienes la versión v%d.%d.%d siendo que la última es v%d.%d.%d!"
 L.disabledAddOn = "Tienes el addon |cFF436EEE%s|r desactivado, los contadores no se mostrarán."
 L.removeAddOn = "Por favor elimina '|cFF436EEE%s|r' ya que está siendo reemplazado por '|cFF436EEE%s|r'."
 L.alternativeName = "%s (|cFF436EEE%s|r)"
-L.outOfDateContentPopup = "CUIDADO!\nActualizaste |cFF436EEE%s|r pero también necesitas actualizar el addon |cFF436EEEBigWigs|r principal.\nIgnorar esto, significa que no funcionará correctamente."
-L.outOfDateContentRaidWarning = "|cFF436EEE%s|r requiere la versión %d del addon principal de|cFF436EEEBigWigs|r para que funcione correctamente, pero tu estan en la versión %d."
-L.addOnLoadFailedWithReason = "BigWigs falló al cargar el addon |cFF436EEE%s|r por razones %q. ¡Avisa a los desarrolladores de BigWigs!"
+L.outOfDateContentPopup = "¡CUIDADO!\nActualizaste |cFF436EEE%s|r pero también necesitas actualizar el addon principal de |cFF436EEEBigWigs|r.\nIgnorar esto significa que no funcionará correctamente."
+L.outOfDateContentRaidWarning = "|cFF436EEE%s|r requiere la versión %d del addon principal de |cFF436EEEBigWigs|r para que funcione correctamente, pero tú tienes la versión %d."
+L.addOnLoadFailedWithReason = "BigWigs falló al cargar el addon |cFF436EEE%s|r por la siguiente razón: %q. ¡Avisa a los desarrolladores de BigWigs!"
 L.addOnLoadFailedUnknownError = "BigWigs ha encontrado un error al cargar el addon |cFF436EEE%s|r. ¡Avisa a los desarrolladores de BigWigs!"
---L.newFeatures = "New BigWigs features:"
---L.parentheses = "%s (%s)"
+L.newFeatures = "Nuevas características de BigWigs:"
+L.parentheses = "%s (%s)"
 
 L.expansionNames = {
 	"Clásico", -- Classic
@@ -84,39 +87,39 @@ L.littleWigsExtras = {
 	["LittleWigs_Delves"] = "Abismos",
 	["LittleWigs_CurrentSeason"] = "Temporada actual",
 }
---L.dayNamesShort = {
---	"SUN", -- Sunday
---	"MON", -- Monday
---	"TUE", -- Tuesday
---	"WED", -- Wednesday
---	"THU", -- Thursday
---	"FRI", -- Friday
---	"SAT", -- Saturday
---}
---L.dayNames = {
---	"Sunday",
---	"Monday",
---	"Tuesday",
---	"Wednesday",
---	"Thursday",
---	"Friday",
---	"Saturday",
---}
---L.monthNames = {
---	"January",
---	"February",
---	"March",
---	"April",
---	"May",
---	"June",
---	"July",
---	"August",
---	"September",
---	"October",
---	"November",
---	"December",
---}
---L.dateFormat = "%s %d %s %d" -- Date format: "Monday 1 January 2025"
+L.dayNamesShort = {
+	"DOM", -- Sunday
+	"LUN", -- Monday
+	"MAR", -- Tuesday
+	"MIÉ", -- Wednesday
+	"JUE", -- Thursday
+	"VIE", -- Friday
+	"SÁB", -- Saturday
+}
+L.dayNames = {
+	"Domingo",
+	"Lunes",
+	"Martes",
+	"Miércoles",
+	"Jueves",
+	"Viernes",
+	"Sábado",
+}
+L.monthNames = {
+	"Enero",
+	"Febrero",
+	"Marzo",
+	"Abril",
+	"Mayo",
+	"Junio",
+	"Julio",
+	"Agosto",
+	"Septiembre",
+	"Octubre",
+	"Noviembre",
+	"Diciembre",
+}
+L.dateFormat = "%s %d %s %d" -- Date format: "Monday 1 January 2025"
 
 -- Media.lua (These are the names of the sounds in the dropdown list in the "sounds" section)
 L.Beware = "Cuidado (Algalon)"
@@ -137,28 +140,28 @@ L.sound = "Sonido"
 L.minimapIcon = "Icono del minimapa"
 L.minimapToggle = "Cambia entre mostrar/ocultar el icono en el minimapa."
 L.compartmentMenu = "Sin icono de compartimento"
-L.compartmentMenu_desc = "Al desactivar esta opción, BigWigs aparecerá en el menú de compartimiento de addon. Recomendamos dejar esta opción activada."
+L.compartmentMenu_desc = "Al desactivar esta opción, BigWigs aparecerá en el menú de compartimento de addons. Recomendamos dejar esta opción activada."
 L.configure = "Configurar"
 L.resetPositions = "Restablecer posiciones"
 L.selectEncounter = "Seleccionar encuentro"
 L.privateAuraSounds = "Sonidos de aura privada"
-L.privateAuraSounds_desc = "Las auras privadas no pueden ser trackeadas correctamente, pero puedes asignar un sonido para cuando seas objetivo de la habilidad."
+L.privateAuraSounds_desc = "Las auras privadas no pueden ser rastreadas correctamente, pero puedes asignar un sonido para cuando seas objetivo de la habilidad."
 L.listAbilities = "Listar las habilidades en el chat"
 
 L.dbmFaker = "Fingir que estoy usando DBM"
-L.dbmFakerDesc = "Si un usuario de DBM hace un chequeo de versión para ver quien está usando DBM, ellos te verán a ti en la lista. Muy útil para hermandades que obligan a usar DBM."
+L.dbmFakerDesc = "Si un usuario de DBM hace un chequeo de versión para ver quién está usando DBM, ellos te verán en la lista. Muy útil para hermandades que obligan a usar DBM."
 L.zoneMessages = "Mostrar mensajes de la zona"
-L.zoneMessagesDesc = "Desactivando esto dejará de mostrar mensajes cuando entres en una zona donde BigWigs tenga un módulo, pero no lo tengas instalado. Recomendamos que dejes esto activo, pues será la única notificación que recibirás si creamos módulos nuevos para una zona que encuentres útil"
-L.englishSayMessages = "Mensajes de texto sólo en inglés"
+L.zoneMessagesDesc = "Al desactivar esto, dejará de mostrar mensajes cuando entres en una zona donde BigWigs tenga un módulo, pero no lo tengas instalado. Recomendamos que dejes esto activo, pues será la única notificación que recibirás si creamos módulos nuevos para una zona que encuentres útil."
+L.englishSayMessages = "Mensajes de texto solo en inglés"
 L.englishSayMessagesDesc = "Todos los mensajes de 'decir' y 'gritar' que envíes en el chat durante un encuentro con un jefe siempre estarán en inglés. Puede resultar útil si estás con un grupo de jugadores que mezclan idiomas."
 
 L.slashDescTitle = "|cFFFED000Atajo de comandos:|r"
 L.slashDescPull = "|cFFFED000/pull:|r Envía una cuenta regresiva de llamada al jefe a tu banda."
 L.slashDescBreak = "|cFFFED000/break:|r Crea un temporizador de descanso para tu banda."
 L.slashDescRaidBar = "|cFFFED000/raidbar:|r Envía una barra personalizada a tu banda."
-L.slashDescLocalBar = "|cFFFED000/localbar:|r Crea una barra personal que sólo puedes ver tú."
+L.slashDescLocalBar = "|cFFFED000/localbar:|r Crea una barra personal que solo puedes ver tú."
 L.slashDescRange = "|cFFFED000/range:|r Abre el indicador de rango."
-L.slashDescVersion = "|cFFFED000/bwv:|r Realiza un chequeo de versiones de BigWigs."
+L.slashDescVersion = "|cFFFED000/bwv:|r Realiza un chequeo de versión de BigWigs."
 L.slashDescConfig = "|cFFFED000/bw:|r Abre la configuración de BigWigs."
 
 L.gitHubDesc = "|cFF33FF99BigWigs es de código abierto alojado en GitHub. Siempre estamos buscando gente para ayudarnos y cualquiera es bienvenido para inspeccionar nuestro código, hacer contribuciones y reportar errores. BigWigs es tan genial a día de hoy en gran parte por la gran comunidad de WoW que nos ayuda.|r"
@@ -170,45 +173,45 @@ L.SAY = "Decir"
 L.FLASH = "Destello"
 L.EMPHASIZE = "Enfatizar"
 L.ME_ONLY = "En mí únicamente"
-L.ME_ONLY_desc = "Cuando activas esta opción los mensajes para esta habilidad sólo serán mostrados cuando te afecten. Por ejemplo, 'Bomba: Jugador' sólo se mostrará si está en ti."
+L.ME_ONLY_desc = "Cuando activas esta opción los mensajes para esta habilidad solo serán mostrados cuando te afecten. Por ejemplo, 'Bomba: Jugador' solo se mostrará si está en ti."
 L.PULSE = "Pulso"
-L.PULSE_desc = "Para complementar el destello de pantalla, también puedes tener un icono relacionado con esta habilidad especifica que se mostrará momentáneamente en el medio de la pantalla para tratar de atraer tu atención."
-L.MESSAGE_desc = "La mayoria de las abilidades de los encuentros se presentan con uno o más mensajes que BigWigs mostrará en tu pantalla. Si desactivas esta opción, ningún mensaje de esta opción, si lo hay, será mostrado en pantalla."
+L.PULSE_desc = "Para complementar el destello de pantalla, también puedes tener un icono relacionado con esta habilidad específica que se mostrará momentáneamente en el medio de la pantalla para tratar de atraer tu atención."
+L.MESSAGE_desc = "La mayoría de las habilidades de los encuentros se presentan con uno o más mensajes que BigWigs mostrará en tu pantalla. Si desactivas esta opción, no se mostrará ningún mensaje asociado a esta opción."
 L.BAR_desc = "Las barras serán mostradas en el momento apropiado. Si esta habilidad está acompañada por una barra que quieres ocultar, desactiva esta opción."
 L.FLASH_desc = "Algunas habilidades son más importantes que otras. Si quieres ver un destello cuando esta habilidad sea inminente o usada, activa esta opción."
 L.ICON_desc = "BigWigs puede marcar personajes afectados por habilidades con un icono. Esto hace que sea más fácil detectarlos."
-L.SAY_desc = "Las burbujas de chat son fáciles de ver. BigWigs usará un mensaje para anunciar a la gente cercana sobre un efecto en ti."
+L.SAY_desc = "Las burbujas de chat son fáciles de ver. BigWigs usará un mensaje para anunciar a los jugadores cercanos sobre un efecto en ti."
 L.EMPHASIZE_desc = "Activando esto enfatizará algunos mensajes asociados con esta habilidad, haciéndolos más grandes y visibles. Puedes ajustar el tamaño y la fuente de los mensajes enfatizados en las opciones principales debajo de \"Mensajes\"."
 L.PROXIMITY = "Ventana de proximidad"
-L.PROXIMITY_desc = "La ventana de proximidad se ajustará especificamente para esa habilidad para que sepas de un vistazo si estás a salvo o no."
+L.PROXIMITY_desc = "La ventana de proximidad se ajustará específicamente para esa habilidad para que sepas de un vistazo si estás a salvo o no."
 L.ALTPOWER = "Indicador de poder alternativo"
-L.ALTPOWER_desc = "Algunos encuentros usarán la mecánica de poder alternativo en jugadores de tu grupo. El indicador de poder alternativo proporciona un breve repaso sobre quien tiene menos/más poder alternativo, lo que puede ser útil para tácticas o asignaciones especificas."
+L.ALTPOWER_desc = "Algunos encuentros usarán la mecánica de poder alternativo en jugadores de tu grupo. El indicador de poder alternativo proporciona un breve repaso sobre quien tiene menos/más poder alternativo, lo que puede ser útil para tácticas o asignaciones específicas."
 L.TANK = "Tanques únicamente"
-L.TANK_desc = "Algunas habilidades son importantes sólo para tanques. Si quieres ver avisos para este tipo de habilidades independientemente de tu rol, desactiva esta opción."
+L.TANK_desc = "Algunas habilidades son importantes solo para tanques. Si quieres ver avisos para este tipo de habilidades independientemente de tu rol, desactiva esta opción."
 L.HEALER = "Sanadores únicamente"
-L.HEALER_desc = "Algunas habilidades son importantes sólo para sanadores. Si quieres ver avisos para este tipo de habilidades independientemente de tu rol, desactiva esta opción."
-L.TANK_HEALER = "Sólo Tanques y Sanadores"
-L.TANK_HEALER_desc = "Algunas habilidades son importantes sólo para tanques y sanadores. Si quieres ver advertencias para este tipo de habilidades independientemente de tu rol, desactiva esta opción."
+L.HEALER_desc = "Algunas habilidades son importantes solo para sanadores. Si quieres ver avisos para este tipo de habilidades independientemente de tu rol, desactiva esta opción."
+L.TANK_HEALER = "solo Tanques y Sanadores"
+L.TANK_HEALER_desc = "Algunas habilidades son importantes solo para tanques y sanadores. Si quieres ver advertencias para este tipo de habilidades independientemente de tu rol, desactiva esta opción."
 L.DISPEL = "Disipables únicamente"
 L.DISPEL_desc = "Si quieres ver avisos para esta habilidad incluso cuando no puedas disiparla, desactiva esta opción."
 L.VOICE = "Voz"
 L.VOICE_desc = "Si tienes un plugin de voz instalado, esta opción le permitirá reproducir un archivo de sonido que hable en este aviso para ti."
 L.COUNTDOWN = "Cuenta regresiva"
 L.COUNTDOWN_desc = "Si está activo, una cuenta regresiva vocal y visual será agregada para los últimos 5 segundos. Imagina a alguien contando hacia atrás \"5... 4... 3... 2... 1...\" con un número grande en el medio de la pantalla."
-L.CASTBAR_COUNTDOWN = "Cuenta regresiva (sólo barras de lanzamiento)"
+L.CASTBAR_COUNTDOWN = "Cuenta regresiva (solo barras de lanzamiento)"
 L.CASTBAR_COUNTDOWN_desc = "Si está activado, se agregará una cuenta regresiva vocal y visual durante los últimos 5 segundos de las barras de lanzamiento."
 L.INFOBOX = L.infobox
 L.INFOBOX_desc = L.infobox_desc
 L.SOUND = L.sound
-L.SOUND_desc = "Las habilidades de jefes habitualmente reproducen sonidos para ayudarte con ellas. Si desactivas esta opción, ningún sonido adjunto sonará."
+L.SOUND_desc = "Las habilidades de jefes suelen reproducir sonidos para ayudarte con ellas. Si desactivas esta opción, ningún sonido adjunto sonará."
 L.CASTBAR = "Barras de lanzamiento"
-L.CASTBAR_desc = "Barras de lanzamiento se muestran a veces con ciertos jefes, normalmente para atraer la atención de que una habilidad crítica está en camino. Si esta habilidad está acompañada por una barra de lanzamiento que quieres ocultar, desactiva esta opción."
+L.CASTBAR_desc = "Las barras de lanzamiento se muestran a veces con ciertos jefes, normalmente para atraer la atención de que una habilidad crítica está en camino. Si esta habilidad está acompañada por una barra de lanzamiento que quieres ocultar, desactiva esta opción."
 L.SAY_COUNTDOWN = "Decir cuenta regresiva"
-L.SAY_COUNTDOWN_desc = "Las burbujas de chat son fáciles de detectar. BigWigs usará múltiples mensajes de cuenta regresiva para alertar a los que estén cerca que una habilidad en ti está a punto de expirar."
-L.ME_ONLY_EMPHASIZE = "Enfatizar (sólo en mi)"
-L.ME_ONLY_EMPHASIZE_desc = "Al activar esto enfatizará cualquier mensaje asociado con esta habilidad SÓLO si se lanza sobre ti, mostrándolo más grande y visible."
+L.SAY_COUNTDOWN_desc = "Las burbujas de chat son fáciles de detectar. BigWigs usará múltiples mensajes de cuenta regresiva para alertar a los que estén cerca de que una habilidad en ti está a punto de expirar."
+L.ME_ONLY_EMPHASIZE = "Enfatizar (solo en mí)"
+L.ME_ONLY_EMPHASIZE_desc = "Al activar esto enfatizará cualquier mensaje asociado con esta habilidad solo si se lanza sobre ti, mostrándolo más grande y visible."
 L.NAMEPLATE = "Placa de nombre"
-L.NAMEPLATE_desc = "Si se activa, algunas funciones, como iconos y texto relacionado con esta habilidad en concreto serán mostradas en tus placas de nombre. Esto hace mucho más fácil ver que NPC específicamente está lanzando la habilidad, cuando hay muchos NPCs casteando la misma."
+L.NAMEPLATE_desc = "Si se activa, algunas funciones, como iconos y texto relacionado con esta habilidad en concreto serán mostradas en tus placas de nombre. Esto hace mucho más fácil ver qué PNJ específicamente está lanzando la habilidad, cuando hay muchos PNJ lanzando la misma."
 L.PRIVATE = "Aura privada"
 L.PRIVATE_desc = "Las auras privadas no se pueden rastrear normalmente, pero el sonido \"sobre ti\" (aviso) se puede configurar en la pestaña Sonido."
 
@@ -218,15 +221,15 @@ L.back = "<< Volver"
 L.tank = "|cFFFF0000Solo alertas para tanques.|r "
 L.healer = "|cFFFF0000Solo alertas para sanadores.|r "
 L.tankhealer = "|cFFFF0000Solo alertas para tanque y sanador.|r "
-L.dispeller = "|cFFFF0000Alertas para dispelear únicamente.|r "
+L.dispeller = "|cFFFF0000Alertas para disipables únicamente.|r "
 
 -- Sharing.lua
 L.import = "Importar"
-L.import_info = "Después de ingresar la cadena de importación, puedes seleccionar que opciones quieres importar.\nSi no hay opciones disponibles en la cadena de importación estas no podrán ser seleccionadas.\n\n|cffff4411Este importe solo afectará las opciones generales y no afecta ninguna opcion especifica de jefes.|r"
-L.import_info_active = "Elige que partes te gustaría importar y luego presiona el botom de importar."
-L.import_info_none = "|cFFFF0000La cadena de importación está mala o vencida (fuera de fecha).|r"
+L.import_info = "Después de ingresar la cadena de importación, puedes seleccionar qué opciones quieres importar.\nSi no hay opciones disponibles en la cadena de importación estas no podrán ser seleccionadas.\n\n|cffff4411Este importe solo afectará las opciones generales y no afecta ninguna opción específica de jefes.|r"
+L.import_info_active = "Elige qué partes te gustaría importar y luego presiona el botón de importación."
+L.import_info_none = "|cFFFF0000La cadena de importación está incorrecta o vencida (fuera de fecha).|r"
 L.export = "Exportar"
-L.export_info = "Selecciona que opciones te gustaria exportar y compartir con los demás.\n\n|cffff4411Solo puedes compartir opciones generales, que no afectarán opciones de jefes.|r"
+L.export_info = "Selecciona qué opciones te gustaría exportar y compartir con los demás.\n\n|cffff4411Solo puedes compartir opciones generales, que no afectarán opciones de jefes.|r"
 L.export_string = "Cadena de exportación"
 L.export_string_desc = "Copia esta cadena de exportación de BigWigs si quieres compartir tus opciones."
 L.import_string = "Cadena de importación"
@@ -234,30 +237,30 @@ L.import_string_desc = "Pega la cadena de importación de BigWigs que quieras im
 L.position = "Posición"
 L.settings = "Opciones"
 L.other_settings = "Otras opciones"
-L.nameplate_settings_import_desc = "Importar todas las opciones de las placas de nombre."
-L.nameplate_settings_export_desc = "Exportar todas las opciones de las placas de nombre."
-L.position_import_bars_desc = "Importar la posición (anclajes) de las barras."
-L.position_import_messages_desc = "Importar la posición (anclajes) de los mensajes."
-L.position_import_countdown_desc = "Importar la posición (anclajes) de los contadores."
-L.position_export_bars_desc = "Exportar la posición (anclajes) de las barras."
-L.position_export_messages_desc = "Exportar la posición (anclajes) de los mensajes."
-L.position_export_countdown_desc = "Exportar la posición (anclajes) de los contadores."
+L.nameplate_settings_import_desc = "Importa todas las opciones de las placas de nombre."
+L.nameplate_settings_export_desc = "Exporta todas las opciones de las placas de nombre."
+L.position_import_bars_desc = "Importa la posición (anclajes) de las barras."
+L.position_import_messages_desc = "Importa la posición (anclajes) de los mensajes."
+L.position_import_countdown_desc = "Importa la posición (anclajes) de los contadores."
+L.position_export_bars_desc = "Exporta la posición (anclajes) de las barras."
+L.position_export_messages_desc = "Exporta la posición (anclajes) de los mensajes."
+L.position_export_countdown_desc = "Exporta la posición (anclajes) de los contadores."
 L.settings_import_bars_desc = "Importar las opciones generales, como tamaño, fuente, etc."
-L.settings_import_messages_desc = "Importar las opciones generales de los mensajes, como tamaño, fuente, etc."
-L.settings_import_countdown_desc = "Importar las opciones generales de los contadores, como tamaño, voz, fuente, etc."
-L.settings_export_bars_desc = "Exportar las opciones generales de las barras,como tamaño, fuente, etc."
-L.settings_export_messages_desc = "Exportar las opciones generales de los mensajes, como tamaño, fuente, etc."
-L.settings_export_countdown_desc = "Exportar las opciones generales de los contadores the general countdown settings such as voice, size, font, etc."
-L.colors_import_bars_desc = "Importar el color de las barras."
-L.colors_import_messages_desc = "Importar el color de los mensajes."
-L.color_import_countdown_desc = "Importar el color de los contadores."
-L.colors_export_bars_desc = "Exportar el color de las barras."
-L.colors_export_messages_desc = "Exportar el color de los mensajes."
-L.color_export_countdown_desc = "Exportar el color de los contadores."
-L.confirm_import = "Las opciones que seleccionaste para importar, reescribiran las opciones selecionadas del perfil actuale:\n\n|cFF33FF99\"%s\"|r\n\n¿Estás seguro que quieres hacer esto?"
-L.confirm_import_addon = "El addon |cFF436EEE\"%s\"|r quiere importar de manera automática nuevas opciones para BigWigsa que sobreescribiran las actuales del perfil:\n\n|cFF33FF99\"%s\"|r\n\n¿Estás seguro que quieres hacer esto?"
-L.confirm_import_addon_new_profile = "El addon |cFF436EEE\"%s\"|r quiere de manera automática creer un nuevo perfil:\n\n|cFF33FF99\"%s\"|r\n\nAceptar esto, tambien creará un nuevo perfil."
-L.confirm_import_addon_edit_profile = "El addon |cFF436EEE\"%s\"|r editar uno de tus perfiles:\n\n|cFF33FF99\"%s\"|r\n\nAceptar estos cambios harán que también cambies a este mismo."
+L.settings_import_messages_desc = "Importa las opciones generales de los mensajes, como tamaño, fuente, etc."
+L.settings_import_countdown_desc = "Importa las opciones generales de los contadores, como tamaño, voz, fuente, etc."
+L.settings_export_bars_desc = "Exporta las opciones generales de las barras, como tamaño, fuente, etc."
+L.settings_export_messages_desc = "Exporta las opciones generales de los mensajes, como tamaño, fuente, etc."
+L.settings_export_countdown_desc = "Exporta las opciones generales de los contadores, como voz, tamaño, fuente, etc."
+L.colors_import_bars_desc = "Importa el color de las barras."
+L.colors_import_messages_desc = "Importa el color de los mensajes."
+L.color_import_countdown_desc = "Importa el color de los contadores."
+L.colors_export_bars_desc = "Exporta el color de las barras."
+L.colors_export_messages_desc = "Exporta el color de los mensajes."
+L.color_export_countdown_desc = "Exporta el color de los contadores."
+L.confirm_import = "Las opciones que seleccionaste para importar, reescribirán las opciones seleccionadas del perfil actual:\n\n|cFF33FF99\"%s\"|r\n\n¿Estás seguro que quieres hacer esto?"
+L.confirm_import_addon = "El addon |cFF436EEE\"%s\"|r quiere importar de manera automática nuevas opciones para BigWigs que sobreescribirán las actuales del perfil:\n\n|cFF33FF99\"%s\"|r\n\n¿Estás seguro que quieres hacer esto?"
+L.confirm_import_addon_new_profile = "El addon |cFF436EEE\"%s\"|r quiere de manera automática crear un nuevo perfil:\n\n|cFF33FF99\"%s\"|r\n\nAceptar esto, también creará un nuevo perfil."
+L.confirm_import_addon_edit_profile = "El addon |cFF436EEE\"%s\"|r edita uno de tus perfiles:\n\n|cFF33FF99\"%s\"|r\n\nAceptar estos cambios hará que también cambies a este mismo."
 L.no_string_available = "No hay cadena de importación para importar. Necesitas una cadena primero."
 L.no_import_message = "No se importaron opciones."
 L.import_success = "Importado: %s" -- Imported: Bar Anchors, Message Colors
@@ -271,41 +274,47 @@ L.imported_countdown_position = "Posiciones de los contadores"
 L.imported_countdown_settings = "Opciones de los contadores"
 L.imported_countdown_color = "Color de los contadores"
 L.imported_nameplate_settings = "Opciones de las barras de nombre"
-L.imported_mythicplus_settings = "Configuraciones de Mítico+"
-L.mythicplus_settings_import_desc = "Importar todas las configuraciones de Mítica+"
-L.mythicplus_settings_export_desc = "Exportar todas las configuraciones de Mítica+"
---L.imported_battleres_settings = "Battle Res Settings"
---L.battleres_settings_import_desc = "Import all Battle Res settings."
---L.battleres_settings_export_desc = "Export all Battle Res settings."
+L.imported_mythicplus_settings = "Configuraciones de Mítica+"
+L.mythicplus_settings_import_desc = "Importa todas las configuraciones de Mítica+"
+L.mythicplus_settings_export_desc = "Exporta todas las configuraciones de Mítica+"
+L.imported_battleres_settings = "Configuración de Resurrección en combate"
+L.battleres_settings_import_desc = "Importa toda la configuración de Resurrección en combate."
+L.battleres_settings_export_desc = "Exporta toda la configuración de Resurrección en combate."
+L.imported_privateAuras_settings = "Configuración de Auras privadas"
+L.privateAuras_settings_import_desc = "Importa toda la configuración de Auras privadas."
+L.privateAuras_settings_export_desc = "Exporta toda la configuración de Auras privadas."
+--L.imported_combattimer_settings = "Combat Timer Settings"
+--L.combattimer_settings_import_desc = "Import all Combat Timer settings."
+--L.combattimer_settings_export_desc = "Export all Combat Timer settings."
 
 -- InstanceSharing.lua
---L.sharing_window_title = "Share Boss Settings"
---L.sharing_flags = "General Settings"
---L.sharing_flags_desc = "Import settings which control things like 'show bar', 'play sound', 'show message' etc.\nThese cover most checkboxes in an abilities settings."
---L.sharing_export_flags_desc = "Export settings which control things like 'show bar', 'play sound', 'show message' etc.\nThese cover most checkboxes in an abilities settings."
---L.sharing_sounds_desc = "Import which sounds to play for abilities."
---L.sharing_export_sounds_desc = "Export which sounds to play for abilities."
---L.sharing_private_auras = "Private Auras"
---L.sharing_private_auras_desc = "Import the configured Private Auras sounds."
---L.sharing_export_private_auras_desc = "Export the configured Private Auras sounds."
---L.sharing_colors_desc = "Import the color settings for bars and messages."
---L.sharing_export_colors_desc = "Export the color settings for bars and messages."
---L.confirm_instance_import = "The selected settings you are about to import will overwrite the settings in your currently selected profile:\n\n|cFF33FF99\"%s\"|r\n\nInstance:\n|cFFBB66FF\"%s\"|r\n\nAre you sure you want to do this?"
---L.status_text_paste_import = "Paste a valid import string"
---L.exporting_instance = "Exporting |cFFBB66FF%s|r" -- Exporting Molten Core
---L.importing_instance = "Importing |cFFBB66FF%s|r" -- Importing Molten Core
---L.share = "Share"
+L.sharing_window_title = "Compartir configuración del jefe"
+L.sharing_flags = "Configuración general"
+L.sharing_flags_desc = "Importa configuraciones que controlan cosas como 'mostrar barra', 'reproducir sonido', 'mostrar mensaje', etc.\nCubren la mayoría de las casillas en la configuración de habilidades."
+L.sharing_export_flags_desc = "Exporta configuraciones que controlan cosas como 'mostrar barra', 'reproducir sonido', 'mostrar mensaje', etc.\nCubren la mayoría de las casillas en la configuración de habilidades."
+L.sharing_sounds_desc = "Importa qué sonidos reproducir para las habilidades."
+L.sharing_export_sounds_desc = "Exporta qué sonidos reproducir para las habilidades."
+L.sharing_private_auras = "Auras privadas"
+L.sharing_private_auras_desc = "Importa los sonidos configurados de Auras privadas."
+L.sharing_export_private_auras_desc = "Exporta los sonidos configurados de Auras privadas."
+L.sharing_colors_desc = "Importa la configuración de colores para barras y mensajes."
+L.sharing_export_colors_desc = "Exporta la configuración de colores para barras y mensajes."
+L.confirm_instance_import = "La configuración seleccionada que estás a punto de importar sobrescribirá la configuración de tu perfil actualmente seleccionado:\n\n|cFF33FF99\"%s\"|r\n\nEstancia:\n|cFFBB66FF\"%s\"|r\n\n¿Seguro que quieres hacer esto?"
+L.status_text_paste_import = "Pega una cadena de importación válida"
+L.exporting_instance = "Exportando |cFFBB66FF%s|r" -- Exporting Molten Core
+L.importing_instance = "Importando |cFFBB66FF%s|r" -- Importing Molten Core
+L.share = "Compartir"
 
 -- Statistics
 L.statistics = "Estadísticas"
 L.defeat = "Derrota"
 L.defeat_desc = "El total de veces que este jefe te ha derrotado."
 L.victory = "Victoria"
-L.victory_desc = "El total de veces que has resultado victorioso en contra este jefe."
+L.victory_desc = "El total de veces que has resultado victorioso contra este jefe."
 L.fastest = "Más rápida"
-L.fastest_desc = "La victoria más rápida y ocurrio el (Año/Mes/Día)"
+L.fastest_desc = "La victoria más rápida y ocurrió el (Año/Mes/Día)"
 L.first = "Primera"
-L.first_desc = "La primera victoria ante este jefe, formateada como:\n[Número de derrotas antes de la primera derrota] - [Duración de combate] - [Año/Mes/Día de la Victoria.]"
+L.first_desc = "La primera victoria ante este jefe, formateada como:\n[Número de derrotas antes de la primera victoria] - [Duración de combate] - [Año/Mes/Día de la victoria.]"
 
 -- Difficulty levels for statistics display on bosses
 L.unknown = "Desconocido"
@@ -331,16 +340,32 @@ L.N10 = "Normal 10"
 L.N25 = "Normal 25"
 L.H10 = "Heroico 10"
 L.H25 = "Heroico 25"
---L.titan = "Titan" -- Chinese-only "Titan Reforged" servers
+L.titan = "Titan" -- Chinese-only "Titan Reforged" servers
 
 -----------------------------------------------------------------------
 -- TOOLS
 -----------------------------------------------------------------------
 
 L.tools = "Herramientas"
-L.toolsDesc = "BigWigs ofrece varias herramientas o características de \"calidad de vida\" para acelerar y simplificar el proceso de enfrentamiento con los jefes."
+L.toolsDesc = "BigWigs ofrece varias herramientas o características de \"calidad de vida\" para acelerar y simplificar el proceso de enfrentarte a los jefes."
 
---L.reloadUIWarning = "Changing this feature will reload your UI, showing the loading screen for a moment. Are you sure?"
+L.reloadUIWarning = "Cambiar esta función recargará tu interfaz, mostrando la pantalla de carga por un momento. ¿Estás seguro?"
+--L.qualityOfLife = "Quality of Life"
+
+-----------------------------------------------------------------------
+-- AutoInvite.lua
+--
+
+--L.autoInviteTitle = "Auto Invite"
+--L.autoInviteDesc = "Automatically invite players to your group when they whisper you a specific keyword from the list below."
+--L.yes = "Yes"
+--L.no = "No"
+--L.addWords = "Add Words"
+--L.removeWords = "Remove Words (Click To Delete)"
+--L.invalidWordWarning = "Word must be lowercase and not already in the list."
+--L.groupIsFullConvertToRaid = "Group is full. Convert to raid?"
+--L.whisperToPlayerMyGroupIsFull = "[BigWigs] My group is now full."
+--L.keywordDetectedInvitingPlayer = "Keyword detected, inviting %s."
 
 -----------------------------------------------------------------------
 -- AutoRole.lua
@@ -353,7 +378,7 @@ L.autoRoleExplainer = "Cuando te unas a un grupo o cambies tu especialización d
 -- BattleRes.lua
 --
 
---L.battleResTitle = "Battle Res"
+L.battleResTitle = "Res en Combate"
 --L.battleResDesc = "An icon that shows how many battle resurrection charges are available and the time until another charge is gained."
 --L.battleResDesc2 = "\nYour |cFF33FF99Battle Resurrection History|r can be viewed in the tooltip when you mouse over the icon.\n\n"
 --L.battleResHistory = "Battle Res History:"
@@ -369,6 +394,45 @@ L.autoRoleExplainer = "Cuando te unas a un grupo o cambies tu especialización d
 --L.battleResModeText = "Mode: Text Only"
 --L.battleResModeTextTooltip = "Showing a temporary background to help you move the Battle Res feature and to see where the mouseover area is."
 --L.battleResNoteTooltip = "Note: This tooltip will only show when you are out of combat."
+
+-----------------------------------------------------------------------
+-- CombatTimer.lua
+--
+
+--L.combatTimerTitle = "Combat Timer"
+--L.anyCombatTimer = "Any Combat Timer"
+--L.anyCombatTimerDesc = "A timer that displays how long you've been in combat for, with a tooltip to see combat history."
+--L.anyCombatTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tCombat History"
+--L.bossCombatTimer = "Boss Combat Timer"
+--L.bossCombatTimerDesc = "A timer that displays how long you've been in combat with a boss encounter for, with a tooltip to see boss encounter history."
+--L.bossCombatTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tBoss Combat History"
+--L.bossStagesTimer = "Boss Stages Timer"
+--L.bossStagesTimerDesc = "A timer that resets every time a boss encounter changes stage, with a tooltip to see boss stage history. Only active on bosses with multiple stages."
+--L.bossStagesTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tBoss Stages History"
+--L.instanceTimer = "Instance Timer"
+--L.instanceTimerDesc = "A timer that displays how long you've been in an instance (dungeon/raid/etc) for, with a tooltip to see instance history."
+--L.instanceTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tInstance History"
+
+--L.backgroundColor = "Background Color"
+--L.inactive = "Inactive"
+--L.whenInactive = "When Inactive"
+--L.doNothing = "Do Nothing"
+--L.hide = "Hide"
+--L.colorFade = "Color/Fade"
+--L.inProgress = "In Progress"
+--L.textFormat = "Text Format"
+--L.tooltipHistoryMaxLines = "History: Max Lines"
+--L.tooltipHistoryMaxLinesDesc = "Choose how many lines of history the tooltip should display."
+--L.tooltipHistoryResetConditions = "History: Reset Conditions"
+--L.tooltipHistoryResetConditionsDesc = "Choose any conditions for when the tooltip history should reset."
+--L.enteringRaid = "Entering a raid"
+--L.enteringDungeon = "Entering a dungeon"
+--L.startingMythicKeystone = "Starting a Mythic+"
+--L.historyTimeFormat = "History: Time Format"
+--L.twelveHour = "12 Hour"
+--L.twentyFourHour = "24 Hour"
+--L.hideTooltipInCombat = "Hide Tooltip in Combat"
+--L.customText = "Custom Text (Must Contain %s)"
 
 -----------------------------------------------------------------------
 -- Keystones.lua
@@ -395,26 +459,26 @@ L.keystoneTabHistory = "Historial"
 L.keystoneHeaderThisWeek = "Esta semana"
 L.keystoneHeaderOlder = "Más viejo"
 L.keystoneScoreGainedTooltip = "Puntaje obtenido: |cFFFFFFFF+%d|r\nPuntaje de calabozo: |cFFFFFFFF%d|r"
-L.keystoneCompletedTooltip = "Completadas en tiempo: |cFFFFFFFF%d min %d seg|r\nLímite de tiempo: |cFFFFFFFF%d min %d sec|r"
-L.keystoneFailedTooltip = "No completadas en tiempo: |cFFFFFFFF%d min %d seg|r\nLímite de tiempo: |cFFFFFFFF%d min %d sec|r"
+L.keystoneCompletedTooltip = "Completadas en tiempo: |cFFFFFFFF%d min %d seg|r\nLímite de tiempo: |cFFFFFFFF%d min %d seg|r"
+L.keystoneFailedTooltip = "No completadas en tiempo: |cFFFFFFFF%d min %d seg|r\nLímite de tiempo: |cFFFFFFFF%d min %d seg|r"
 L.keystoneExplainer = "Una recolección de varias herramientas para mejorar la experiencia de Mítica+."
 L.keystoneAutoSlot = "Colocar piedra angular automáticamente"
 L.keystoneAutoSlotDesc = "Coloca tu piedra automáticamente en la ranura cuando abras la fuente de poder."
 L.keystoneAutoSlotMessage = "%s automáticamente colocada en la fuente de poder."
 --L.keystoneAutoSlotFrame = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:14:14|t Keystone Auto Inserted"
-L.keystoneModuleName = "Mythic+"
+L.keystoneModuleName = "Mítica+"
 L.keystoneStartBar = "%s +%d" -- Format is SHORT_DUNGEON_NAME +KEYSTONE_LEVEL e.g. "ROOK +12"
-L.keystoneStartMessage = "%s +%d comienza ahora!" -- Format is LONG_DUNGEON_NAME +KEYSTONE_LEVEL e.g. "The Rookery +12 begins now!"
-L.keystoneCountdownExplainer = "Cuando comiences un calabozo de Mítica+ comenzará una cuenta regresiva. Selecciona que voz quieres escuchar y cuando quieres que la cuenta comience.\n\n"
-L.keystoneCountdownBeginsDesc = "Elige cuánto tiempo debe quedar en el temporizador de inicio de Mitica+ cuando comience la cuenta regresiva."
+L.keystoneStartMessage = "¡%s +%d comienza ahora!" -- Format is LONG_DUNGEON_NAME +KEYSTONE_LEVEL e.g. "The Rookery +12 begins now!"
+L.keystoneCountdownExplainer = "Cuando comiences un calabozo de Mítica+ comenzará una cuenta regresiva. Selecciona qué voz quieres escuchar y cuando quieres que la cuenta comience.\n\n"
+L.keystoneCountdownBeginsDesc = "Elige cuánto tiempo debe quedar en el temporizador de inicio de Mítica+ cuando comience la cuenta regresiva."
 L.keystoneCountdownBeginsSound = "Reproduce un sonido cuando la cuenta regresiva de la Mítica+ comience"
 L.keystoneCountdownEndsSound = "Reproduce un sonido cuando la cuenta regresiva de la Mítica+ termine"
 L.keystoneViewerTitle = "Visualizador de Piedras Angulares"
-L.keystoneHideGuildTitle = "Esconder mi piedra angular de los miembros de mi hermandad"
-L.keystoneHideGuildDesc = "|cffff4411No recomendado.|r Esta característica impedirá que los miembros de tu hermandad vean que piedra angular tienes. La gente en tu grupo aún podrá verla."
-L.keystoneHideGuildWarning = "Deshabilitar la habilidad para que los miembros de tu hermandad vean to piedra angular |cffff4411no es recomendado|r.\n\n¿Estás seguro de querer hacer esto?"
+L.keystoneHideGuildTitle = "Ocultar mi piedra angular de los miembros de mi hermandad"
+L.keystoneHideGuildDesc = "|cffff4411No recomendado.|r Esta característica impedirá que los miembros de tu hermandad vean qué piedra angular tienes. La gente en tu grupo aún podrá verla."
+L.keystoneHideGuildWarning = "Desactivar la habilidad para que los miembros de tu hermandad vean tu piedra angular |cffff4411no es recomendado|r.\n\n¿Estás seguro de querer hacer esto?"
 L.keystoneAutoShowEndOfRun = "Mostrar cuando termina la Mítica+"
-L.keystoneAutoShowEndOfRunDesc = "Mostrar automáticamente el visualizador de piedras angulares cuando el calabozo de Mítica+ termine.\n\n|cFF33FF99Esto puede ayudarte a ver qué nuevas piedras ha recibido tu grupo.|r"
+L.keystoneAutoShowEndOfRunDesc = "Muestra automáticamente el visualizador de piedras angulares cuando el calabozo de Mítica+ termine.\n\n|cFF33FF99Esto puede ayudarte a ver qué nuevas piedras ha recibido tu grupo.|r"
 L.keystoneViewerExplainer = "Puedes abrir el visualizador de piedras angulares utilizando el comando |cFF33FF99/key|r o presionando el botón de abajo.\n\n"
 L.keystoneViewerOpen = "Abre el visualizador de piedras angulares"
 L.keystoneViewerKeybindingExplainer = "\n\nTambién puedes asignar una tecla para abrir el visualizador de piedras angulares:\n\n"
@@ -435,6 +499,7 @@ L.keystoneTimeOver = "|cFFFF4411+%02d:%02d|r"
 --L.keystoneTimerunner = "|A:timerunning-glues-icon:14:14|aThis is a timerunning character." -- Note: Timerunning is a mode like "Legion Remix", it is NOT the same as Timewalking
 --L.keystoneSlashKeys = "Also register the |cFF33FF99/keys|r slash command"
 --L.keystoneSlashKeystone = "Also register the |cFF33FF99/keystone|r slash command"
+--L.unavailableWhilstInCombat = "Unavailable whilst in combat"
 
 -- It doesn't really matter what you call it as long as it's recognizable and limited to ~6 characters
 L.keystoneShortName_TheRookery = "CORV"
@@ -463,7 +528,7 @@ L.keystoneShortName_TheDawnbreaker = "DAWN"
 --L.keystoneShortName_ReturnToKarazhanLower = "LKARA"
 --L.keystoneShortName_ReturnToKarazhanUpper = "UKARA"
 --L.keystoneShortName_CathedralOfEternalNight = "COEN"
---L.keystoneShortName_SeatOfTheTriumvirate = "SOTT"
+--L.keystoneShortName_SeatOfTheTriumvirate = "SEAT"
 --L.keystoneShortName_WindrunnerSpire = "SPIRE"
 --L.keystoneShortName_MagistersTerrace = "MT"
 --L.keystoneShortName_MaisaraCaverns = "CAVERN"
@@ -500,7 +565,7 @@ L.keystoneShortName_TheDawnbreaker_Bar = "Rompealbas"
 --L.keystoneShortName_ReturnToKarazhanLower_Bar = "Lower Kara"
 --L.keystoneShortName_ReturnToKarazhanUpper_Bar = "Upper Kara"
 --L.keystoneShortName_CathedralOfEternalNight_Bar = "Cathedral"
---L.keystoneShortName_SeatOfTheTriumvirate_Bar = "Triumvirate"
+--L.keystoneShortName_SeatOfTheTriumvirate_Bar = "Seat"
 --L.keystoneShortName_WindrunnerSpire_Bar = "Spire"
 --L.keystoneShortName_MagistersTerrace_Bar = "Terrace"
 --L.keystoneShortName_MaisaraCaverns_Bar = "Caverns"
@@ -517,10 +582,10 @@ L.instanceKeysTest10 = "|cFFFF7C0ADruida:|r +10"
 L.instanceKeysDisplay = "|c%s%s:|r +%d" -- "PLAYER_NAME: +DUNGEON_LEVEL"
 L.instanceKeysDisplayWithDungeon = "|c%s%s:|r +%d (%s)" -- "PLAYER_NAME: +DUNGEON_LEVEL (DUNGEON_NAME)"
 L.instanceKeysShowAll = "Siempre mostrar a todos los jugadores"
-L.instanceKeysShowAllDesc = "Activar esta opción mostrará siempre a todos los jugadores en la lista, incluso cuando su piedra angular no pertenezca a el calabozo en el que te encuentras."
+L.instanceKeysShowAllDesc = "Al activar esta opción se mostrará siempre a todos los jugadores en la lista, incluso cuando su piedra angular no pertenezca a el calabozo en el que te encuentras."
 L.instanceKeysOtherDungeonColor = "Otro color de calabozo"
 L.instanceKeysOtherDungeonColorDesc = "Escoge el color de la fuente para los jugadores que tienen piedras angulares que no pertenecen al calabozo en el que te encuentras."
-L.instanceKeysEndOfRunDesc = "Por defecto la lista solo se mostrará cuando entres a un calabozo mítico. Activar esta opción también mostrará la lista cuando la Mítica+ termine."
+L.instanceKeysEndOfRunDesc = "Por defecto, la lista solo se mostrará cuando entres a un calabozo mítico. Activar esta opción también mostrará la lista cuando la Mítica+ termine."
 --L.instanceKeysHideTitle = "Hide title"
 --L.instanceKeysHideTitleDesc = "Hide the \"Who has a key?\" title."
 
@@ -528,10 +593,10 @@ L.instanceKeysEndOfRunDesc = "Por defecto la lista solo se mostrará cuando entr
 -- LFGTimer.lua
 --
 
-L.lfgTimerTitle = "LFG Timer"
-L.lfgTimerExplainer = "Whenever the LFG queue popup appears, BigWigs will create a timer bar telling you how long you have to accept the queue.\n\n"
-L.lfgUseMaster = "Play LFG ready sound on 'Master' audio channel"
-L.lfgUseMasterDesc = "When this option is enabled the LFG ready sound will play over the 'Master' audio channel. If you disable this option it will play over the '%s' audio channel instead."
+--L.lfgTimerTitle = "LFG Timer"
+--L.lfgTimerExplainer = "Whenever the LFG queue popup appears, BigWigs will create a timer bar telling you how long you have to accept the queue.\n\n"
+--L.lfgUseMaster = "Play LFG ready sound on 'Master' audio channel"
+--L.lfgUseMasterDesc = "When this option is enabled the LFG ready sound will play over the 'Master' audio channel. If you disable this option it will play over the '%s' audio channel instead."
 
 -----------------------------------------------------------------------
 -- PLUGINS
@@ -541,27 +606,29 @@ L.general = "General"
 L.advanced = "Avanzado"
 L.comma = ", "
 L.reset = "Restablecer"
-L.resetDesc = "Restablecer las configuraciones superiores a sus valores por defecto."
+L.resetDesc = "Restablece las configuraciones superiores a sus valores predeterminados."
 L.resetAll = "Restablecer todo"
---L.startTest = "Start Test"
---L.stopTest = "Stop Test"
---L.always = "Always"
---L.never = "Never"
+L.startTest = "Iniciar prueba"
+L.stopTest = "Detener prueba"
+L.always = "Siempre"
+L.never = "Nunca"
 
 L.positionX = "Posición X"
 L.positionY = "Posición Y"
 L.positionExact = "Posicionamiento exacto"
-L.positionDesc = "Escriba en el recuadro o mueva el deslizador si necesita un posicionamiento exacto desde el ancla."
+L.positionDesc = "Escribe en el recuadro o mueve el deslizador si necesitas un posicionamiento exacto desde el ancla."
+--L.copyCustomAnchorWidth = "Copy Custom Anchor Width"
+--L.copyCustomAnchorWidthDesc = "Overwrite your width setting with the width of the custom anchor."
 L.width = "Anchura"
 L.height = "Altura"
 L.size = "Tamaño"
 L.sizeDesc = "Normalmente se ajusta el tamaño arrastrando el ancla. Si necesitas un tamaño exacto puedes usar este deslizador o escribir el valor en el recuadro."
-L.fontSizeDesc = "Ajuste el tamaño de la fuente utilizando el control deslizante o escriba el valor en la casilla que tiene un máximo de 200."
+L.fontSizeDesc = "Ajusta el tamaño de la fuente utilizando el control deslizante o escribe el valor en la casilla que tiene un máximo de 200."
 L.disabled = "Desactivado"
 L.disableDesc = "Está a punto de desactivar la función '%s' que |cffff4411no se recomienda|r.\n\n¿Estás seguro de que quieres hacer esto?"
 L.keybinding = "Atajo de teclado"
 L.dragToResize = "Arrastra para ajustar el tamaño"
---L.cannotMoveInCombat = "You cannot move this whilst you're in combat."
+L.cannotMoveInCombat = "No puedes mover esto mientras estás en combate."
 
 -- Anchor Points
 L.UP = "Arriba"
@@ -587,10 +654,10 @@ L.low = "Bajo"
 --
 
 L.altPowerTitle = "PoderAlternativo"
-L.altPowerDesc = "La pantalla de Poder Alternativo sólo aparecerá para los jefes que apliquen Poder Alternativo a los jugadores, lo cual es extremadamente raro. La pantalla mide la cantidad de Poder Alternativo que tienes tú y tu grupo, mostrándolo en una lista. Para mover la pantalla, por favor usa el botón de prueba de abajo."
+L.altPowerDesc = "La pantalla de Poder Alternativo solo aparecerá para los jefes que apliquen Poder Alternativo a los jugadores, lo cual es extremadamente raro. La pantalla mide la cantidad de Poder Alternativo que tienes tú y tu grupo, mostrándolo en una lista. Para mover la pantalla, por favor usa el botón de prueba de abajo."
 L.toggleDisplayPrint = "La pantalla mostrará la próxima vez. Para desactivarlo completamente para este encuentro, debes desactivarlo en las opciones del encuentro."
 L.disabledDisplayDesc = "Desactiva la pantalla para todos los módulos que la utilicen."
-L.resetAltPowerDesc = "Restablece todas las opciones relacionadas con el Poder Alterno, incluyendo la posición del ancla de este."
+L.resetAltPowerDesc = "Restablece todas las opciones relacionadas con el Poder Alternativo, incluyendo la posición del ancla de este."
 L.test = "Prueba"
 L.altPowerTestDesc = "Muestra la pantalla de Poder Alternativo, permitiéndote moverlo, y simulando los cambios de poder que verías en un encuentro con un jefe."
 L.yourPowerBar = "Tu barra de poder"
@@ -598,7 +665,7 @@ L.barColor = "Color de la barra"
 L.barTextColor = "Color del texto de la barra"
 L.additionalWidth = "Anchura adicional"
 L.additionalHeight = "Altura adicional"
-L.additionalSizeDesc = "Aumente el tamaño de la pantalla estándar ajustando este deslizador, o escriba el valor en la casilla que tiene un máximo de 100."
+L.additionalSizeDesc = "Aumenta el tamaño de la pantalla estándar ajustando este deslizador, o escribe el valor en la casilla que tiene un máximo de 100."
 L.yourPowerTest = "Tu poder: %d" -- Your Power: 42
 L.yourAltPower = "Tu %s: %d" -- e.g. Your Corruption: 42
 L.player = "Jugador %d" -- Player 7
@@ -633,7 +700,7 @@ L.autoReplyLeftCombatAdvancedWipe = "Perdí contra '%s' en: %s"
 L.bars = "Barras"
 L.style = "Estilo"
 L.bigWigsBarStyleName_Default = "Predeterminado"
---L.bigWigsBarStyleName_Blizzard = "Blizzard"
+L.bigWigsBarStyleName_Blizzard = "Blizzard"
 L.resetBarsDesc = "Restablece todas las opciones relacionadas con las barras, incluyendo la posición de anclas de este."
 L.testBarsBtn = "Crear barra de prueba"
 L.testBarsBtn_desc = "Crea barras para que las pruebes con los ajustes actuales"
@@ -649,7 +716,7 @@ L.growingUpwardsDesc = "Alterna el crecimiento hacia arriba o abajo desde el pun
 L.texture = "Textura"
 L.emphasize = L.EMPHASIZE
 L.emphasizeMultiplier = "Multiplicador de tamaño"
-L.emphasizeMultiplierDesc = "Si desactiva las barras moviéndose el anclaje enfatizado, esta opción decidirá el tamaño de las barras enfatizadas multiplicando el tamaño de las barras normales."
+L.emphasizeMultiplierDesc = "Si desactivas las barras moviéndose el anclaje enfatizado, esta opción decidirá el tamaño de las barras enfatizadas multiplicando el tamaño de las barras normales."
 
 L.enable = "Activar"
 L.move = "Mover"
@@ -665,13 +732,15 @@ L.icon = "Icono"
 L.iconDesc = "Muestra u oculta los iconos de la barra."
 L.iconPosition = "Posición del icono"
 L.iconPositionDesc = "Elige en qué lugar de la barra debe posicionarse el icono."
+--L.iconTooltip = "Icon Tooltip"
+--L.iconTooltipDesc = "Show a tooltip when you mouse over the icon with information about the boss ability."
 L.font = "Fuente"
 L.restart = "Restablecer"
 L.restartDesc = "Restablece las barras enfatizadas para que empiecen desde el principio y cuenten desde 10."
 L.fill = "Llenar"
 L.fillDesc = "Llena las barras en lugar de vaciarlas."
 L.spacing = "Espaciado"
-L.spacingDesc = "Cambie el espacio entre cada barra."
+L.spacingDesc = "Cambia el espacio entre cada barra."
 L.visibleBarLimit = "Límite de barras visibles"
 L.visibleBarLimitDesc = "Establece la cantidad máxima de barras que son visibles al mismo tiempo."
 
@@ -724,7 +793,7 @@ L.movieBlocked = "Ya has visto esta cinemática antes, saltándola."
 L.blockEmotes = "Bloquear emociones de la pantalla central"
 L.blockEmotesDesc = "Algunos jefes muestran emociones para ciertas habilidades, estos mensajes son demasiado largos y descriptivos. Intentamos acortarlos, y ajustarlos para que no interfieran con el juego, y que no te digan específicamente qué tienes que hacer.\n\nTen en cuenta: Las emociones de Jefe seguirán siendo visibles en el chat si deseas leerlos."
 L.blockMovies = "Bloquear las cinemáticas repetidas"
-L.blockMoviesDesc = "Las cinemáticas de encuentros con el jefe sólo se podrán ver una vez (para que puedas ver cada una) y luego serán bloqueadas."
+L.blockMoviesDesc = "Las cinemáticas de encuentros con el jefe solo se podrán ver una vez (para que puedas ver cada una) y luego serán bloqueadas."
 L.blockFollowerMission = "Bloquea las ventanas emergentes de los seguidores"
 L.blockFollowerMissionDesc = "Las ventanas emergentes de las misiones de seguidores muestran algunas cosas, principalmente cuando una misión es completada.\n\nEstas ventanas emergentes pueden cubrir partes críticas de tu UI durante un encuentro con un jefe, así que recomendamos bloquearlos."
 L.blockGuildChallenge = "Bloquea las ventanas emergentes de logros de hermandad"
@@ -749,11 +818,11 @@ L.blockObjectiveTracker = "Ocultar el seguimiento de misión"
 L.blockObjectiveTrackerDesc = "El seguimiento de misión se ocultará durante encuentros de jefes para limpiar el espacio en pantalla.\n\nEsto no sucederá si estás en una mítica + o estás haciendo seguimiento de un logro."
 
 L.blockTalkingHead = "Ocultar la ventana emergente de diálogo 'Cabeza Parlante' del PNJ"
-L.blockTalkingHeadDesc = "La 'Cabeza Parlante' es un cuadro de diálogo emergente que tiene una cabeza de PNJ y un texto de chat de PNJ en la parte media-baja de tu pantalla que |cffff4411en ocasiones|r muestra cuando un PNJ está hablando.\n\nPuedes elegir los diferentes tipos de instancias en las que esto debe ser bloqueado para que no se muestre.\n\n|cFF33FF99Ten en cuenta:|r\n 1) Esta característica permitirá que la voz del PNJ se continúe reproduciéndo para que puedas seguir escuchándola.\n 2) Por seguridad, sólo se bloquearán cabezas parlantes específicas. Cualquier cosa especial o única, como una búsqueda única, no se bloqueará."
-L.blockTalkingHeadDungeons = "Calabozos Normales & Heroicos"
+L.blockTalkingHeadDesc = "La 'Cabeza Parlante' es un cuadro de diálogo emergente que tiene una cabeza de PNJ y un texto de chat de PNJ en la parte media-baja de tu pantalla que |cffff4411en ocasiones|r muestra cuando un PNJ está hablando.\n\nPuedes elegir los diferentes tipos de estancias en las que esto debe ser bloqueado para que no se muestre.\n\n|cFF33FF99Ten en cuenta:|r\n 1) Esta característica permitirá que la voz del PNJ se continúe reproduciéndo para que puedas seguir escuchándola.\n 2) Por seguridad, solo se bloquearán cabezas parlantes específicas. Cualquier cosa especial o única, como una búsqueda única, no se bloqueará."
+L.blockTalkingHeadDungeons = "Calabozos Normales y Heroicos"
 L.blockTalkingHeadMythics = "Calabozos Míticos y Míticos+"
 L.blockTalkingHeadRaids = "Bandas"
-L.blockTalkingHeadTimewalking = "Cronoviaje (Calabozos & Bandas)"
+L.blockTalkingHeadTimewalking = "Cronoviaje (Calabozos y Bandas)"
 L.blockTalkingHeadScenarios = "Escenarios"
 
 L.redirectPopups = "Redirigir carteles emergentes a mensajes de BigWigs"
@@ -765,10 +834,10 @@ L.itemLevel = "Nivel de objeto %d"
 L.newRespawnPoint = "Nuevo punto de reaparición"
 L.playerLevel = "Nivel %d"
 
-L.userNotifySfx = "BossBlock desactivó los efectos de sonido, lo que obligó a volver a activarlos."
-L.userNotifyMusic = "BossBlock desactivó la música, lo que obligó a volver a activarla."
-L.userNotifyAmbience = "BossBlock desactivó el ambiente, lo que obligó a volver a activarlo."
-L.userNotifyErrorSpeech = "BossBlock desactivó el aviso de error, lo que obligó a volver a activarlo."
+L.userNotifySfx = "Bloque de jefe desactivó los efectos de sonido, lo que obligó a volver a activarlos."
+L.userNotifyMusic = "Bloque de jefe desactivó la música, lo que obligó a volver a activarla."
+L.userNotifyAmbience = "Bloque de jefe desactivó el ambiente, lo que obligó a volver a activarlo."
+L.userNotifyErrorSpeech = "Bloque de jefe desactivó el aviso de error, lo que obligó a volver a activarlo."
 
 L.subzone_grand_bazaar = "Gran Bazar" -- Battle of Dazar'alor raid (Battle for Azeroth)
 L.subzone_port_of_zandalar = "Puerto de Zandalar" -- Battle of Dazar'alor raid (Battle for Azeroth)
@@ -789,9 +858,9 @@ L.resetColorsDesc = "Restablece los colores anteriores a sus valores predetermin
 L.resetAllColorsDesc = "Si has personalizado los colores de cualquier encuentro con el jefe, este botón los restablecerá TODOS para que se usen los colores definidos aquí."
 
 L.red = "Rojo"
-L.redDesc = "Alertas generales del encuentro."
+L.redDesc = "Avisos generales del encuentro."
 L.blue = "Azul"
-L.blueDesc = "Alertas por cosas que te afectan directamente, como un efecto maléfico que se te aplica."
+L.blueDesc = "Avisos por cosas que te afectan directamente, como un efecto maléfico que se te aplica."
 L.orange = "Naranja"
 L.yellow = "Amarillo"
 L.green = "Verde"
@@ -830,7 +899,7 @@ L.infobox_short = "Caja de información"
 --
 
 L.sinkDescription = "Dirige la salida de este complemento a través de la pantalla de mensajes de BigWigs. Esta pantalla soporta iconos, colores y puede mostrar hasta 4 mensajes en la pantalla a la vez. Los mensajes recién insertados crecerán en tamaño y se reducirán de nuevo rápidamente para notificar al usuario."
-L.emphasizedSinkDescription = "Dirige la salida de este complemento a través de la pantalla de mensajes de BigWigs enfatizada. Esta pantalla admite texto y colores, y sólo puede mostrar un mensaje a la vez."
+L.emphasizedSinkDescription = "Dirige la salida de este complemento a través de la pantalla de mensajes de BigWigs enfatizada. Esta pantalla admite texto y colores, y solo puede mostrar un mensaje a la vez."
 L.resetMessagesDesc = "Restablece todas las opciones relacionadas con los mensajes, incluyendo la posición de anclas de este."
 L.toggleMessagesAnchorsBtnShow_desc = "Muestra todos los anclajes móviles, permitiendo mover los mensajes."
 
@@ -845,7 +914,7 @@ L.uppercase = "MAYÚSCULAS"
 L.uppercaseDesc = "Todos los mensajes enfatizados se convertirán en MAYÚSCULAS."
 
 L.useIcons = "Usar iconos"
-L.useIconsDesc = "Mostrar iconos al lado de los mensajes."
+L.useIconsDesc = "Muestra iconos al lado de los mensajes."
 L.classColors = "Colores de clase"
 L.classColorsDesc = "Los mensajes a veces contienen nombres de jugadores. Al activar esta opción, esos nombres serán coloreados con los colores de la clase."
 L.chatFrameMessages = "Mensajes del marco de chat"
@@ -859,8 +928,10 @@ L.outline = "Contorno"
 L.monochrome = "Monocromo"
 L.monochromeDesc = "Cambia a modo monocromático, eliminando cualquier suavizado de los bordes de la fuente."
 L.fontColor = "Color de la fuente"
+--L.slugRendering = "Slug Rendering"
+--L.slugRenderingDesc = "Fonts are rendered using the slug library. This can sometimes make fonts look sharper at large sizes, but can change the size of the outline. |cFF33FF99See sluglibrary.com for more info.|r"
 
-L.displayTime = "Tiempo de visualización"
+L.displayTime = "Mostrar tiempo"
 L.displayTimeDesc = "Cuánto tiempo mostrará un mensaje, en segundos."
 L.fadeTime = "Tiempo de desvanecimiento"
 L.fadeTimeDesc = "Cuánto tiempo tardará en desaparecer un mensaje, en segundos."
@@ -874,11 +945,11 @@ L.messagesOptInWarning = "|cffff4411ADVERTENCIA!|r\n\nActivar el modo 'opcional'
 -- Nameplates.lua
 --
 
-L.nameplates = "Placa de nombre"
+L.nameplates = "Placas de nombre"
 L.testNameplateIconBtn = "Mostrar icono de prueba"
-L.testNameplateIconBtn_desc = "Crea un icono para que pruebe las opciones actuales en tu placa de nombre objetivo."
+L.testNameplateIconBtn_desc = "Crea un icono para probar las opciones actuales en la placa de nombre de tu objetivo."
 L.testNameplateTextBtn = "Mostrar texto de prueba"
-L.testNameplateTextBtn_desc = "Crea un texto de prueba para que pruebes las opciones actuales en tu placa de nombre objetivo."
+L.testNameplateTextBtn_desc = "Crea un texto de prueba para probar las opciones actuales en la placa de nombre de tu objetivo."
 L.stopTestNameplateBtn = "Detener pruebas"
 L.stopTestNameplateBtn_desc = "Detiene la prueba de iconos y textos en tus barras de nombre."
 L.noNameplateTestTarget = "Necesitas de un objetivo hostil, atacable  para probar la funcionalidad de la placa de nombre."
@@ -887,66 +958,66 @@ L.growStartPosition = "Posición inicial de crecimiento"
 L.growStartPositionDesc = "La posición inicial del primer icono."
 L.growDirection = "Dirección de crecimiento"
 L.growDirectionDesc = "La dirección en la que los iconos saldrán, a partir de la posición inicial."
-L.iconSpacingDesc = "Cambiar el espacio entre cada icono."
-L.nameplateIconSettings = "Opciones de iconos"
-L.keepAspectRatio = "Mantener el radio de aspecto"
-L.keepAspectRatioDesc = "Mantener un radio de aspecto de 1:1 en vez de estirarlo para que cubra el tamaño del cuadro."
+L.iconSpacingDesc = "Cambia el espacio entre cada icono."
+L.nameplateIconSettings = "Opciones de icono"
+L.keepAspectRatio = "Mantener ratio de aspecto"
+L.keepAspectRatioDesc = "Mantiene un ratio de aspecto de 1:1 en vez de estirarlo para que cubra el tamaño del cuadro."
 L.iconColor = "Color de icono"
-L.iconColorDesc = "Cambiar el color de la textura del icono."
+L.iconColorDesc = "Cambia el color de la textura del icono."
 L.desaturate = "Desaturar"
-L.desaturateDesc = "Desaturar la textura del icono."
+L.desaturateDesc = "Desatura la textura del icono."
 L.zoom = "Zoom"
 L.zoomDesc = "Zoom en la textura del icono."
 L.showBorder = "Mostrar un borde"
-L.showBorderDesc = "Mostrar un borde alrededor del icono."
+L.showBorderDesc = "Muestra un borde alrededor del icono."
 L.borderColor = "Color del borde"
 L.borderSize = "Tamaño del borde"
-L.borderOffset = "Alineación del Borde"
-L.borderName = "Nombre del Borde"
+L.borderOffset = "Desplazamiento del borde"
+L.borderName = "Nombre del borde"
 L.showNumbers = "Mostrar números"
 L.showNumbersDesc = "Mostrar números en el icono."
 L.cooldown = "Enfriamiento"
 L.cooldownEmphasizeHeader = "Por defecto, Enfatizar está desactivado (0 segundos). Configurandolo a 1 segundo o más, activará Enfatizar. Esto permitirá elegir un color y tamaño de fuente diferente para esos números."
 L.showCooldownSwipe = "Mostrar deslizador"
-L.showCooldownSwipeDesc = "Mostrar un deslizador en el icono cuando el enfriamiento está activo."
+L.showCooldownSwipeDesc = "Muestra un deslizador en el icono cuando el enfriamiento está activo."
 L.showCooldownEdge = "Mostrar borde"
-L.showCooldownEdgeDesc = "Mostrar un borde en el enfriamiento cuando este está activo."
+L.showCooldownEdgeDesc = "Muestra un borde en el enfriamiento cuando este está activo."
 L.inverse = "Invertir"
-L.inverseSwipeDesc = "Invertir las animaciones de enfriamiento."
+L.inverseSwipeDesc = "Invierte las animaciones de enfriamiento."
 L.glow = "Brillo"
-L.enableExpireGlow = "Habilitar el brillo de expiración"
-L.enableExpireGlowDesc = "Mostrar un brillo alrededor del icono cuando el enfriamiento ha expirado."
+L.enableExpireGlow = "Activar brillo de expiración"
+L.enableExpireGlowDesc = "Muestra un brillo alrededor del icono cuando el enfriamiento ha expirado."
 L.glowColor = "Color de brillo"
 L.glowType = "Tipo de brillo"
 L.glowTypeDesc = "Cambia el tipo de brillo que se muestra alrededor del icono."
-L.resetNameplateIconsDesc = "Resetea todas las opciones relacionadas con los iconos de las barras de nombre."
+L.resetNameplateIconsDesc = "Restablece todas las opciones relacionadas con los iconos de las barras de nombre."
 L.nameplateTextSettings = "Opciones de texto"
 L.fixate_test = "Texto fijado" -- Text that displays to test on the frame
-L.resetNameplateTextDesc = "Reiniciar todas las opciones relacionadas con el texto de las barras de nombre."
+L.resetNameplateTextDesc = "Restablece todas las opciones relacionadas con el texto de las barras de nombre."
 L.glowAt = "Comienza el brillo (segundos)"
 L.glowAt_desc = "Elige cuantos segundos de enfriamiento deberian quedar cuando el brillo empieza."
-L.offsetX = "Alineación del eje X"
-L.offsetY = "Alineación del eje Y"
-L.headerIconSizeTarget = "Tamaño de icono de tu objetivo actual"
-L.headerIconSizeOthers = "El tamaño del icono de los otros objetivos"
-L.headerIconPositionTarget = "Posición del ícono de tu objetivo actual"
-L.headerIconPositionOthers = "Posición del ícono de de los demás objetivos"
+L.offsetX = "Desplazamiento del eje X"
+L.offsetY = "Desplazamiento del eje Y"
+L.headerIconSizeTarget = "Tamaño del icono de tu objetivo actual"
+L.headerIconSizeOthers = "Tamaño del icono de otros objetivos"
+L.headerIconPositionTarget = "Posición del icono de tu objetivo actual"
+L.headerIconPositionOthers = "Posición del icono de otros objetivos"
 
 -- Glow types as part of LibCustomGlow
-L.pixelGlow = "Brillo del pixel"
-L.autocastGlow = "Autolanzar Brillo"
+L.pixelGlow = "Brillo de píxel"
+L.autocastGlow = "Brillo de autolanzamiento"
 L.buttonGlow = "Brillo de botón"
-L.procGlow = "Brillo del proc"
+L.procGlow = "Brillo de proc"
 L.speed = "Velocidad"
 L.animation_speed_desc = "La velocidad con la que la animación del brillo ocurre."
-L.lines = "Lineas"
-L.lines_glow_desc = "Número de lineas en la animación de brillo."
+L.lines = "Líneas"
+L.lines_glow_desc = "Número de líneas en la animación de brillo."
 L.intensity = "Intensidad"
 L.intensity_glow_desc = "La intensidad del efecto de brillo, mayor significa mas chispas."
 L.length = "Largo"
-L.length_glow_desc = "El largo de las lineas en la animación del brillo."
+L.length_glow_desc = "El largo de las líneas en la animación del brillo."
 L.thickness = "Grosor"
-L.thickness_glow_desc = "El grosor de las lineas en la animación de brillo."
+L.thickness_glow_desc = "El grosor de las líneas en la animación de brillo."
 L.scale = "Escala"
 L.scale_glow_desc = "La escala del brillo en la animación."
 L.startAnimation = "Comenzar animación"
@@ -956,6 +1027,39 @@ L.nameplateOptInHeaderOff = "\n\n\n\nPlacas de nombre de jefes modo 'opcional': 
 L.nameplateOptInHeaderOn = "\n\n\n\nPlacas de nombre de jefes modo 'opcional' ha sido |cFF33FF99ACTIVADO|r. Para ver las placas de nombre de jefes, ve a la configuración de una habilidad específica del jefe y enciende la opción de '|cFF33FF99placa de nombre|r'.\n\n"
 L.nameplateOptInTitle = "Placas de nombre de jefes modo 'opcional'"
 L.nameplateOptInWarning = "|cffff4411ADVERTENCIA!|r\n\nActivar el modo 'opcional' desactivará las placas de nombres de TODOS los módulos de jefe. Tendrás que activar cada mensaje que desees de manera manual.\n\nTu interfaz será recargada ¿Estás seguro?"
+
+-----------------------------------------------------------------------
+-- PrivateAuras.lua
+--
+
+--L.privateAuras = "Private Auras"
+--L.privateAurasDesc1 = "'Private Auras' are a special type of debuff that addons cannot detect or perform any automation on. These debuffs are used by all modern boss encounters now.\n\n"
+--L.privateAurasDesc2 = "BigWigs can help you keep track of when they are applied to you by displaying them as icons. |cFF33FF99This can help you by displaying critical debuffs separately from your normal debuffs.|r\n\n"
+
+--L.createTestAura = "Create Test Aura"
+--L.showDispelType = "Show Dispel Type Indicator"
+--L.showDispelTypeDesc = "Show an icon on the private aura frame if it has a dispel type.\n\n|cffffd200Note: This is a global option for all private aura frames.|r"
+--L.iconSize = "Icon Size"
+--L.iconSpacing = "Icon Spacing"
+--L.showCooldown = "Show Cooldown Spiral"
+--L.showCooldownText = "Show Cooldown Text"
+--L.cooldownTextScale = "Cooldown Text Scale"
+--L.growthDirection = "Icon Growth Direction"
+--L.aurasOnYou = "Auras On You"
+--L.aurasOnYouDesc = "Customize the icons for auras that apply to you.\n\n"
+--L.aurasOnAnother = "Auras On Another"
+--L.aurasOnAnotherDesc = "Choose a specific player and then customize the icons for auras that apply to them.\n\n"
+--L.chooseAPlayer = "Choose a player"
+--L.theOtherTank = "Automatically find a tank"
+--L.theOtherTankDesc = "Show private auras on the first tank in your group that isn't you. (Current: %s)"
+--L.onlyWhenYouAreTank = "Only show when you are also a tank"
+--L.playerInYourGroup = "A player in your group"
+--L.maxIcons = "Max Icons"
+--L.maxIconsDesc = "The maximum amount of icons to be displayed."
+--L.privateAurasHelpTip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tBigWigs: You can now see your private aura debuffs as icons, or even the private auras of another player (e.g. a tank)."
+
+--L.privateAurasTestAnchorText = "Private\nAura\n(%d)"
+--L.privateAurasTestTankAnchorText = "Tank\nAura\n(%d)"
 
 -----------------------------------------------------------------------
 -- Proximity.lua
@@ -998,16 +1102,16 @@ L.combatLog = "Registro automático de combate"
 L.combatLogDesc = "Automáticamente comienza a registrar el combate cuando se inicia el temporizador de llamada de jefe y lo termina cuando acaba el encuentro."
 
 L.pull = "Llamada de jefe"
-L.engageSoundTitle = "Toca un sonido cuando un encuentro con el jefe haya comenzado"
-L.pullStartedSoundTitle = "Toca un sonido cuando el temporizador de llamada de jefe se comienza"
---L.pullStartedMessageTitle = "Show a message when the pull timer is started"
-L.pullFinishedSoundTitle = "Toca un sonido cuando el temporizador de llamada de jefe se termina"
-L.pullStartedBy = "%s Lanzó un pull."
+L.engageSoundTitle = "Reproduce un sonido cuando un encuentro con el jefe haya comenzado"
+L.pullStartedSoundTitle = "Reproduce un sonido cuando el temporizador de llamada de jefe se comienza"
+L.pullStartedMessageTitle = "Muestra un mensaje cuando se inicie el temporizador de llamada"
+L.pullFinishedSoundTitle = "Reproduce un sonido cuando el temporizador de llamada de jefe se termina"
+L.pullStartedBy = "%s Lanzó una llamada."
 L.pullStopped = "Temporizador de llamada de jefe cancelado por %s."
 L.pullStoppedCombat = "Temporizador de llamada de jefe cancelado porque tu entraste en combate"
 L.pullIn = "Llamada de jefe en %d seg"
-L.sendPull = "Mandar un pull para tu grupo."
-L.wrongPullFormat = "Contador inválido para el pull. Usa algo como: /pull 5"
+L.sendPull = "Mandar una llamada para tu grupo."
+L.wrongPullFormat = "Contador inválido para la llamada. Usa algo como: /pull 5"
 L.countdownBegins = "Comenzar cuenta regresiva"
 L.countdownBegins_desc = "Elige cuánto tiempo restante debe de quedar en la llamada de jefe (en segundos) cuando la cuenta regresiva comience."
 L.pullExplainer = "\n|cFF33FF99/pull|r empezará una cuenta atrás normal.\n|cFF33FF99/pull 7|r empezará una cuenta atrás de 7 segundos, puedes utilizar cualquier número.\nO bien puedes asignar un atajo debajo.\n\n"
@@ -1018,7 +1122,7 @@ L.pullKeybindingDesc = "Elige un atajo para empezar una cuenta atrás."
 --
 
 L.icons = "Iconos"
-L.raidIconsDescription = "Algunos encuentros pueden incluir elementos como habilidades de tipo bomba dirigidas a un jugador específico, un jugador perseguido, o un jugador específico puede ser de interés. Aquí puedes personalizar los iconos de banda que deben utilizarse para marcar a estos jugadores.\n\nSi un encuentro sólo tiene una habilidad por la que vale la pena marcar, sólo se utilizará el primer icono. Un icono nunca se usará para dos habilidades diferentes en el mismo encuentro, y cualquier habilidad dada siempre usará el mismo icono la próxima vez.\n\n|cffff4411Ten en cuenta que si un jugador ya ha sido marcado manualmente, BigWigs nunca cambiará su icono.|r"
+L.raidIconsDescription = "Algunos encuentros pueden incluir elementos como habilidades de tipo bomba dirigidas a un jugador específico, un jugador perseguido, o un jugador específico puede ser de interés. Aquí puedes personalizar los iconos de banda que deben utilizarse para marcar a estos jugadores.\n\nSi un encuentro solo tiene una habilidad por la que vale la pena marcar, solo se utilizará el primer icono. Un icono nunca se usará para dos habilidades diferentes en el mismo encuentro, y cualquier habilidad dada siempre usará el mismo icono la próxima vez.\n\n|cffff4411Ten en cuenta que si un jugador ya ha sido marcado manualmente, BigWigs nunca cambiará su icono.|r"
 L.primary = "Primario"
 L.primaryDesc = "El primer icono de banda que un encuentro debería usar. "
 L.secondary = "Secundario"
@@ -1029,7 +1133,7 @@ L.secondaryDesc = "El segundo icono de banda que un encuentro debería usar."
 --
 
 L.Sounds = "Sonidos"
-L.soundsDesc = "BigWigs utiliza el canal de sonido 'General' para reproducir todos sus sonidos. Si encuentras que los sonidos son demasiado silenciosos o demasiado fuertes, abre la configuración de sonido de WoW y ajusta el deslizador de 'Volumen general' a un nivel que te guste.\n\nA continuación puedes configurar globalmente los diferentes sonidos que se reproducen para acciones específicas, o ponerlos en 'Ninguno' para desactivarlos. Si sólo quieres cambiar un sonido para una habilidad específica del jefe, puedes hacerlo en la configuración del encuentro con el jefe.\n\n"
+L.soundsDesc = "BigWigs utiliza el canal de sonido 'General' para reproducir todos sus sonidos. Si encuentras que los sonidos son demasiado silenciosos o demasiado fuertes, abre la configuración de sonido de WoW y ajusta el deslizador de 'Volumen general' a un nivel que te guste.\n\nA continuación puedes configurar globalmente los diferentes sonidos que se reproducen para acciones específicas, o ponerlos en 'Ninguno' para desactivarlos. Si solo quieres cambiar un sonido para una habilidad específica del jefe, puedes hacerlo en la configuración del encuentro con el jefe.\n\n"
 L.oldSounds = "Sonidos viejos"
 
 L.Alarm = "Alarma"
@@ -1044,6 +1148,7 @@ L.privateaura = "Cuando un 'Aura Privada' esta sobre ti"
 L.customSoundDesc = "Reproduce el sonido personalizado seleccionado en lugar del suministrado por el módulo."
 L.resetSoundDesc = "Restablece los sonidos anteriores a sus valores predeterminados."
 L.resetAllCustomSound = "Si has personalizado los sonidos para cualquier encuentro con el jefe, este botón los restablecerá TODOS para que se usen los sonidos definidos aquí."
+--L.soundResetPrint = "The module '|cFF436EEE%s|r' uses a custom sound called '|cFF436EEE%s|r' that no longer exists. Resetting to default."
 
 -----------------------------------------------------------------------
 -- Statistics.lua
@@ -1069,19 +1174,16 @@ L.newFastestVictoryPrint = "Nueva victoria más rápida: (-%s)" -- New fastest v
 --
 
 --L.timeline = "Timeline"
---L.blizzTimersAsBigWigsBars = "Show Blizz timers (timeline) as BigWigs bars"
---L.blizzTimersAsBigWigsBarsDesc = "All Blizzard boss timers (timeline) will display as BigWigs bars instead."
---L.blizzWarningsAsBigWigsMessages = "Show Blizz boss warnings as BigWigs messages"
---L.blizzWarningsAsBigWigsMessagesDesc = "All Blizzard boss warnings will display as BigWigs messages instead."
---L.blizzAudioAsBigWigsAudio = "Convert Blizz sounds to BigWigs sounds"
---L.blizzAudioAsBigWigsAudioDesc = "Play your BigWigs sounds (Alert, Alarm & Warning) based on the encounter warning severity."
---L.blizzWarningSettings = "Blizzard Warnings Settings"
 --L.blizzTimelineSettings = "Blizzard Timeline Settings"
 --L.blizzTimelineSettingsNote = "|cffff4411These options just control the Blizzard settings and are here as a convenience.|r"
 --L.enableBlizzTimeline = "Enable Blizz timeline"
 --L.enableBlizzTimelineDesc = "This will show all boss encounter timers on the Blizzard timeline."
---L.enableBlizzWarnings = "Enable Blizz boss warnings"
---L.enableBlizzWarningsDesc = "When enabling the Blizzard boss warnings you should also disable showing them as BigWigs messages or you will see all messages twice."
+--L.show_bars = "Show Bars From"
+--L.bigwigsEnhancedTimers = "BigWigs enhanced timers displayed as BigWigs bars |cFF33FF99(recommended)|r"
+--L.blizzBasicAsBars = "Blizzard basic timers displayed as BigWigs bars"
+--L.blizzBasicAsBlizzTimeline = "Blizzard basic timers displayed on the Blizzard timeline"
+--L.developerMode = "Developer Mode"
+--L.enhancedModeWarning = "WARNING!\n\nDisabling enhanced mode will disable many BigWigs features, including:\n\nBar colors, spell renames, counters, custom sound/voice, countdowns, bars on/off, extra messages, etc."
 
 -----------------------------------------------------------------------
 -- Victory.lua

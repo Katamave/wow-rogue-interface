@@ -12,19 +12,20 @@ local strfind = string.find
 -- Generate our version variables
 --
 
-local BIGWIGS_VERSION = 405
+local BIGWIGS_VERSION = 413
 local CONTENT_PACK_VERSIONS = {
-	["LittleWigs"] = {12, 0, 7},
-	["BigWigs_Classic"] = {12, 0, 2},
-	["BigWigs_BurningCrusade"] = {12, 0, 0},
-	["BigWigs_WrathOfTheLichKing"] = {12, 0, 2},
-	["BigWigs_Cataclysm"] = {12, 0, 0},
-	["BigWigs_MistsOfPandaria"] = {12, 0, 1},
-	["BigWigs_WarlordsOfDraenor"] = {12, 0, 0},
-	["BigWigs_Legion"] = {12, 0, 0},
-	["BigWigs_BattleForAzeroth"] = {12, 0, 0},
-	["BigWigs_Shadowlands"] = {12, 0, 0},
-	["BigWigs_Dragonflight"] = {12, 0, 1},
+	["LittleWigs"] = {12, 0, 40},
+	["BigWigs_Classic"] = {12, 0, 15},
+	["BigWigs_BurningCrusade"] = {12, 0, 11},
+	["BigWigs_WrathOfTheLichKing"] = {12, 0, 6},
+	["BigWigs_Cataclysm"] = {12, 0, 2},
+	["BigWigs_MistsOfPandaria"] = {12, 0, 4},
+	["BigWigs_WarlordsOfDraenor"] = {12, 0, 1},
+	["BigWigs_Legion"] = {12, 0, 1},
+	["BigWigs_BattleForAzeroth"] = {12, 0, 2},
+	["BigWigs_Shadowlands"] = {12, 0, 2},
+	["BigWigs_Dragonflight"] = {12, 0, 4},
+	["BigWigs_TheWarWithin"] = {12, 0, 2},
 }
 local BIGWIGS_RELEASE_STRING
 local versionQueryString, versionResponseString = "Q^%d^%s^%d^%s", "V^%d^%s^%d^%s"
@@ -56,11 +57,12 @@ do
 	local ALPHA = "ALPHA"
 
 	local releaseType
-	local myGitHash = "64fd8e6" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "194a45b" -- The ZIP packager will replace this with the Git hash.
 	local releaseString
 	--[=[@alpha@
 	-- The following code will only be present in alpha ZIPs.
 	releaseType = ALPHA
+	public.usingBigWigsAlpha = true
 	--@end-alpha@]=]
 
 	-- If we find "@" then we're running from Git directly.
@@ -91,6 +93,7 @@ do
 		releaseString = L.guildRelease:format(BIGWIGS_GUILD_VERSION, BIGWIGS_VERSION)
 		versionQueryString = versionQueryString:format(BIGWIGS_VERSION, myGitHash, tbl.guildVersion, tbl.guildName)
 		versionResponseString = versionResponseString:format(BIGWIGS_VERSION, myGitHash, tbl.guildVersion, tbl.guildName)
+		public.usingBigWigsGuild = true
 	else
 		versionQueryString = versionQueryString:format(BIGWIGS_VERSION, myGitHash, 0, "")
 		versionResponseString = versionResponseString:format(BIGWIGS_VERSION, myGitHash, 0, "")
@@ -113,7 +116,7 @@ local myLocale = GetLocale()
 local myName = UnitNameUnmodified("player")
 local myGUID = UnitGUID("player")
 local function sysprint(msg)
-	print("|cFF33FF99BigWigs|r: "..msg)
+	print("|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|t|cFF33FF99BigWigs|r: "..msg)
 end
 local GetInstanceInfoModified, ModifyInstanceInfo
 do
@@ -143,21 +146,22 @@ public.GetBestMapForUnit = GetBestMapForUnit
 public.GetInstanceInfo = GetInstanceInfoModified
 public.GetMapInfo = GetMapInfo
 public.GetPlayerAuraBySpellID = C_UnitAuras.GetPlayerAuraBySpellID
-public.GetUnitAuraBySpellID = C_UnitAuras.GetUnitAuraBySpellID -- XXX [Mainline:✓ MoP:✗ Wrath:✗ Vanilla:✓]
+public.GetUnitAuraBySpellID = C_UnitAuras.GetUnitAuraBySpellID -- XXX [Mainline:✓ MoP:✗ Wrath:✓ Vanilla:✓]
 public.GetSpellCooldown = C_Spell.GetSpellCooldown
 public.GetSpellDescription = C_Spell.GetSpellDescription
 public.GetSpellLink = C_Spell.GetSpellLink
 public.GetSpellName = C_Spell.GetSpellName
 public.GetSpellTexture = C_Spell.GetSpellTexture
 public.IsItemInRange = C_Item.IsItemInRange
-public.IsSpellKnownOrInSpellBook = C_SpellBook.IsSpellKnownOrInSpellBook -- XXX [Mainline:✓ MoP:✓ Wrath:✗ Vanilla:✓]
+public.IsSpellKnownOrInSpellBook = C_SpellBook.IsSpellKnownOrInSpellBook -- XXX [Mainline:✓ MoP:✓ Wrath:✓ Vanilla:✓]
 public.IsPlayerSpell = IsPlayerSpell or public.IsSpellKnownOrInSpellBook
 public.IsSpellKnown = IsSpellKnown or public.IsSpellKnownOrInSpellBook
 public.PlaySoundFile = PlaySoundFile
 public.RegisterAddonMessagePrefix = RegisterAddonMessagePrefix
 public.SendAddonMessage = SendAddonMessage
+public.SendBattleNetMessage = C_BattleNet and C_BattleNet.SendWhisper or BNSendWhisper -- XXX [Mainline:✓ MoP:✗ Wrath:✗ TBC:✗ Vanilla:✗]
+public.SendChatMessage = C_ChatInfo.SendChatMessage
 public.SetRaidTarget = SetRaidTarget
-public.SendChatMessage = C_ChatInfo and C_ChatInfo.SendChatMessage or SendChatMessage -- XXX [Mainline:✓ MoP:✓ Wrath:✗ Vanilla:✓]
 public.UnitCanAttack = UnitCanAttack
 public.UnitDetailedThreatSituation = UnitDetailedThreatSituation
 public.UnitThreatSituation = UnitThreatSituation
@@ -174,9 +178,8 @@ public.Print = sysprint
 public.isTestBuild = IsPublicTestClient() -- PTR/beta
 do
 	local _, _, _, build = GetBuildInfo()
-	public.isMidnight = build >= 120000
-	public.isBeta = public.isTestBuild and build >= 120001
-	public.isNext = build >= 120002
+	public.isBeta = public.isTestBuild and build >= 130000
+	public.isNext = build >= 120005
 end
 
 -- Version
@@ -206,6 +209,7 @@ local fakeZones = { -- Fake zones used as GUI menus
 	[-1647]=true, -- Shadowlands
 	[-1978]=true, -- Dragon Isles
 	[-2274]=true, -- Khaz Algar
+	[-2443]=true, -- Silvermoon City
 }
 
 do
@@ -286,12 +290,10 @@ do
 			name = mn,
 			bigWigsBundled = {
 				[mn] = true,
-				[tww] = true,
 			},
 			littlewigsDefault = lw_cs,
 			littleWigsBundled = {
 				[lw_mn] = true,
-				[lw_tww] = true,
 				[lw_delves] = true,
 				[lw_cs] = true,
 			},
@@ -319,13 +321,11 @@ do
 		public.currentExpansion = { -- Change on new expansion releases
 			name = mn,
 			bigWigsBundled = {
-				[tww] = true,
 				[mn] = true,
 			},
 			littlewigsDefault = lw_cs,
 			littleWigsBundled = {
 				[lw_mn] = true,
-				[lw_tww] = true,
 				[lw_delves] = true,
 				[lw_cs] = true,
 			},
@@ -334,30 +334,16 @@ do
 				lw_cs,
 			},
 			currentSeason = {
-				[2212] = lw_cs, -- Horrific Vision of Orgrimmar
-				[2213] = lw_cs, -- Horrific Vision of Stormwind
-				[2287] = lw_cs, -- Halls of Atonement
-				[2441] = lw_cs, -- Tazavesh, the Veiled Market
-				[2649] = lw_cs, -- Priory of the Sacred Flame
-				[2660] = lw_cs, -- Ara-Kara, City of Echoes
-				[2662] = lw_cs, -- The Dawnbreaker
-				[2773] = lw_cs, -- Operation: Floodgate
-				[2830] = lw_cs, -- Eco-Dome Al'dani
-				[369] = UnitFactionGroup("player") == "Alliance" and lw_cs or nil, -- Deeprun Tram
-				[1043] = UnitFactionGroup("player") == "Horde" and lw_cs or nil, -- Brawl'gar Arena
-				--[2805] = lw_cs, -- Windrunner Spire
-				--[2811] = lw_cs, -- Magisters' Terrace
-				--[2874] = lw_cs, -- Maisara Caverns
-				--[2915] = lw_cs, -- Nexus-Point Xenas
-				--[2526] = lw_cs, -- Algeth'ar Academy
-				--[1753] = lw_cs, -- Seat of the Triumvirate
-				--[1209] = lw_cs, -- Skyreach
-				--[658] = lw_cs, -- Pit of Saron
+				[2805] = lw_cs, -- Windrunner Spire
+				[2811] = lw_cs, -- Magisters' Terrace
+				[2874] = lw_cs, -- Maisara Caverns
+				[2915] = lw_cs, -- Nexus-Point Xenas
+				[2526] = lw_cs, -- Algeth'ar Academy
+				[1753] = lw_cs, -- Seat of the Triumvirate
+				[1209] = lw_cs, -- Skyreach
+				[658] = lw_cs, -- Pit of Saron
 			},
 			zones = {
-				[2657] = "BigWigs_NerubarPalace",
-				[2769] = "BigWigs_LiberationOfUndermine",
-				[2810] = "BigWigs_ManaforgeOmega",
 				[2939] = "BigWigs_TheDreamrift",
 				[2912] = "BigWigs_TheVoidspire",
 				[2913] = "BigWigs_MarchOnQuelDanas",
@@ -453,6 +439,7 @@ do
 		[2769] = tww, -- Liberation of Undermine
 		[2810] = tww, -- Manaforge Omega
 		--[[ BigWigs: Midnight ]]--
+		[-2443] = mn, -- Silvermoon City (Fake Menu)
 		[2912] = mn, -- The Voidspire
 		[2913] = mn, -- March on Quel'Danas
 		[2939] = mn, -- The Dreamrift
@@ -707,59 +694,88 @@ do
 	end
 end
 
-local Popup = public.isRetail and function(msg, focus, height)
-	local frame = CreateFrame("Frame", nil, UIParent, focus and "PortraitFrameTexturedBaseTemplate" or "PortraitFrameFlatBaseTemplate")
-	frame:SetFrameStrata("DIALOG")
-	frame:SetToplevel(true)
-	frame:SetSize(400, height or 150)
-	frame:SetPoint("CENTER")
-	frame:SetTitle("BigWigs")
-	frame:SetTitleOffsets(0, 0)
-	frame:SetBorder("HeldBagLayout")
-	frame:SetPortraitTextureSizeAndOffset(38, -5, 0)
-	frame:SetPortraitTextureRaw("Interface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid.tga")
+local Popup
+do
+	local popupDelay = {}
+	local isShowingPopup = false
+	Popup = public.isRetail and function(msg, focus, height)
+		local frame = CreateFrame("Frame", nil, UIParent, focus and "PortraitFrameTexturedBaseTemplate" or "PortraitFrameFlatBaseTemplate")
+		frame:SetFrameStrata("DIALOG")
+		frame:SetFrameLevel(300)
+		frame:SetSize(400, height or 150)
+		frame:SetPoint("CENTER")
+		frame:SetTitle("BigWigs")
+		frame:SetTitleOffsets(0, 0)
+		frame:SetBorder("HeldBagLayout")
+		frame:SetPortraitTextureSizeAndOffset(38, -5, 0)
+		frame:SetPortraitTextureRaw("Interface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid.tga")
 
-	local text = frame:CreateFontString(nil, nil, "GameFontGreenLarge")
-	text:SetSize(380, 0)
-	text:SetJustifyH("CENTER")
-	text:SetJustifyV("TOP")
-	text:SetNonSpaceWrap(true)
-	text:SetPoint("TOP", 0, -40)
+		local text = frame:CreateFontString(nil, nil, "GameFontGreenLarge")
+		text:SetSize(380, 0)
+		text:SetJustifyH("CENTER")
+		text:SetJustifyV("TOP")
+		text:SetNonSpaceWrap(true)
+		text:SetPoint("TOP", 0, -40)
 
-	local button = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-	button:SetSize(128, 32)
-	button:SetPoint("BOTTOM", 0, 16)
-	button:SetScript("OnClick", function(self)
-		self:GetParent():Hide()
-	end)
-	button:SetText(L.okay)
+		local button = CreateFrame("Button", nil, frame, "SharedButtonTemplate")
+		button:SetSize(128, 32)
+		button:SetPoint("BOTTOM", 0, 16)
+		button:SetScript("OnClick", function(self)
+			self:GetParent():Hide()
+			local nextPopup = table.remove(popupDelay, 1)
+			if nextPopup then
+				nextPopup:Show()
+			else
+				isShowingPopup = false
+			end
+		end)
+		button:SetText(L.okay)
 
-	text:SetText(msg)
-	frame:Show()
-end or function(msg, focus)
-	local frame = CreateFrame("Frame", nil, UIParent)
-	frame:SetFrameStrata("DIALOG")
-	frame:SetToplevel(true)
-	frame:SetSize(400, 150)
-	frame:SetPoint("CENTER")
-	local text = frame:CreateFontString(nil, "ARTWORK", "GameFontRedLarge")
-	text:SetSize(380, 0)
-	text:SetJustifyH("CENTER")
-	text:SetJustifyV("TOP")
-	text:SetNonSpaceWrap(true)
-	text:SetPoint("TOP", 0, -16)
-	local border = CreateFrame("Frame", nil, frame, focus and "DialogBorderOpaqueTemplate" or "DialogBorderTemplate")
-	border:SetAllPoints(frame)
-	local button = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-	button:SetSize(128, 32)
-	button:SetPoint("BOTTOM", 0, 16)
-	button:SetScript("OnClick", function(self)
-		self:GetParent():Hide()
-	end)
-	button:SetText(L.okay)
+		text:SetText(msg)
+		if not isShowingPopup then
+			isShowingPopup = true
+			frame:Show()
+		else
+			frame:Hide()
+			popupDelay[#popupDelay+1] = frame
+		end
+	end or function(msg, focus)
+		local frame = CreateFrame("Frame", nil, UIParent)
+		frame:SetFrameStrata("DIALOG")
+		frame:SetFrameLevel(300)
+		frame:SetSize(400, 150)
+		frame:SetPoint("CENTER")
+		local text = frame:CreateFontString(nil, "ARTWORK", "GameFontGreenLarge")
+		text:SetSize(380, 0)
+		text:SetJustifyH("CENTER")
+		text:SetJustifyV("TOP")
+		text:SetNonSpaceWrap(true)
+		text:SetPoint("TOP", 0, -16)
+		local border = CreateFrame("Frame", nil, frame, focus and "DialogBorderOpaqueTemplate" or "DialogBorderTemplate")
+		border:SetAllPoints(frame)
+		local button = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
+		button:SetSize(128, 32)
+		button:SetPoint("BOTTOM", 0, 16)
+		button:SetScript("OnClick", function(self)
+			self:GetParent():Hide()
+			local nextPopup = table.remove(popupDelay, 1)
+			if nextPopup then
+				nextPopup:Show()
+			else
+				isShowingPopup = false
+			end
+		end)
+		button:SetText(L.okay)
 
-	text:SetText(msg)
-	frame:Show()
+		text:SetText(msg)
+		if not isShowingPopup then
+			isShowingPopup = true
+			frame:Show()
+		else
+			frame:Hide()
+			popupDelay[#popupDelay+1] = frame
+		end
+	end
 end
 
 local function load(index)
@@ -1121,23 +1137,30 @@ do
 	end
 end
 
+-- XXX 12.0.1 s1
+--if public.isRetail and not BW_FEAT_ENHANCE then
+--	BW_FEAT_ENHANCE = true
+--	if BigWigs3DB then -- No popup for fresh users
+--		Popup(L.enhancedModeWelcome, true, 250)
+--	end
+--end
+
 -- XXX 12.0.0
-if (public.isRetail or public.isMists or public.isWrath) and not BW_FEAT_SHARE2 then
-	BW_FEAT_SHARE2 = true
-	if BigWigs3DB and not BW_FEAT_SHARE then -- No popup for fresh users
-		local msg = "|cFFFFFFFF" .. L.newFeatures .. "|r\n"
-		msg = msg .. "\n" .. L.parentheses:format(L.sharing_window_title, L.import .. "/" .. L.export)
-		if public.isRetail then
-			msg = msg .. "\n" .. L.parentheses:format(L.indicatorTitle, L.bars)
-		end
-		if public.isRetail or public.isMists then
-			msg = msg .. "\n" .. L.parentheses:format(L.battleResTitle, L.icon)
-		end
-		msg = msg .. "\n"
-		Popup(msg, true, 180)
-	end
-end
---
+--if (public.isRetail or public.isMists or public.isWrath) and not BW_FEAT_SHARE2 then
+--	BW_FEAT_SHARE2 = true
+--	if BigWigs3DB and not BW_FEAT_SHARE then -- No popup for fresh users
+--		local msg = "|cFFFFFFFF" .. L.newFeatures .. "|r\n"
+--		msg = msg .. "\n" .. L.parentheses:format(L.sharing_window_title, L.import .. "/" .. L.export)
+--		if public.isRetail then
+--			msg = msg .. "\n" .. L.parentheses:format(L.indicatorTitle, L.bars)
+--		end
+--		if public.isRetail or public.isMists then
+--			msg = msg .. "\n" .. L.parentheses:format(L.battleResTitle, L.icon)
+--		end
+--		msg = msg .. "\n"
+--		Popup(msg, true, 180)
+--	end
+--end
 
 if public.isRetail then
 	bwFrame:RegisterEvent("PLAYER_MAP_CHANGED")
@@ -1313,6 +1336,7 @@ do
 		BigWigs_TrialOfValor = "BigWigs_Legion",
 		BigWigs_SiegeOfZuldazar = "BigWigs",
 		FS_Core = "Abandoned", -- abandoned addon breaking the load order
+		Fake_Keystones = "Abandoned", -- abandoned addon breaking LibKeystone
 		BigWigs_Azeroth = "BigWigs_BattleForAzeroth",
 		BigWigs_BattleOfDazaralor = "BigWigs_BattleForAzeroth",
 		BigWigs_CrucibleOfStorms = "BigWigs_BattleForAzeroth",
@@ -1327,6 +1351,10 @@ do
 		BigWigs_Amirdrassil = "BigWigs_Dragonflight",
 		BigWigs_DragonIsles = "BigWigs_Dragonflight",
 		BigWigs_VaultOfTheIncarnates = "BigWigs_Dragonflight",
+		BigWigs_NerubarPalace = "BigWigs_TheWarWithin",
+		BigWigs_LiberationOfUndermine = "BigWigs_TheWarWithin",
+		BigWigs_ManaforgeOmega = "BigWigs_TheWarWithin",
+		BigWigs_KhazAlgar = "BigWigs_TheWarWithin",
 	}
 	local DisableAddOn = C_AddOns.DisableAddOn
 	local delayedMessages = {}
@@ -1349,6 +1377,7 @@ do
 		BigWigs_BattleForAzeroth = true,
 		BigWigs_Shadowlands = true,
 		BigWigs_Dragonflight = true,
+		BigWigs_TheWarWithin = true,
 		LittleWigs = true,
 		LittleWigs_Classic = true,
 		LittleWigs_BurningCrusade = true,
@@ -1360,10 +1389,8 @@ do
 		LittleWigs_BattleForAzeroth = true,
 		LittleWigs_Shadowlands = true,
 		LittleWigs_Dragonflight = true,
+		LittleWigs_TheWarWithin = true,
 		-- Dynamic content
-		BigWigs_NerubarPalace = true,
-		BigWigs_LiberationOfUndermine = true,
-		BigWigs_ManaforgeOmega = true,
 		BigWigs_TheVoidspire = true,
 		BigWigs_TheDreamrift = true,
 		BigWigs_MarchOnQuelDanas = true,
@@ -1590,12 +1617,12 @@ end
 --
 
 do
-	local DBMdotRevision = "20260127000504" -- The changing version of the local client, changes with every new zip using the project-date-integer packager replacement.
-	local DBMdotDisplayVersion = "12.0.16" -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration.
-	local DBMdotReleaseRevision = "20260126000000" -- Hardcoded time, manually changed every release, they use it to track the highest release version, a new DBM release is the only time it will change.
+	local DBMdotRevision = "20260413102312" -- The changing version of the local client, changes with every new zip using the project-date-integer packager replacement.
+	local DBMdotDisplayVersion = "12.0.38" -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration.
+	local DBMdotReleaseRevision = "20260413000000" -- Hardcoded time, manually changed every release, they use it to track the highest release version, a new DBM release is the only time it will change.
 	local protocol = 3
 	local versionPrefix = "V"
-	local PForceDisable = public.isRetail and 21 or 20
+	local PForceDisable = 23
 
 	local timer = nil
 	local function sendDBMMsg()
@@ -1820,7 +1847,7 @@ do
 			CreateFrame("Frame"), CreateFrame("Frame"), CreateFrame("Frame"), CreateFrame("Frame"), CreateFrame("Frame"), CreateFrame("Frame"),
 		}
 		local UnitIsPlayer = UnitIsPlayer
-		local function UNIT_TARGET(frame, event, unit)
+		local function UNIT_TARGET(_, _, unit)
 			local unitTarget = unit.."target"
 			local guid = UnitGUID(unitTarget)
 			if guid and not UnitIsPlayer(unitTarget) then
@@ -1905,6 +1932,7 @@ do
 				UnregisterUnitTargetEvents()
 			end
 			bwFrame:UnregisterEvent("ZONE_CHANGED")
+			bwFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
 		else
 			if disabledZones[instanceID] then -- We have a content addon for the this zone but it is disabled in the addons menu
 				local msg = L.disabledAddOn:format(disabledZones[instanceID])
@@ -1917,9 +1945,11 @@ do
 			end
 			if instanceType == "none" then
 				bwFrame:RegisterEvent("ZONE_CHANGED")
+				bwFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 				self:ZONE_CHANGED()
 			else
 				bwFrame:UnregisterEvent("ZONE_CHANGED")
+				bwFrame:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
 				UnregisterUnitTargetEvents()
 			end
 		end
@@ -1970,6 +2000,7 @@ do
 			UnregisterUnitTargetEvents()
 		end
 	end
+	mod.ZONE_CHANGED_NEW_AREA = mod.ZONE_CHANGED
 end
 
 do
@@ -2002,15 +2033,11 @@ do
 end
 
 function mod:BigWigs_BossModuleRegistered(_, _, module)
-	if module.worldBoss then
+	if module:IsWorldModule() then
 		local id = -(module.mapId)
 		enableZones[id] = "world"
-		if type(module.worldBoss) == "table" then
-			for i = 1, #module.worldBoss do
-				worldBosses[module.worldBoss[i]] = id
-			end
-		else
-			worldBosses[module.worldBoss] = id
+		for mobId in next, module.enableMobs do
+			worldBosses[mobId] = id
 		end
 	elseif type(module.instanceId) == "table" then
 		for i = 1, #module.instanceId do

@@ -35,7 +35,6 @@ local difficultyTable = {
 	[226] = "SOD", -- 20 Player (Molten Core & ZG - Classic Season of Discovery)
 	[244] = "titan", -- Raid: 25 Titan-Reforged
 }
-local SPELL_DURATION_SEC = SPELL_DURATION_SEC -- "%.2f sec"
 local GetTime, date = GetTime, BigWigsLoader.date
 local dontPrint = { -- Don't print a warning message for these difficulties
 	[0] = true, -- Outside
@@ -45,11 +44,13 @@ local dontPrint = { -- Don't print a warning message for these difficulties
 	[9] = true, -- 40 Player (MC/BWL/AQ40)
 	[23] = true, -- Mythic Dungeon
 	[24] = true, -- Timewalking
+	[173] = true, -- Normal Dungeon (Classic)
+	[174] = true, -- Heroic Dungeon (Classic)
 	[208] = true, -- Delves
 }
 
 --[[
-11.2.0
+12.0.1
 1. Normal
 2. Heroic
 3. 10 Player
@@ -100,8 +101,9 @@ local dontPrint = { -- Don't print a warning message for these difficulties
 230. Heroic
 232. Event
 236. Lorewalking
+241. Lorewalking
 
-5.5.0
+5.5.3
 1. Normal
 2. Heroic
 3. 10 Player
@@ -121,6 +123,7 @@ local dontPrint = { -- Don't print a warning message for these difficulties
 176. 25 Player
 193. 10 Player (Heroic)
 194. 25 Player (Heroic)
+237. Celestial
 
 4.4.2
 1. Normal
@@ -139,7 +142,19 @@ local dontPrint = { -- Don't print a warning message for these difficulties
 194. 25 Player (Heroic)
 244. Raid: 25 Titan-Reforged
 
-1.15.7
+2.5.5
+1. Normal
+2. Heroic
+3. 10 Player
+4. 25 Player
+9. 40 Player
+148. 20 Player
+173. Normal
+174. Heroic
+175. 10 Player
+176. 25 Player
+
+1.15.8
 1. Normal
 9. 40 Player
 148. 20 Player
@@ -181,7 +196,7 @@ do
 		name = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\Menus\\Stats:20|t ".. BigWigsAPI:GetLocale("BigWigs").statistics,
 		type = "group",
 		childGroups = "tab",
-		order = 11,
+		order = 13,
 		get = function(i) return plugin.db.profile[i[#i]] end,
 		set = function(i, value) plugin.db.profile[i[#i]] = value end,
 		args = {
@@ -384,11 +399,11 @@ do
 		end
 	end
 
-	function plugin:BigWigs_OnBossEngage(event, module)
+	function plugin:BigWigs_OnBossEngage(_, module)
 		local instanceID = module:GetZoneID()
 		local journalID = GetModuleID(module)
 
-		if journalID and instanceID and instanceID > 0 and not module.worldBoss then -- Raid restricted for now
+		if journalID and instanceID and instanceID > 0 and not module:IsWorldModule() then -- Raid restricted for now
 			local t = GetTime()
 			activeDurations[journalID] = {t}
 
@@ -403,12 +418,12 @@ do
 
 				local best = sDB[difficultyText].best
 				if self.db.profile.showBar and best then
-					self:SendMessage("BigWigs_StartBar", self, nil, L.bestTimeBar, best, 237538) -- 237538 = "Interface\\Icons\\spell_holy_borrowedtime"
+					self:SendMessage("BigWigs_StartBar", self, nil, L.bestTimeBar, best, module:TBC() and 132768 or 237538) -- 237538 = "Interface\\Icons\\spell_holy_borrowedtime" -- TBC is lacking icons vanilla has
 					self:SendMessage("BigWigs_Timer", self, nil, best, best, L.bestTimeBar, 0, 237538, false, true)
 				end
 			end
 
-			if self.db.profile.printHealth and not BigWigsLoader.isMidnight then
+			if self.db.profile.printHealth and not BigWigsLoader.isRetail then
 				healthPools[journalID] = {
 					names = {},
 					timer = self:ScheduleRepeatingTimer(function() StoreHealth(module) end, 2),
@@ -431,14 +446,14 @@ local function Stop(self, module)
 	end
 end
 
-function plugin:BigWigs_OnBossWin(event, module)
+function plugin:BigWigs_OnBossWin(_, module)
 	local journalID = GetModuleID(module)
 	if journalID and activeDurations[journalID] then
 		local elapsed = GetTime()-activeDurations[journalID][1]
 		local difficultyText = activeDurations[journalID][2]
 
 		if self.db.profile.printVictory then
-			self:SimpleTimer(function() BigWigs:Print(L.bossVictoryPrint:format(module.displayName, elapsed < 1 and SPELL_DURATION_SEC:format(elapsed) or SecondsToTime(elapsed))) end, 1)
+			self:SimpleTimer(function() BigWigs:Print(L.bossVictoryPrint:format(module.displayName, BigWigsAPI.SecondsToTime(elapsed))) end, 1)
 		end
 
 		local diff = module:Difficulty()
@@ -459,13 +474,13 @@ function plugin:BigWigs_OnBossWin(event, module)
 			if not sDB.best or elapsed < sDB.best then
 				if self.db.profile.printNewFastestVictory and sDB.best then
 					local t = sDB.best-elapsed
-					self:SimpleTimer(function() BigWigs:Print(L.newFastestVictoryPrint:format(t < 1 and SPELL_DURATION_SEC:format(t) or SecondsToTime(t))) end, 1.1)
+					self:SimpleTimer(function() BigWigs:Print(L.newFastestVictoryPrint:format(BigWigsAPI.SecondsToTime(t))) end, 1.1)
 				end
 				sDB.best = elapsed
 				sDB.bestDate = date("%Y/%m/%d")
 			end
 		elseif IsInRaid() and not dontPrint[diff] then
-			BigWigs:Error("Tell the devs, the stats for this boss were not recorded because a new difficulty id was found: "..diff)
+			BigWigs:Error(("Tell the devs! The stats for this boss were not recorded: ID#%s#Instance#%s#Journal#%s"):format(diff, module:GetZoneID(), journalID))
 		end
 	end
 
@@ -482,7 +497,7 @@ do
 		-- Raid encounters must last longer than 30 seconds to be an actual wipe worth noting
 		return 30
 	end
-	function plugin:BigWigs_OnBossWipe(event, module)
+	function plugin:BigWigs_OnBossWipe(_, module)
 		local journalID = GetModuleID(module)
 		if journalID and activeDurations[journalID] then
 			local elapsed = GetTime()-activeDurations[journalID][1]
@@ -490,7 +505,7 @@ do
 
 			if elapsed > GetMinimumEncounterDuration(module) then
 				if self.db.profile.printDefeat then
-					BigWigs:Print(L.bossDefeatPrint:format(module.displayName, SecondsToTime(elapsed)))
+					BigWigs:Print(L.bossDefeatPrint:format(module.displayName, BigWigsAPI.SecondsToTime(elapsed)))
 				end
 
 				local diff = module:Difficulty()
@@ -526,6 +541,6 @@ do
 	end
 end
 
-function plugin:BigWigs_OnBossDisable(event, module) -- Manual disable or reboot of the boss module
+function plugin:BigWigs_OnBossDisable(_, module) -- Manual disable or reboot of the boss module
 	Stop(self, module)
 end

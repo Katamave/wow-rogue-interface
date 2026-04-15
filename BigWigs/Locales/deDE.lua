@@ -5,6 +5,9 @@ if not L then return end
 -- API.lua
 L.showAddonBar = "Das Addon '|cFF436EEE%s|r' hat die Leiste '%s' erstellt."
 L.requestAddonProfile = "Das Addon '|cFF436EEE%s|r' hat gerade eine Kopie des Profil Export-Strings erstellt."
+L.shortMinutesAndSeconds = "%d Min %d Sek" -- 1 Minute 2 Seconds
+L.shortSecondsOnly = "%d Sek" -- 28 Seconds
+L.shortSubTenSeconds = "%.1f Sek" -- 3.2 Seconds
 
 -- Core.lua
 L.berserk = "Berserker"
@@ -277,6 +280,12 @@ L.mythicplus_settings_export_desc = "Alle Mythisch+ Einstellungen exportieren."
 L.imported_battleres_settings = "Battle Res Einstellungen"
 L.battleres_settings_import_desc = "Alle Battle Res Einstellungen importieren."
 L.battleres_settings_export_desc = "Alle Battle Res Einstellungen exportieren."
+L.imported_privateAuras_settings = "Private Auren Einstellungen"
+L.privateAuras_settings_import_desc = "Alle Private Auren Einstellungen importieren."
+L.privateAuras_settings_export_desc = "Alle Private Auren Einstellungen exportieren."
+L.imported_combattimer_settings = "Kampf-Timer Einstellungen"
+L.combattimer_settings_import_desc = "Alle Kampf-Timer Einstellungen importieren."
+L.combattimer_settings_export_desc = "Alle Kampf-Timer Einstellungen exportieren."
 
 -- InstanceSharing.lua
 L.sharing_window_title = "Boss Einstellungen teilen"
@@ -341,6 +350,22 @@ L.tools = "Werkzeuge"
 L.toolsDesc = "BigWigs bietet verschiedene Werkzeuge oder Features der \"Lebensqualität\" zur Beschleunigung und Vereinfachung von Bossbegegnungen."
 
 L.reloadUIWarning = "Die Änderung dieser Funktion lädt das Interface neu und zeigt kurz den Ladebildschirm an. Bist Du sicher?"
+L.qualityOfLife = "Lebensqualität"
+
+-----------------------------------------------------------------------
+-- AutoInvite.lua
+--
+
+L.autoInviteTitle = "Automatische Einladung"
+L.autoInviteDesc = "Spieler automatisch in die Gruppe einladen, wenn sie eines der festgelegten Wörter aus der untenstehenden Liste flüstern."
+L.yes = "Ja"
+L.no = "Nein"
+L.addWords = "Wörter hinzufügen"
+L.removeWords = "Wörter entfernen (Klicken zum Entfernen)"
+L.invalidWordWarning = "Wort muss klein geschrieben und noch nicht in der Liste sein."
+L.groupIsFullConvertToRaid = "Gruppe ist voll. Zu Schlachtzug konvertieren?"
+L.whisperToPlayerMyGroupIsFull = "[BigWigs] Meine Gruppe ist jetzt voll."
+L.keywordDetectedInvitingPlayer = "Schlüsselwort erkannt, lade %s ein."
 
 -----------------------------------------------------------------------
 -- AutoRole.lua
@@ -369,6 +394,45 @@ L.battleResModeIcon = "Modus: Symbol"
 L.battleResModeText = "Modus: Nur Text"
 L.battleResModeTextTooltip = "Es wird vorübergehend ein Hintergrund angezeigt, um beim Bewegen der Battle Res Funktion behilflich zu sein und den Mouseover Bereich anzuzeigen."
 L.battleResNoteTooltip = "Hinweis: Dieser Tooltip wird nur außerhalb des Kampfes angezeigt."
+
+-----------------------------------------------------------------------
+-- CombatTimer.lua
+--
+
+L.combatTimerTitle = "Kampf-Timer"
+L.anyCombatTimer = "Timer für jeden Kampf"
+L.anyCombatTimerDesc = "Ein Timer, welcher die Kampfdauer anzeigt, mit einem Tooltip des Kampfverlaufs."
+L.anyCombatTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tKampfverlauf"
+L.bossCombatTimer = "Timer für Bosskämpfe"
+L.bossCombatTimerDesc = "Ein Timer, welcher die Kampfdauer für Bossbegegnungen anzeigt, mit einem Tooltip des Kampfverlaufs für Bosse."
+L.bossCombatTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tBoss Kampfverlauf"
+L.bossStagesTimer = "Phasen-Timer für Bosskämpfe"
+L.bossStagesTimerDesc = "Ein Timer, welcher bei jeder neuen Phase einer Bossbegegnung zurückgesetzt wird, mit einem Tooltip des Phasenverlaufs für Bosse. Nur bei Bossen mit mehreren Phasen aktiv."
+L.bossStagesTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tBoss Phasenverlauf"
+L.instanceTimer = "Instanz-Timer"
+L.instanceTimerDesc = "Ein Timer, welcher die Dauer einer Instanz anzeigt (Dungeon/Schlachtzug/etc), mit einem Tooltip des Instanzverlaufs."
+L.instanceTimerTooltip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tInstanzverlauf"
+
+L.backgroundColor = "Hintergrundfarbe"
+L.inactive = "Inaktiv"
+L.whenInactive = "Bei Inaktivität"
+L.doNothing = "Nichts tun"
+L.hide = "Verstecken"
+L.colorFade = "Farbe/Verblassen"
+L.inProgress = "Im Gange"
+L.textFormat = "Textformat"
+L.tooltipHistoryMaxLines = "Verlauf: Max Zeilen"
+L.tooltipHistoryMaxLinesDesc = "Legt fest, wie viele Zeilen des Verlaufs im Tooltip dargestellt werden."
+L.tooltipHistoryResetConditions = "Verlauf: Rücksetzbedingungen"
+L.tooltipHistoryResetConditionsDesc = "Auswählen, unter welchen Bedingungen der Tooltip Verlauf zurückgesetzt wird."
+L.enteringRaid = "Betreten eines Schlachtzuges"
+L.enteringDungeon = "Betreten eines Dungeons"
+L.startingMythicKeystone = "Starten einer Mythic+"
+L.historyTimeFormat = "Verlauf: Zeitformat"
+L.twelveHour = "12 Stunden"
+L.twentyFourHour = "24 Stunden"
+L.hideTooltipInCombat = "Tooltip im Kampf verstecken"
+L.customText = "Angepasster Text (Muss %s enthalten)"
 
 -----------------------------------------------------------------------
 -- Keystones.lua
@@ -420,7 +484,7 @@ L.keystoneViewerOpen = "Schlüsselstein Anzeige öffnen"
 L.keystoneViewerKeybindingExplainer = "\n\nEs kann eine Tastenbelegung zum Öffnen der Schlüsselstein Anzeige festgelegt werden:\n\n"
 L.keystoneViewerKeybindingDesc = "Tastenbelegung zum Öffnen der Schlüsselstein Anzeige wählen."
 L.keystoneClickToWhisper = "Zum Anflüstern klicken"
-L.keystoneClickToTeleportNow = "\nZum dorthin teleportieren klicken"
+L.keystoneClickToTeleportNow = "\nZum dorthin Teleportieren klicken"
 L.keystoneClickToTeleportCooldown = "\nTeleport nicht möglich, Zauber klingt ab"
 L.keystoneClickToTeleportNotLearned = "\nTeleport nicht möglich, Zauber nicht erlernt"
 L.keystoneHistoryRuns = "Gesamt: %d"
@@ -435,6 +499,7 @@ L.keystoneTeleportTip = "Dungeonnamen unten anklicken um direkt zum Dungeoneinga
 L.keystoneTimerunner = "|A:timerunning-glues-icon:14:14|aDies ist ein Zeitläufer Charakter." -- Note: Timerunning is a mode like "Legion Remix", it is NOT the same as Timewalking
 L.keystoneSlashKeys = "Den |cFF33FF99/keys|r Slash-Befehl registrieren"
 L.keystoneSlashKeystone = "Den |cFF33FF99/keystone|r Slash-Befehl registrieren"
+L.unavailableWhilstInCombat = "Im Kampf nicht verfügbar"
 
 -- It doesn't really matter what you call it as long as it's recognizable and limited to ~6 characters
 L.keystoneShortName_TheRookery = "ROOK"
@@ -463,7 +528,7 @@ L.keystoneShortName_VaultOfTheWardens = "VOTW"
 L.keystoneShortName_ReturnToKarazhanLower = "LKARA"
 L.keystoneShortName_ReturnToKarazhanUpper = "UKARA"
 L.keystoneShortName_CathedralOfEternalNight = "COEN"
-L.keystoneShortName_SeatOfTheTriumvirate = "SOTT"
+L.keystoneShortName_SeatOfTheTriumvirate = "SEAT"
 L.keystoneShortName_WindrunnerSpire = "SPIRE"
 L.keystoneShortName_MagistersTerrace = "MT"
 L.keystoneShortName_MaisaraCaverns = "CAVERN"
@@ -552,6 +617,8 @@ L.positionX = "X-Position"
 L.positionY = "Y-Position"
 L.positionExact = "Exakte Positionierung"
 L.positionDesc = "Zur exakten Positionierung vom Ankerpunkt einen Wert in der Box eingeben oder den Schieberegler bewegen."
+L.copyCustomAnchorWidth = "Angepasste Ankerbreite kopieren"
+L.copyCustomAnchorWidthDesc = "Die Breiteneinstellung mit der Breite des angepassten Ankers überschreiben."
 L.width = "Breite"
 L.height = "Höhe"
 L.size = "Größe"
@@ -665,6 +732,8 @@ L.icon = "Symbol"
 L.iconDesc = "Zeigt oder versteckt die Symbole auf den Leisten."
 L.iconPosition = "Symbolposition"
 L.iconPositionDesc = "Wähle, wo sich das Symbol auf der Leiste befinden soll."
+L.iconTooltip = "Symbol Tooltip"
+L.iconTooltipDesc = "Zeigt beim Überfahren des Symbols mit der Maus einen Tooltip mit Informationen zur Bossfähigkeit."
 L.font = "Schriftart"
 L.restart = "Neu starten"
 L.restartDesc = "Startet die hervorgehobenen Leisten neu, sodass diese vom Start anfangen und von 10 herunterzählen."
@@ -859,6 +928,8 @@ L.outline = "Kontur"
 L.monochrome = "Monochrom"
 L.monochromeDesc = "Schaltet den Monochrom-Filter an/aus, der die Schriftenkantenglättung entfernt."
 L.fontColor = "Schriftfarbe"
+L.slugRendering = "Slug Rendering"
+L.slugRenderingDesc = "Schriftarten werden unter Nutzung der Slug Bibliothek gerendert. Dadurch können große Schriftarten teilweise schärfer dargestellt werden, aber es kann sich die Größe der Kontur ändern. |cFF33FF99Siehe sluglibrary.com für weitere Informationen.|r"
 
 L.displayTime = "Anzeigedauer"
 L.displayTimeDesc = "Bestimmt, wie lange (in Sekunden) Nachrichten angezeigt werden."
@@ -958,6 +1029,39 @@ L.nameplateOptInTitle = "Boss-Mod Namensplaketten 'Opt-in' Modus"
 L.nameplateOptInWarning = "|cffff4411WARNUNG!|r\n\nDurch Aktivierung des 'Opt-in' Modus werden die Namensplaketten ALLER Bossmodule deaktiviert. Zur Aktivierung müssen händisch in jeder gewünschten Bossfähigkeit die Namensplaketten aktiviert werden.\n\nDas UI wird jetzt neu geladen, bist Du sicher?"
 
 -----------------------------------------------------------------------
+-- PrivateAuras.lua
+--
+
+L.privateAuras = "Private Auren"
+L.privateAurasDesc1 = "'Private Auren' sind ein spezieller Debuff-Typ, welcher von Addons nicht erkannt oder zu Automatisierung genutzt werden kann. Diese Debuffs werden jetzt in allen aktuellen Bossbegegnungen verwendet.\n\n"
+L.privateAurasDesc2 = "BigWigs kann helfen, diese bei Anwendung auf Dich zu verfolgen, indem diese als Symbole angezeigt werden. |cFF33FF99Dies kann helfen, da diese kritischen Debuffs separat von den übrigen Debuffs angezeigt werden.|r\n\n"
+
+L.createTestAura = "Testaura erstellen"
+L.showDispelType = "Bannhinweise anzeigen"
+L.showDispelTypeDesc = "Zeigt ein Symbol auf der privaten Aura an, wenn ein Banntyp vorhanden ist.\n\n|cffffd200Hinweis: Dies ist eine globale Option für alle Aurafenster.|r"
+L.iconSize = "Symbolgröße"
+L.iconSpacing = "Symbolabstand"
+L.showCooldown = "Abklingzeit Zirkel anzeigen"
+L.showCooldownText = "Abklingzeit Text anzeigen"
+L.cooldownTextScale = "Abklingzeit Text Maßstab"
+L.growthDirection = "Richtung der Symbole"
+L.aurasOnYou = "Auren auf Dir"
+L.aurasOnYouDesc = "Passe die Symbole für Auren auf Dir an.\n\n"
+L.aurasOnAnother = "Auren auf anderen"
+L.aurasOnAnotherDesc = "Wählen einen bestimmten Spieler und passe die Symbole for Auren auf diesem an.\n\n"
+L.chooseAPlayer = "Spieler wählen"
+L.theOtherTank = "Automatisch einen Tank finden"
+L.theOtherTankDesc = "Private Auren auf dem ersten Tank in Deiner Gruppe neben Dir anzeigen. (Aktuell: %s)"
+L.onlyWhenYouAreTank = "Nur wenn Du auch ein Tank bist anzeigen"
+L.playerInYourGroup = "Ein Spieler in Deiner Gruppe"
+L.maxIcons = "Maximale Symbolanzahl"
+L.maxIconsDesc = "Die maximale Anzahl der angezeigten Symbole."
+L.privateAurasHelpTip = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tBigWigs: Du kannst jetzt Deine privaten Aura Debuffs als Symbole sehen, oder sogar die privaten Auren eines anderen Spielers (z.B. eines Tanks)."
+
+L.privateAurasTestAnchorText = "Private\nAura\n(%d)"
+L.privateAurasTestTankAnchorText = "Tank\nAura\n(%d)"
+
+-----------------------------------------------------------------------
 -- Proximity.lua
 --
 
@@ -1044,6 +1148,7 @@ L.privateaura = "Immer wenn eine 'Private Aura' auf Dir ist"
 L.customSoundDesc = "Den speziell gewählten Sound anstatt des vom Modul bereitgestellten abspielen."
 L.resetSoundDesc = "Setzt die obigen Sounds auf ihren Standard zurück."
 L.resetAllCustomSound = "Wenn Du Sounds für Bossbegegnungen geändert hast, werden diese ALLE über diese Schaltfläche zurückgesetzt, sodass stattdessen die hier gewählten genutzt werden."
+L.soundResetPrint = "Das Modul '|cFF436EEE%s|r' nutzt einen benutzerdefinierten Sound namens '|cFF436EEE%s|r' welcher nicht mehr existiert. Zurücksetzen auf Standard erfolgt."
 
 -----------------------------------------------------------------------
 -- Statistics.lua
@@ -1069,19 +1174,16 @@ L.newFastestVictoryPrint = "Neuer schnellster Sieg: (-%s)" -- New fastest victor
 --
 
 L.timeline = "Zeitlinie"
-L.blizzTimersAsBigWigsBars = "Blizz Timer (Zeitlinie) als BigWigs Leisten anzeigen"
-L.blizzTimersAsBigWigsBarsDesc = "Alle Blizzard Bosstimer (Zeitlinie) werden stattdessen als BigWigs Leisten angezeigt."
-L.blizzWarningsAsBigWigsMessages = "Blizz Bosswarnungen als BigWigs Nachrichten anzeigen"
-L.blizzWarningsAsBigWigsMessagesDesc = "Alle Blizzard Bosswarnungen werden stattdessen als BigWigs Nachrichten angezeigt."
-L.blizzAudioAsBigWigsAudio = "Blizz Sounds zu BigWigs Sounds konvertieren"
-L.blizzAudioAsBigWigsAudioDesc = "Spielt die BigWigs Sounds (Alarmruf, Alarm & Warnung) basierend auf der Gewichtung."
-L.blizzWarningSettings = "Blizzard Warnungen Einstellungen"
 L.blizzTimelineSettings = "Blizzard Zeitlinie Einstellungen"
 L.blizzTimelineSettingsNote = "|cffff4411Diese Optionen spiegeln lediglich die Blizzard Einstellungen und sind zum Komfort hier aufgeführt.|r"
 L.enableBlizzTimeline = "Blizz Zeitlinie aktivieren"
 L.enableBlizzTimelineDesc = "Diese Option zeigt alle Boss Timer in der Blizzard Zeitlinie."
-L.enableBlizzWarnings = "Blizz Bosswarnungen aktivieren"
-L.enableBlizzWarningsDesc = "Beim Aktivieren der Blizzard Bosswarnungen sollte die Option zur Anzeige als BigWigs Nachrichten deaktiviert werden, da diese ansonsten doppelt angezeigt werden."
+L.show_bars = "Zeige Leisten von"
+L.bigwigsEnhancedTimers = "Erweiterte BigWigs Timer als BigWigs Leisten anzeigen |cFF33FF99(empfohlen)|r"
+L.blizzBasicAsBars = "Blizzard Standardtimer als BigWigs Leisten anzeigen"
+L.blizzBasicAsBlizzTimeline = "Blizzard Standardtimer in der Blizzard Zeitlinie anzeigen"
+L.developerMode = "Entwicklermodus"
+L.enhancedModeWarning = "WARNUNG!\n\nDie Deaktivierung des erweiterten Modus deaktiviert viele BigWigs Funktionen, inklusive:\n\nLeistenfarben, Zauberumbenennung, Timer, angepasster Sound/Stimme, Countdowns, Leisten an/aus, Extra Nachrichten, etc."
 
 -----------------------------------------------------------------------
 -- Victory.lua

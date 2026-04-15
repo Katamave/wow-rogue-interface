@@ -1,4 +1,4 @@
-if BigWigsLoader.isMidnight then return end -- XXX needs updating for 12.0
+if BigWigsLoader.isRetail then return end -- Classic only module
 
 --------------------------------------------------------------------------------
 -- Module Declaration
@@ -2051,7 +2051,7 @@ end
 --
 
 do
-	local function handleFrame(guid, frameInfo)
+	local function handleFrame(frameInfo)
 		local remainingTime = frameInfo.exp - GetTime()
 		if frameInfo.text then
 			local nameplateFrame = createNameplateText(
@@ -2083,13 +2083,13 @@ do
 		local unitIcons = nameplateIcons[guid]
 		if unitIcons then
 			for _, frameInfo in next, unitIcons do
-				handleFrame(guid, frameInfo)
+				handleFrame(frameInfo)
 			end
 		end
 		local unitTexts = nameplateTexts[guid]
 		if unitTexts then
 			for _, frameInfo in next, unitTexts do
-				handleFrame(guid, frameInfo)
+				handleFrame(frameInfo)
 			end
 		end
 		rearrangeNameplateIcons(guid)

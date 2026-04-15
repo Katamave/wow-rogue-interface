@@ -1,4 +1,4 @@
-## Interface: 120001, 110207, 120000
+## Interface: 120001, 120005, 120000
 
 ## Title: BigWigs
 ## Notes: Modular, lightweight, non-intrusive approach to boss encounter warnings.
@@ -14,7 +14,7 @@
 ## Notes-ptBR: Abordagem modular, leve e não intrusiva para avisos em encontros com chefes.
 ## IconTexture: Interface\AddOns\BigWigs\Media\Icons\minimap_raid.tga
 ## Author: Funkeh, Nebula, Justwait, Delk
-## Version: v405.9
+## Version: v413.4
 ## LoadSavedVariablesFirst: 1
 
 ## X-Credits: Ammo, Elvador, Vhaarr
@@ -28,6 +28,10 @@
 ## OptionalDeps: Ace3, LibCandyBar-3.0, LibSharedMedia-3.0, LibSink-2.0, LibDBIcon-1.0, LibDDI-1.0, LibSpecialization, LibChatAnims, LibDualSpec-1.0, LibCustomGlow-1.0, LibKeystone, LibLatency, LibDurability
 ## SavedVariables: BigWigs3DB, BigWigsIconDB, BigWigsStatsDB, BW_FEAT_SHARE, BW_FEAT_SHARE2
 
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
 embeds.xml
 Init.lua
 API.lua
@@ -40,8 +44,10 @@ Locales\[TextLocale]_common.lua [AllowLoadTextLocale deDE, esES, esMX, frFR, itI
 Media\Media.lua
 GuildVersion.lua
 Loader.lua
-Tools\AutoRole.lua
 Tools\Keystones.lua
+Tools\CombatTimer.lua
+Tools\AutoInvite.lua
 Tools\LFGTimer.lua
+Tools\AutoRole.lua
 modules.xml
 bosses.xml

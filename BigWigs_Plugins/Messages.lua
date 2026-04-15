@@ -2,9 +2,7 @@
 -- Module Declaration
 --
 
-local plugin, L = BigWigs:NewPlugin("Messages", {
-	"db",
-})
+local plugin, L = BigWigs:NewPlugin("Messages")
 if not plugin then return end
 
 -------------------------------------------------------------------------------
@@ -26,6 +24,7 @@ local emphMessageFrame
 local labelsPrimaryPoint, labelsSecondaryPoint = nil, nil
 
 local db = nil
+local allowBlizzMessages = true
 
 plugin.displayName = L.messages
 
@@ -38,6 +37,8 @@ plugin.defaultDB = {
 	emphFontName = plugin:GetDefaultFont(),
 	monochrome = false,
 	emphMonochrome = false,
+	slugRendering = false,
+	emphSlugRendering = false,
 	outline = "THICKOUTLINE",
 	emphOutline = "THICKOUTLINE",
 	align = "CENTER",
@@ -144,6 +145,13 @@ local function updateProfile()
 	elseif db.emphOutline ~= "NONE" then
 		emphFlags = db.emphOutline
 	end
+	if db.emphSlugRendering then
+		if not emphFlags then
+			emphFlags = "SLUG"
+		else
+			emphFlags = emphFlags .. ",SLUG"
+		end
+	end
 	emphMessageText:SetFont(LibSharedMedia:Fetch(FONT, db.emphFontName), db.emphFontSize, emphFlags)
 
 	normalMessageAnchor:RefixPosition()
@@ -164,6 +172,13 @@ local function updateProfile()
 		flags = "MONOCHROME"
 	elseif db.outline ~= "NONE" then
 		flags = db.outline
+	end
+	if db.slugRendering then
+		if not flags then
+			flags = "SLUG"
+		else
+			flags = flags .. ",SLUG"
+		end
 	end
 	for i = 1, 4 do
 		local font = labels[i]
@@ -406,19 +421,25 @@ do
 							THICKOUTLINE = L.thick,
 						},
 					},
-					fontSize = {
-						type = "range",
-						name = L.fontSize,
-						desc = L.fontSizeDesc,
-						order = 3,
-						width = 2,
-						softMax = 100, max = 200, min = 14, step = 1,
-					},
 					monochrome = {
 						type = "toggle",
 						name = L.monochrome,
 						desc = L.monochromeDesc,
+						order = 3,
+					},
+					slugRendering = {
+						type = "toggle",
+						name = L.slugRendering,
+						desc = L.slugRenderingDesc,
 						order = 4,
+					},
+					fontSize = {
+						type = "range",
+						name = L.fontSize,
+						desc = L.fontSizeDesc,
+						order = 5,
+						width = 1.2,
+						softMax = 100, max = 200, min = 14, step = 1,
 					},
 					align = {
 						type = "select",
@@ -429,7 +450,7 @@ do
 							L.RIGHT,
 						},
 						style = "radio",
-						order = 5,
+						order = 6,
 						get = function() return plugin.db.profile.align == "LEFT" and 1 or plugin.db.profile.align == "RIGHT" and 3 or 2 end,
 						set = function(_, value)
 							plugin.db.profile.align = value == 1 and "LEFT" or value == 3 and "RIGHT" or "CENTER"
@@ -440,19 +461,19 @@ do
 						type = "toggle",
 						name = L.useIcons,
 						desc = L.useIconsDesc,
-						order = 6,
+						order = 7,
 					},
 					classcolor = {
 						type = "toggle",
 						name = L.classColors,
 						desc = L.classColorsDesc,
-						order = 7,
+						order = 8,
 					},
 					growUpwards = {
 						type = "toggle",
 						name = L.growingUpwards,
 						desc = L.growingUpwardsDesc,
-						order = 8,
+						order = 9,
 					},
 					displaytime = {
 						type = "range",
@@ -461,7 +482,7 @@ do
 						min = 1,
 						max = 10,
 						step = 0.5,
-						order = 9,
+						order = 10,
 						width = 1.5,
 					},
 					fadetime = {
@@ -471,32 +492,32 @@ do
 						min = 1,
 						max = 10,
 						step = 0.5,
-						order = 10,
+						order = 11,
 						width = 1.5,
 					},
 					newline1 = {
 						type = "description",
 						name = "\n",
-						order = 11,
+						order = 12,
 					},
 					chat = {
 						type = "toggle",
 						name = L.chatFrameMessages,
 						desc = L.chatFrameMessagesDesc,
-						order = 12,
+						order = 13,
 						width = 2,
 					},
 					header1 = {
 						type = "header",
 						name = "",
-						order = 13,
+						order = 14,
 					},
 					reset = {
 						type = "execute",
 						name = L.resetAll,
 						desc = L.resetMessagesDesc,
 						func = function() plugin.db:ResetProfile() updateProfile() end,
-						order = 14,
+						order = 15,
 					},
 				},
 			},
@@ -557,13 +578,18 @@ do
 						name = L.uppercase,
 						desc = L.uppercaseDesc,
 						order = 6,
-						width = 2,
 						hidden = function() -- Hide this option for CJK languages
 							local loc = GetLocale()
 							if loc == "zhCN" or loc == "zhTW" or loc == "koKR" then
 								return true
 							end
 						end,
+					},
+					emphSlugRendering = {
+						type = "toggle",
+						name = L.slugRendering,
+						desc = L.slugRenderingDesc,
+						order = 7,
 					},
 				},
 			},
@@ -737,12 +763,18 @@ function plugin:OnRegister()
 end
 
 function plugin:OnPluginEnable()
+	allowBlizzMessages = true
 	colorModule = BigWigs:GetPlugin("Colors", true)
 
 	self:RegisterMessage("BigWigs_ProfileUpdate", updateProfile)
 	updateProfile()
 
 	self:RegisterMessage("BigWigs_Message")
+	if BigWigsLoader.isRetail then
+		self:RegisterEvent("ENCOUNTER_WARNING")
+		self:RegisterMessage("BigWigs_BlockBlizzMessages")
+		self:RegisterMessage("BigWigs_AllowBlizzMessages")
+	end
 	self:RegisterMessage("BigWigs_StartConfigureMode", showAnchors)
 	self:RegisterMessage("BigWigs_StopConfigureMode", hideAnchors)
 end
@@ -875,7 +907,7 @@ end
 do
 	local unpack, type = unpack, type
 	local format, upper, gsub = string.format, string.upper, string.gsub
-	function plugin:BigWigs_Message(event, module, key, text, color, icon, emphasized, customDisplayTime)
+	function plugin:BigWigs_Message(_, module, key, text, color, icon, emphasized, customDisplayTime)
 		if not text then return end
 
 		local r, g, b = 1, 1, 1 -- Default to white.
@@ -892,7 +924,7 @@ do
 		if not db.useicons then icon = nil end
 
 		if emphasized then
-			if db.emphUppercase then
+			if db.emphUppercase and not self:IsSecret(text) then -- Cannot do upper or gsub on secrets :(
 				text = upper(text)
 				text = gsub(text, "(:%d+|)T", "%1t") -- Fix texture paths that need to end in lowercase |t
 			end
@@ -909,6 +941,59 @@ do
 			DEFAULT_CHAT_FRAME:AddMessage(text, r, g, b)
 		end
 	end
+end
+
+do
+	local severityColorMap = {
+		[0] = "yellow",
+		[1] = "orange",
+		[2] = "red",
+	}
+	function plugin:ENCOUNTER_WARNING(_, eventInfo)
+		if not allowBlizzMessages then return end
+
+		-- Not Secret
+		-- local duration = eventInfo.duration
+		local severity = eventInfo.severity
+		--local shouldPlaySound = eventInfo.shouldPlaySound
+		-- local shouldShowChatMessage = eventInfo.shouldShowChatMessage
+		--local shouldShowWarning = eventInfo.shouldShowWarning
+
+		-- Secret
+		local text = eventInfo.text
+		-- local casterGUID = eventInfo.casterGUID
+		local casterName = eventInfo.casterName
+		local targetGUID = eventInfo.targetGUID
+		local targetName = eventInfo.targetName
+		local iconFileID = eventInfo.iconFileID
+		-- local tooltipSpellID = eventInfo.tooltipSpellID
+
+		-- shouldShowWarning gets set to false if encounterWarningsEnabled is false
+		-- we obviously can't check if the message is targeting the player, so we lose that functionality
+		-- local shouldShowWarningBasedOnSeverity = severity >= tonumber(C_CVar.GetCVar("encounterWarningsLevel"))
+
+		local formattedTargetName = targetName
+		if targetGUID and self.db.profile.classcolor then
+			local _, className = GetPlayerInfoByGUID(targetGUID)
+			if className then
+				local classColor = C_ClassColor.GetClassColor(className)
+				if classColor then
+					formattedTargetName = classColor:WrapTextInColorCode(targetName)
+				end
+			end
+		end
+		local formattedText = string.format(text, casterName, formattedTargetName)
+
+		self:BigWigs_Message(nil, nil, nil, formattedText, severityColorMap[severity] or "yellow", iconFileID, false)
+	end
+end
+
+function plugin:BigWigs_AllowBlizzMessages()
+	allowBlizzMessages = true
+end
+
+function plugin:BigWigs_BlockBlizzMessages()
+	allowBlizzMessages = false
 end
 
 -- Always last to prevent a potential error breaking the plugin

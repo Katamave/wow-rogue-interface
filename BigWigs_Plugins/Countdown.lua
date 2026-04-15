@@ -245,7 +245,7 @@ do
 			plugin.db.profile[info[#info]] = value
 			UpdateFont()
 		end,
-		order = 6,
+		order = 8,
 		args = {
 			general = {
 				type = "group",
@@ -346,10 +346,10 @@ do
 					fontColor = {
 						type = "color",
 						name = L.countdownColor,
-						get = function(info)
+						get = function()
 							return plugin.db.profile.fontColor.r, plugin.db.profile.fontColor.g, plugin.db.profile.fontColor.b
 						end,
-						set = function(info, r, g, b)
+						set = function(_, r, g, b)
 							plugin.db.profile.fontColor.r, plugin.db.profile.fontColor.g, plugin.db.profile.fontColor.b = r, g, b
 							UpdateFont()
 						end,
@@ -453,7 +453,7 @@ local function createOptions()
 			order = 3,
 		}
 		sModule.soundOptions.args.countdown = {
-			name = "Countdown",
+			name = L.countdown,
 			type = "select",
 			values = BigWigsAPI.GetCountdownList,
 			sorting = voiceSorting,
@@ -498,7 +498,7 @@ function plugin:OnPluginEnable()
 		end
 	end
 	for _, countdownTbl in next, plugin.db.profile.bossCountdowns do
-		for optionKey, voiceID in next, countdownTbl do
+		for _, voiceID in next, countdownTbl do
 			if not soundsPlayedTable[voiceID] and BigWigsAPI:HasCountdown(voiceID) then
 				soundsPlayedTable[voiceID] = true
 				for i = plugin.db.profile.countdownTime, 1, -1 do

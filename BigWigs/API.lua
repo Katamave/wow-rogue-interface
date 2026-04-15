@@ -81,6 +81,25 @@ do
 end
 
 --------------------------------------------------------------------------------
+-- Configuration
+--
+
+do
+	local list = {
+		["PrivateAuras"] = true,
+	}
+	function API.OpenConfigToPanel(panel)
+		if list[panel] then
+			addonTbl.LoadCoreAndOptions()
+			if BigWigsOptions then
+				BigWigsOptions:Close()
+				BigWigsOptions:Open(panel)
+			end
+		end
+	end
+end
+
+--------------------------------------------------------------------------------
 -- Countdown
 --
 
@@ -138,19 +157,16 @@ end
 -- Profile import/export
 --
 
-do
-	-- A custom profile name and callback function is completely optional
-	-- When specified, a callback function will be called with a boolean as the first arg. True if the user accepted, false otherwise
-	local IsAddOnLoaded = C_AddOns.IsAddOnLoaded
-	function API.RegisterProfile(addonName, profileString, optionalCustomProfileName, optionalCallbackFunction)
-		if type(addonName) ~= "string" or #addonName < 3 then error("Invalid addon name for profile import.") end
-		if type(profileString) ~= "string" or #profileString < 3 then error("Invalid profile string for profile import.") end
-		if optionalCustomProfileName and (type(optionalCustomProfileName) ~= "string" or #optionalCustomProfileName < 3) then error("Invalid custom profile name for the string you want to import.") end
-		if optionalCallbackFunction and type(optionalCallbackFunction) ~= "function" then error("Invalid custom callback function for the string you want to import.") end
-		addonTbl.LoadCoreAndOptions()
-		if not BigWigsOptions.VerifyAddOnProfileString(profileString) then error("Invalid profile string for profile import.") end
-		BigWigsOptions.SaveImportStringDataFromAddOn(addonName, profileString, optionalCustomProfileName, optionalCallbackFunction)
-	end
+-- A custom profile name and callback function is completely optional
+-- When specified, a callback function will be called with a boolean as the first arg. True if the user accepted, false otherwise
+function API.RegisterProfile(addonName, profileString, optionalCustomProfileName, optionalCallbackFunction)
+	if type(addonName) ~= "string" or #addonName < 3 then error("Invalid addon name for profile import.") end
+	if type(profileString) ~= "string" or #profileString < 3 then error("Invalid profile string for profile import.") end
+	if optionalCustomProfileName and (type(optionalCustomProfileName) ~= "string" or #optionalCustomProfileName < 3) then error("Invalid custom profile name for the string you want to import.") end
+	if optionalCallbackFunction and type(optionalCallbackFunction) ~= "function" then error("Invalid custom callback function for the string you want to import.") end
+	addonTbl.LoadCoreAndOptions()
+	if not BigWigsOptions.VerifyAddOnProfileString(profileString) then error("Invalid profile string for profile import.") end
+	BigWigsOptions.SaveImportStringDataFromAddOn(addonName, profileString, optionalCustomProfileName, optionalCallbackFunction)
 end
 
 -- Input the name of YOUR addon, i.e. the addon making the profile request
@@ -253,6 +269,38 @@ do
 			if type(key) ~= "string" then error("The key needs to be a string.") end
 			if type(settingsTable) ~= "table" then error("The settings table needs to be a table.") end
 			tbl[key] = settingsTable
+		end
+	end
+end
+
+--------------------------------------------------------------------------------
+-- Tooltip
+--
+
+do
+	local bwTooltip = CreateFrame("GameTooltip", "BigWigsTooltip", UIParent, "GameTooltipTemplate")
+	function API.GetTooltip()
+		return bwTooltip
+	end
+end
+
+--------------------------------------------------------------------------------
+-- Utility
+--
+
+do
+	local floor = math.floor
+	function API.SecondsToTime(seconds, noFloat)
+		local L = API:GetLocale("BigWigs")
+		if seconds > 60 then
+			local min = floor(seconds/60)
+			local sec = seconds % 60
+			return L.shortMinutesAndSeconds:format(min, sec)
+		elseif seconds < 10 and not noFloat then
+			local sec = floor(seconds * 10) / 10 -- Turn 9.965 into 9.9 not 10
+			return L.shortSubTenSeconds:format(sec)
+		else
+			return L.shortSecondsOnly:format(seconds)
 		end
 	end
 end

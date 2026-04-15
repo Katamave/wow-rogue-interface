@@ -113,9 +113,9 @@ local lastImportData, lastExportData = nil, nil
 
 -- Default checkbox settings
 local defaultSettings = {
-	doFlags = not isRetail and true or false,
-	doSounds = not isRetail and true or false,
-	doColors = not isRetail and true or false,
+	doFlags = true,
+	doSounds = true,
+	doColors = true,
 	doPrivateAuras = isRetail and true or false,
 }
 
@@ -156,7 +156,7 @@ local function getImportSettings(widget)
 				desc = L.sharing_flags_desc,
 				order = 10,
 				width = 1,
-				disabled = function() return isRetail or not lastImportData or not lastImportData.includeFlags end,
+				disabled = function() return not lastImportData or not lastImportData.includeFlags end,
 			},
 			separator1 = {
 				type = "description",
@@ -170,7 +170,7 @@ local function getImportSettings(widget)
 				desc = L.sharing_sounds_desc,
 				order = 30,
 				width = 1,
-				disabled = function() return isRetail or not lastImportData or not lastImportData.includeSounds end,
+				disabled = function() return not lastImportData or not lastImportData.includeSounds end,
 			},
 			doPrivateAuras = {
 				type = "toggle",
@@ -193,7 +193,7 @@ local function getImportSettings(widget)
 				desc = L.sharing_colors_desc,
 				order = 50,
 				width = 1,
-				disabled = function() return isRetail or not lastImportData or not lastImportData.includeColors end,
+				disabled = function() return not lastImportData or not lastImportData.includeColors end,
 			},
 			separator3 = {
 				type = "description",
@@ -259,7 +259,6 @@ local function getExportSettings()
 				desc = L.sharing_export_flags_desc,
 				order = 10,
 				width = 1,
-				disabled = function() return isRetail end,
 			},
 			separator1 = {
 				type = "description",
@@ -273,7 +272,6 @@ local function getExportSettings()
 				desc = L.sharing_export_sounds_desc,
 				order = 30,
 				width = 1,
-				disabled = function() return isRetail end,
 			},
 			doPrivateAuras = {
 				type = "toggle",
@@ -295,7 +293,6 @@ local function getExportSettings()
 				desc = L.sharing_export_colors_desc,
 				order = 50,
 				width = 1,
-				disabled = function() return isRetail end,
 			},
 		},
 	}
@@ -548,7 +545,7 @@ function applyImport()
 	-- Prepare modules and plugins to import to
 	BigWigsLoader:LoadZone(lastImportData.zone)
 
-	for moduleName, data in pairs(lastImportData.exportData) do
+	for moduleName, data in next, lastImportData.exportData do
 		if flags then
 			ImportFlags(data.flags, moduleName)
 		end
@@ -565,6 +562,17 @@ function applyImport()
 	end
 
 	BigWigs:SendMessage("BigWigs_ProfileUpdate")
+
+	-- We need to re-register any private aura sounds if the import changed them
+	if privateAuras then
+		for moduleName in next, lastImportData.exportData do
+			local module = BigWigs:GetBossModule(moduleName:sub(16))
+			if module and module:IsZoneID(lastImportData.zone) then
+				module:RegisterPrivateAuraSounds()
+			end
+		end
+	end
+
 	-- success!
 	return true
 end
