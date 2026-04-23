@@ -1360,12 +1360,17 @@ BigWigs:AddSounds("Neltharions Lair Trash", {
 })
 
 BigWigs:AddColors("Zuraal", {
-	[244433] = "blue",
+	[244433] = {"blue","yellow"},
 	[244579] = "orange",
 	[244602] = "yellow",
 	[244621] = {"cyan","green"},
-	[244653] = "blue",
+	[244653] = {"blue","red"},
 	[246134] = "red",
+	[1263282] = "red",
+	[1263297] = "yellow",
+	[1263399] = "yellow",
+	[1263440] = "purple",
+	[1268916] = "orange",
 })
 
 BigWigs:AddSounds("Zuraal", {
@@ -1375,40 +1380,63 @@ BigWigs:AddSounds("Zuraal", {
 	[244621] = {"info","long"},
 	[244653] = "warning",
 	[246134] = "alarm",
+	[1263282] = "alarm",
+	[1263297] = "alert",
+	[1263399] = "info",
+	[1263440] = "alert",
+	[1268916] = "alarm",
 })
 
 BigWigs:AddColors("Saprish", {
+	[245742] = "red",
 	[245802] = {"blue","yellow"},
 	[245873] = "cyan",
 	[247206] = "yellow",
 	[247245] = {"blue","orange"},
 	[248831] = "red",
+	[1248219] = "cyan",
+	[1263523] = "yellow",
+	[1280065] = "orange",
 })
 
 BigWigs:AddSounds("Saprish", {
-	[245802] = {"alert","long"},
+	[245742] = "alert",
+	[245802] = {"long","underyou"},
 	[245873] = "info",
 	[247206] = "alarm",
 	[247245] = "alert",
 	[248831] = "warning",
+	[1248219] = "info",
+	[1263523] = "long",
+	[1280065] = "alarm",
 })
 
 BigWigs:AddColors("Viceroy Nezhar", {
 	[-15926] = "yellow",
+	[244750] = "red",
 	[244751] = "orange",
 	[244906] = "blue",
 	[246324] = {"green","red"},
 	[248736] = {"cyan","green"},
 	[248804] = {"cyan","yellow"},
+	[1263528] = "yellow",
+	[1263538] = "cyan",
+	[1263542] = "yellow",
+	[1277358] = "orange",
 })
 
 BigWigs:AddSounds("Viceroy Nezhar", {
 	[-15926] = "info",
+	[244750] = "alert",
 	[244751] = "alarm",
-	[244906] = "alert",
+	[244906] = "underyou",
 	[246324] = "long",
 	[248736] = "long",
 	[248804] = "info",
+	[1263528] = "alarm",
+	[1263538] = "info",
+	[1263542] = "info",
+	[1277358] = "alarm",
 })
 
 BigWigs:AddColors("L'ura", {
@@ -1418,6 +1446,12 @@ BigWigs:AddColors("L'ura", {
 	[247930] = "yellow",
 	[248535] = "cyan",
 	[249009] = "orange",
+	[1264196] = "yellow",
+	[1265421] = "red",
+	[1265463] = "purple",
+	[1265689] = "red",
+	[1266001] = "green",
+	[1266003] = "yellow",
 })
 
 BigWigs:AddSounds("L'ura", {
@@ -1427,6 +1461,12 @@ BigWigs:AddSounds("L'ura", {
 	[247930] = "alert",
 	[248535] = "info",
 	[249009] = "alarm",
+	[1264196] = "alert",
+	[1265421] = "info",
+	[1265463] = "alarm",
+	[1265689] = "warning",
+	[1266001] = "long",
+	[1266003] = "info",
 })
 
 BigWigs:AddColors("Seat of the Triumvirate Trash", {
@@ -1434,6 +1474,7 @@ BigWigs:AddColors("Seat of the Triumvirate Trash", {
 	[248227] = "red",
 	[249078] = "yellow",
 	[249081] = "blue",
+	["void_rifts_closed"] = "green",
 })
 
 BigWigs:AddSounds("Seat of the Triumvirate Trash", {
@@ -1441,6 +1482,7 @@ BigWigs:AddSounds("Seat of the Triumvirate Trash", {
 	[248227] = "warning",
 	[249078] = "info",
 	[249081] = "alarm",
+	["void_rifts_closed"] = "info",
 })
 
 BigWigs:AddColors("Ivanyr", {

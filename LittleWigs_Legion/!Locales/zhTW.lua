@@ -427,21 +427,26 @@ end
 L = BigWigs:NewBossLocale("L'ura", "zhTW")
 if L then
 	--L.warmup_text = "L'ura Active"
-	--L.warmup_trigger = "Such chaos... such anguish. I have never sensed anything like it before."
-	--L.warmup_trigger_2 = "Such musings can wait, though. This entity must die."
 end
 
 L = BigWigs:NewBossLocale("Seat of the Triumvirate Trash", "zhTW")
 if L then
+	-- Pre-Midnight
 	--L.custom_on_autotalk_desc = "Instantly selects Alleria Winrunners gossip option."
 	--L.gossip_available = "Gossip available"
 	--L.alleria_gossip_trigger = "Follow me!" -- Allerias yell after the first boss is defeated
+	--L.lura_warmup_trigger = "Such chaos... such anguish. I have never sensed anything like it before."
+	--L.lura_warmup_trigger_2 = "Such musings can wait, though. This entity must die."
 
 	--L.alleria = "Alleria Windrunner"
 	--L.subjugator = "Shadowguard Subjugator"
 	--L.voidbender = "Shadowguard Voidbender"
 	--L.conjurer = "Shadowguard Conjurer"
 	--L.weaver = "Grand Shadow-Weaver"
+
+	-- Midnight+
+	--L.void_rifts_closed = "Void Rifts Closed"
+	--L.void_rifts_closed_desc = "Show an alert when a Void Rift has been closed."
 end
 
 -- The Arcway

@@ -415,50 +415,65 @@ BigWigs:AddSounds("Shadowmoon Burial Grounds Trash", {
 
 BigWigs:AddColors("Ranjit", {
 	[153315] = "red",
+	[153757] = "yellow",
 	[156793] = "orange",
 	[165731] = {"blue","yellow"},
+	[1258152] = "red",
 })
 
 BigWigs:AddSounds("Ranjit", {
-	[156793] = "warning",
+	[153757] = "alert",
+	[156793] = "long",
 	[165731] = "alarm",
+	[1258152] = "alarm",
 })
 
 BigWigs:AddColors("Araknath", {
-	[154110] = "orange",
+	[154110] = {"orange","purple"},
 	[154135] = "red",
 	[154159] = "yellow",
+	[154162] = "yellow",
 })
 
 BigWigs:AddSounds("Araknath", {
-	[154110] = "warning",
-	[154135] = "info",
+	[154110] = {"alarm","warning"},
+	[154135] = {"alert","info"},
 	[154159] = "long",
+	[154162] = "info",
 })
 
 BigWigs:AddColors("Rukhran", {
-	[153794] = "yellow",
+	[153794] = "purple",
 	[153810] = "red",
 	[159382] = {"green","orange"},
 	[167757] = "blue",
+	[1253510] = "cyan",
+	[1253519] = "purple",
 })
 
 BigWigs:AddSounds("Rukhran", {
-	[153794] = "warning",
+	[153794] = "alarm",
 	[153810] = "info",
 	[159382] = "long",
-	[167757] = "alarm",
+	[167757] = "warning",
+	[1253510] = "info",
+	[1253519] = {"alarm","alert"},
 })
 
 BigWigs:AddColors("High Sage Viryx", {
-	[153954] = {"blue","yellow"},
+	[153954] = {"blue","cyan"},
 	[154055] = "orange",
+	[154396] = "red",
+	[1253538] = "yellow",
+	[1253840] = "orange",
 	["adds"] = "red",
 })
 
 BigWigs:AddSounds("High Sage Viryx", {
 	[153954] = "warning",
 	[154055] = "long",
+	[154396] = "alert",
+	[1253840] = "alarm",
 	["adds"] = "info",
 })
 

@@ -5,6 +5,7 @@ BigWigs:AddColors("Shirrak the Dead Watcher", {
 })
 
 BigWigs:AddSounds("Shirrak the Dead Watcher", {
+	[-5041] = "warning",
 })
 
 BigWigs:AddColors("Exarch Maladaar", {
@@ -41,6 +42,7 @@ BigWigs:AddColors("Vazruden", {
 })
 
 BigWigs:AddSounds("Vazruden", {
+	["stages"] = "info",
 })
 
 BigWigs:AddColors("Selin Fireheart", {
@@ -97,10 +99,11 @@ BigWigs:AddSounds("Magisters' Terrace Trash", {
 })
 
 BigWigs:AddColors("Pandemonius", {
-	[38759] = "yellow",
+	[38759] = {"green","yellow"},
 })
 
 BigWigs:AddSounds("Pandemonius", {
+	[38759] = {"info","warning"},
 })
 
 BigWigs:AddColors("Tavarok", {
@@ -220,9 +223,11 @@ BigWigs:AddSounds("Talon King Ikiss", {
 })
 
 BigWigs:AddColors("Ambassador Hellmaw", {
+	["berserk"] = {"orange","red","yellow"},
 })
 
 BigWigs:AddSounds("Ambassador Hellmaw", {
+	["berserk"] = "alarm",
 })
 
 BigWigs:AddColors("Blackheart the Inciter", {
@@ -313,16 +318,17 @@ BigWigs:AddSounds("Chrono Lord Deja", {
 })
 
 BigWigs:AddColors("Temporus", {
-	[31458] = "red",
-	[38592] = "orange",
+	[31458] = {"green","yellow"},
+	[38592] = {"green","red"},
 })
 
 BigWigs:AddSounds("Temporus", {
-	[31458] = "warning",
+	[31458] = "info",
+	[38592] = {"long","warning"},
 })
 
 BigWigs:AddColors("Aeonus", {
-	[37605] = "orange",
+	[37605] = {"green","orange"},
 })
 
 BigWigs:AddSounds("Aeonus", {
@@ -411,10 +417,12 @@ BigWigs:AddColors("Mechano-Lord Capacitus", {
 	[35158] = {"green","orange"},
 	[35159] = {"green","orange"},
 	[39096] = {"blue","orange"},
+	["berserk"] = {"orange","red","yellow"},
 })
 
 BigWigs:AddSounds("Mechano-Lord Capacitus", {
 	[39096] = "info",
+	["berserk"] = "alarm",
 })
 
 BigWigs:AddColors("Gatewatcher Iron-Hand", {
@@ -539,6 +547,7 @@ BigWigs:AddSounds("Quagmirran", {
 
 BigWigs:AddColors("The Slave Pens Trash", {
 	[15655] = {"blue","red"},
+	[30923] = {"blue","orange"},
 	[31554] = {"blue","yellow"},
 	[32173] = {"blue","orange"},
 	[33787] = {"blue","yellow"},
@@ -548,6 +557,7 @@ BigWigs:AddColors("The Slave Pens Trash", {
 
 BigWigs:AddSounds("The Slave Pens Trash", {
 	[15655] = "alarm",
+	[30923] = "alert",
 	[31554] = "long",
 	[32173] = "info",
 	[33787] = "info",

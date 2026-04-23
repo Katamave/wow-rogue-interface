@@ -7,6 +7,12 @@ if not mod then return end
 mod:RegisterEnableMob(190609) -- Echo of Doragosa
 mod:SetEncounterID(2565)
 mod:SetRespawnTime(30)
+if mod:Retail() then -- Midnight+
+	mod:SetPrivateAuraSounds({
+		{389007, sound = "underyou"}, -- Wild Energy
+		{389011, sound = "info"}, -- Overwhelming Power
+	})
+end
 
 --------------------------------------------------------------------------------
 -- Locals
@@ -53,6 +59,167 @@ function mod:OnEngage()
 	self:CDBar(388822, 22.8) -- Power Vacuum
 	nextAstralBreath = t + 28.8
 	self:CDBar(374361, 28.8) -- Astral Breath
+end
+
+--------------------------------------------------------------------------------
+-- Midnight Locals
+--
+
+local arcaneMissilesCount = 1
+local astralBlastCount = 1
+local energyBombCount = 1
+local powerVacuumCount = 1
+local activeBars = {}
+
+--------------------------------------------------------------------------------
+-- Midnight Initialization
+--
+
+if mod:Retail() then -- Midnight+
+	function mod:GetOptions()
+		return {
+			373326, -- Arcane Missiles
+			{1282251, "TANK_HEALER"}, -- Astral Blast
+			374343, -- Energy Bomb
+			388822, -- Power Vacuum
+			{389007, "PRIVATE"}, -- Wild Energy
+			{389011, "PRIVATE"}, -- Overwhelming Power
+		}
+	end
+
+	function mod:OnBossEnable()
+	end
+
+	mod:UseCustomTimers(true)
+	function mod:OnEncounterStart()
+		arcaneMissilesCount = 1
+		astralBlastCount = 1
+		energyBombCount = 1
+		powerVacuumCount = 1
+		activeBars = {}
+		if self:ShouldShowBars() then
+			self:RegisterEvent("ENCOUNTER_TIMELINE_EVENT_ADDED")
+			self:RegisterEvent("ENCOUNTER_TIMELINE_EVENT_STATE_CHANGED")
+			self:RegisterEvent("ENCOUNTER_TIMELINE_EVENT_REMOVED")
+		end
+	end
+end
+
+--------------------------------------------------------------------------------
+-- Timeline Event Handlers
+--
+
+function mod:ENCOUNTER_TIMELINE_EVENT_ADDED(_, eventInfo)
+	if eventInfo.source ~= 0 then return end -- Enum.EncounterTimelineEventSource.Encounter
+	local duration = self:RoundNumber(eventInfo.duration, 1)
+	local barInfo
+	if duration == 7 or duration == 10 then -- Arcane Missiles
+		barInfo = self:ArcaneMissilesTimeline(eventInfo)
+	elseif duration == 6.5 or duration == 9 or duration == 12 then -- Astral Blast
+		if duration ~= 6.5 then -- 6.5s duration Astral Blasts are always canceled by Power Vacuum
+			barInfo = self:AstralBlastTimeline(eventInfo)
+		end
+	elseif duration == 14 then -- Energy Bomb
+		barInfo = self:EnergyBombTimeline(eventInfo)
+	elseif duration == 28 then -- Power Vacuum
+		barInfo = self:PowerVacuumTimeline(eventInfo)
+	elseif not self:IsWiping() then
+		self:ErrorForTimelineEvent(eventInfo)
+	end
+	if barInfo then
+		activeBars[eventInfo.id] = barInfo
+	end
+end
+
+function mod:ENCOUNTER_TIMELINE_EVENT_STATE_CHANGED(_, eventID)
+	local barInfo = activeBars[eventID]
+	if barInfo then
+		local state = C_EncounterTimeline.GetEventState(eventID)
+		if state == 0 then -- Active
+			self:ResumeBar(barInfo.key, barInfo.msg)
+		elseif state == 1 then -- Paused
+			self:PauseBar(barInfo.key, barInfo.msg)
+		elseif state == 2 then -- Finished
+			self:StopBar(barInfo.msg)
+			if barInfo.callback then
+				barInfo.callback()
+			end
+			activeBars[eventID] = nil
+		elseif state == 3 then -- Canceled
+			self:StopBar(barInfo.msg)
+			activeBars[eventID] = nil
+		end
+	end
+end
+
+function mod:ENCOUNTER_TIMELINE_EVENT_REMOVED(_, eventID)
+	local barInfo = activeBars[eventID]
+	if barInfo then
+		self:StopBar(barInfo.msg)
+		activeBars[eventID] = nil
+	end
+end
+
+--------------------------------------------------------------------------------
+-- Timeline Ability Handlers
+--
+
+function mod:ArcaneMissilesTimeline(eventInfo)
+	local barText = CL.count:format(self:SpellName(373326), arcaneMissilesCount)
+	self:CDBar(373326, eventInfo.duration, barText, nil, eventInfo.id)
+	arcaneMissilesCount = arcaneMissilesCount + 1
+	return {
+		msg = barText,
+		key = 373326,
+		callback = function()
+			self:Message(373326, "orange", barText)
+			self:PlaySound(373326, "info")
+		end
+	}
+end
+
+function mod:AstralBlastTimeline(eventInfo)
+	local barText = CL.count:format(self:SpellName(1282251), astralBlastCount)
+	self:CDBar(1282251, eventInfo.duration, barText, nil, eventInfo.id)
+	astralBlastCount = astralBlastCount + 1
+	return {
+		msg = barText,
+		key = 1282251,
+		callback = function()
+			self:Message(1282251, "purple", barText)
+			self:PlaySound(1282251, "alarm")
+		end
+	}
+end
+
+function mod:EnergyBombTimeline(eventInfo)
+	local barText = CL.count:format(self:SpellName(374343), energyBombCount)
+	self:CDBar(374343, eventInfo.duration, barText, nil, eventInfo.id)
+	energyBombCount = energyBombCount + 1
+	return {
+		msg = barText,
+		key = 374343,
+		callback = function()
+			self:TargetMessageFromBlizzMessage(1, 374343, "blue")
+			self:Message(374343, "yellow", barText)
+			self:PlaySound(374343, "alert")
+		end
+	}
+end
+
+function mod:PowerVacuumTimeline(eventInfo)
+	local barText = CL.count:format(self:SpellName(388822), powerVacuumCount)
+	self:CDBar(388822, eventInfo.duration, barText, nil, eventInfo.id)
+	powerVacuumCount = powerVacuumCount + 1
+	return {
+		msg = barText,
+		key = 388822,
+		callback = function()
+			self:StopBlizzMessages(1)
+			self:Message(388822, "red", barText)
+			self:PlaySound(388822, "alarm")
+		end
+	}
 end
 
 --------------------------------------------------------------------------------

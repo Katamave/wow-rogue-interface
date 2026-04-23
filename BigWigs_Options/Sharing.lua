@@ -253,6 +253,16 @@ local mythicPlusSettingsToExport = {
 	"instanceKeysShowAllPlayers",
 	"instanceKeysShowDungeonEnd",
 	"instanceKeysHideTitle",
+	-- Progress %
+	"progressTooltipFormat",
+	"progressNameplate",
+	"progressNameplateOffsetX",
+	"progressNameplateOffsetY",
+	"progressNameplateFontName",
+	"progressNameplateFontSize",
+	"progressNameplateFontColor",
+	"progressNameplateOutline",
+	"progressNameplateMonochrome",
 }
 
 -- BattleRes

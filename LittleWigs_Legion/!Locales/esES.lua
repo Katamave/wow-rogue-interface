@@ -427,21 +427,26 @@ end
 L = BigWigs:NewBossLocale("L'ura", "esES")
 if L then
 	L.warmup_text = "L'ura activada"
-	L.warmup_trigger = "Cuánto caos y cuánto tormento... Jamás había sentido algo parecido."
-	L.warmup_trigger_2 = "Pero esas reflexiones pueden esperar. Esta entidad debe morir."
 end
 
 L = BigWigs:NewBossLocale("Seat of the Triumvirate Trash", "esES")
 if L then
+	-- Pre-Midnight
 	L.custom_on_autotalk_desc = "Selecciona al instante la opción de conversación de Alleria Brisaveloz."
 	L.gossip_available = "Conversación disponible"
 	L.alleria_gossip_trigger = "¡Venid por aquí!" -- Allerias yell after the first boss is defeated
+	L.lura_warmup_trigger = "Cuánto caos y cuánto tormento... Jamás había sentido algo parecido."
+	L.lura_warmup_trigger_2 = "Pero esas reflexiones pueden esperar. Esta entidad debe morir."
 
 	L.alleria = "Alleria Brisaveloz"
 	L.subjugator = "Subyugador de la Guardia de las Sombras"
 	L.voidbender = "Dominadora del Vacío de la Guardia de las Sombras"
 	L.conjurer = "Conjuradora de la Guardia de las Sombras"
 	L.weaver = "Gran tejesombras"
+
+	-- Midnight+
+	--L.void_rifts_closed = "Void Rifts Closed"
+	--L.void_rifts_closed_desc = "Show an alert when a Void Rift has been closed."
 end
 
 -- The Arcway
