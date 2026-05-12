@@ -12,17 +12,17 @@ local strfind = string.find
 -- Generate our version variables
 --
 
-local BIGWIGS_VERSION = 414
+local BIGWIGS_VERSION = 415
 local CONTENT_PACK_VERSIONS = {
-	["LittleWigs"] = {12, 0, 41},
-	["BigWigs_Classic"] = {12, 0, 15},
-	["BigWigs_BurningCrusade"] = {12, 0, 11},
-	["BigWigs_WrathOfTheLichKing"] = {12, 0, 6},
-	["BigWigs_Cataclysm"] = {12, 0, 2},
-	["BigWigs_MistsOfPandaria"] = {12, 0, 4},
+	["LittleWigs"] = {12, 0, 45},
+	["BigWigs_Classic"] = {12, 0, 16},
+	["BigWigs_BurningCrusade"] = {12, 0, 12},
+	["BigWigs_WrathOfTheLichKing"] = {12, 0, 7},
+	["BigWigs_Cataclysm"] = {12, 0, 3},
+	["BigWigs_MistsOfPandaria"] = {12, 0, 5},
 	["BigWigs_WarlordsOfDraenor"] = {12, 0, 1},
 	["BigWigs_Legion"] = {12, 0, 1},
-	["BigWigs_BattleForAzeroth"] = {12, 0, 2},
+	["BigWigs_BattleForAzeroth"] = {12, 0, 3},
 	["BigWigs_Shadowlands"] = {12, 0, 2},
 	["BigWigs_Dragonflight"] = {12, 0, 4},
 	["BigWigs_TheWarWithin"] = {12, 0, 2},
@@ -57,7 +57,7 @@ do
 	local ALPHA = "ALPHA"
 
 	local releaseType
-	local myGitHash = "e0c2f8c" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "b417dcc" -- The ZIP packager will replace this with the Git hash.
 	local releaseString
 	--[=[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -1205,6 +1205,24 @@ end
 ldbi:Register("BigWigs", dataBroker, BigWigsIconDB)
 
 do
+	-- XXX temp 12.0.5
+	if type(BigWigs3DB) == "table" and type(BigWigs3DB.namespaces) == "table" then
+		for moduleName, storage in next, BigWigs3DB.namespaces do
+			if moduleName:find("BigWigs_Bosses_", nil, true) and type(storage) == "table" and storage.profiles then
+				for profileName, moduleTable in next, storage.profiles do
+					if type(moduleTable) == "table" and not moduleTable.toggles then
+						local newTable = {}
+						for optionKeyForBossToggle, valueOfBossToggle in next, moduleTable do
+							newTable[optionKeyForBossToggle] = valueOfBossToggle
+						end
+						storage.profiles[profileName] = {toggles = newTable}
+					end
+				end
+			end
+		end
+	end
+	-- XXX end temp
+
 	-- Core DB setup
 	local defaults = {
 		profile = {
@@ -1483,24 +1501,24 @@ do
 	end
 
 	local locales = {
-		--ruRU = "Russian (ruRU)",
+		ruRU = "Russian (ruRU)",
 		--zhCN = "Simplified Chinese (zhCN)",
 		--zhTW = "Traditional Chinese (zhTW)",
-		--itIT = "Italian (itIT)",
+		itIT = "Italian (itIT)",
 		--koKR = "Korean (koKR)",
-		--esES = "Spanish (esES)",
-		--esMX = "Spanish (esMX)",
+		esES = "Spanish (esES)",
+		esMX = "Spanish (esMX)",
 		--deDE = "German (deDE)",
-		--ptBR = "Portuguese (ptBR)",
+		ptBR = "Portuguese (ptBR)",
 		--frFR = "French (frFR)",
 	}
 	local realms = {
 		--[542] = locales.frFR, -- frFR
-		--[3207] = locales.ptBR, [3208] = locales.ptBR, [3209] = locales.ptBR, [3210] = locales.ptBR, [3234] = locales.ptBR, -- ptBR
-		--[1425] = locales.esMX, [1427] = locales.esMX, [1428] = locales.esMX, -- esMX
-		--[1309] = locales.itIT, [1316] = locales.itIT, -- itIT
-		--[1378] = locales.esES, [1379] = locales.esES, [1380] = locales.esES, [1381] = locales.esES, [1382] = locales.esES, [1383] = locales.esES, -- esES
-		--[1384] = locales.esES, [1385] = locales.esES, [1386] = locales.esES, [1387] = locales.esES, [1395] = locales.esES, -- esES
+		[3207] = locales.ptBR, [3208] = locales.ptBR, [3209] = locales.ptBR, [3210] = locales.ptBR, [3234] = locales.ptBR, -- ptBR
+		[1425] = locales.esMX, [1427] = locales.esMX, [1428] = locales.esMX, -- esMX
+		[1309] = locales.itIT, [1316] = locales.itIT, -- itIT
+		[1378] = locales.esES, [1379] = locales.esES, [1380] = locales.esES, [1381] = locales.esES, [1382] = locales.esES, [1383] = locales.esES, -- esES
+		[1384] = locales.esES, [1385] = locales.esES, [1386] = locales.esES, [1387] = locales.esES, [1395] = locales.esES, -- esES
 	}
 	local criticalList = {
 		--[locales.itIT] = true,
@@ -1619,9 +1637,9 @@ end
 --
 
 do
-	local DBMdotRevision = "20260422072640" -- The changing version of the local client, changes with every new zip using the project-date-integer packager replacement.
-	local DBMdotDisplayVersion = "12.0.41" -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration.
-	local DBMdotReleaseRevision = "20260422000000" -- Hardcoded time, manually changed every release, they use it to track the highest release version, a new DBM release is the only time it will change.
+	local DBMdotRevision = "20260508010056" -- The changing version of the local client, changes with every new zip using the project-date-integer packager replacement.
+	local DBMdotDisplayVersion = "12.0.45" -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration.
+	local DBMdotReleaseRevision = "20260507000000" -- Hardcoded time, manually changed every release, they use it to track the highest release version, a new DBM release is the only time it will change.
 	local protocol = 3
 	local versionPrefix = "V"
 	local PForceDisable = 24

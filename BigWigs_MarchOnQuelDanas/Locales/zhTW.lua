@@ -1,33 +1,28 @@
-local L = BigWigs:NewBossLocale("Belo'ren, Child of Al'ar", "zhTW")
-if not L then return end
-if L then
-	--L.infused_quills = "Quills"
-	--L.voidlight_convergence = "Color Swaps"
-	--L.light_void_dive = "Light/Void Dive"
-end
+if not BigWigsAPI.IsLocale("zhTW") then return end
+BigWigsAPI.SetBossModuleLocale("Belo'ren, Child of Al'ar", {
+	infused_quills = "擋線",
+	voidlight_convergence = "換色",
+	light_void_dive = "俯衝",
+})
 
-L = BigWigs:NewBossLocale("Midnight Falls", "zhTW")
-if L then
-	--L.deaths_dirge = "Memory Game"
-	--L.heavens_glaives = "Glaives"
-	--L.heavens_lance = "Lance"
-	--L.the_dark_archangel = "Big Boom"
-	--L.prism_kicks = "Kicks"
-	--L.dark_constellation = "Stars"
-	--L.dark_rune = "Memory Mark"
-	--L.dark_rune_bar = "Solve the Game"
+BigWigsAPI.SetBossModuleLocale("Midnight Falls", {
+	deaths_dirge = "記憶遊戲",
+	heavens_glaives = "戰刃",
+	heavens_lance = "長槍",
+	the_dark_archangel = "大爆炸",
+	prism_kicks = "打斷",
+	dark_constellation = "星宿",
+	dark_rune = "記住符文",
+	dark_rune_bar = "排列符文", -- 解密、玩游戲、把符文按順續排列
 
-	--L.starsplinter = "Blazes" -- Mythic intermission and P4 bar text
-	--L.starsplinter_you = "Blaze"
+	left = "左：%s", -- left/west group bars in p3
+	right = "右：%s", -- right/east group bars in p3
 
-	--L.left = "[L] %s" -- left/west group bars in p3
-	--L.right = "[R] %s" -- right/east group bars in p3
-
-	--L.custom_select_limit_warnings = "[Mythic] Restrict Stage 3 Warnings"
-	--L.custom_select_limit_warnings_desc = "Only show warnings for abilities on your side."
-	--L.custom_select_limit_warnings_value1 = "Groups 1 & 2 go left, groups 3 & 4 go right."
-	--L.custom_select_limit_warnings_value2 = "Odd groups left, even groups right."
-	--L.custom_select_limit_warnings_value3 = "Show warnings for both sides."
-	--L.custom_select_limit_warnings_value4 = "Show warnings for left side only."
-	--L.custom_select_limit_warnings_value5 = "Show warnings for right side only."
-end
+	custom_select_limit_warnings = "傳奇模式：第三階段警報限制",
+	custom_select_limit_warnings_desc = "只顯示你這一側的技能警報。",
+	custom_select_limit_warnings_value1 = "一二隊往左，三四隊往右。",
+	custom_select_limit_warnings_value2 = "奇數隊往左，偶數隊往右。",
+	custom_select_limit_warnings_value3 = "顯示雙側警報。",
+	custom_select_limit_warnings_value4 = "只顯示左側警報。",
+	custom_select_limit_warnings_value5 = "只顯示右側警報。",
+})

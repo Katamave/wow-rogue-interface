@@ -591,20 +591,27 @@ L.instanceKeysEndOfRunDesc = "Standardmäßig wird die Liste nur beim Betreten e
 L.instanceKeysHideTitle = "Titel verstecken"
 L.instanceKeysHideTitleDesc = "Versteckt den \"Wer hat einen Schlüsselstein?\" Titel."
 
--- Progress %
+-- Challenges UI Decoration
+L.partyRatingHeader = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tGruppenwertung"
+L.dungeonScoreString = "|c%s%03d|r |cFFFFFFFF+%02d|r |cFF%s%02d:%02d|r |c%s(%s)|r"
+L.dungeonScoreNoDataString = "|cFFFFFFFFKeine Daten|r |c%s(%s)|r"
+L.dungeonTeleportHeader = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tTeleport"
 
+-- Progress %
 L.progressPercent = "Fortschritt %"
 L.progressPercentDesc = "Werkzeuge zur Berechnung des Mythisch+ Fortschritts durch das Töten der einzelnen Gegner."
 L.progressPercentTooltip = "Beim Überfahren von Gegnern mit der Maus den Fortschritt in % im Tooltip anzeigen"
 L.progressPercentTooltipText = {
-	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tFortschritt: %.2f%%",
-	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tFortschritt: %.2f%% (%d)",
-	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tFortschritt: %.2f%% (%d/%d)",
+	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tFortschritt: %s%%",
+	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tFortschritt: %s%% (%d)",
+	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tFortschritt: %s%% (%d/%d)",
 }
 L.progressPercentNameplate = "Fortschritt in % an Namensplaketten von Gegnern anzeigen"
 L.progressCurrentPull = "Aktueller Pull"
 L.progressCurrentPullDesc = "Gesamtfortschritt, der durch die im Kampf befindlichen Gegner erhalten wird, anzeigen.\n\nNOCH NICHT FUNKTIONSTÜCHTIG!"
 L.tempProgressAnnounce = "Es kann jetzt der Fortschrittsbeitrag in % eines Gegners beim Überfahren mit der Maus und an den Namensplaketten angezeigt werden.\n\nKonfigurieren in |cFF436EEEWerkzeuge|r > |cFF436EEEMythisch+|r > |cFF436EEEFortschritt %|r."
+L.settingsForCurrentTarget = "Einstellungen für das aktuelle Ziel"
+L.settingsForOtherTargets = "Einstellungen für alle anderen Ziele"
 
 -----------------------------------------------------------------------
 -- LFGTimer.lua
@@ -1201,6 +1208,7 @@ L.blizzBasicAsBars = "Blizzard Standardtimer als BigWigs Leisten anzeigen"
 L.blizzBasicAsBlizzTimeline = "Blizzard Standardtimer in der Blizzard Zeitlinie anzeigen"
 L.developerMode = "Entwicklermodus"
 L.enhancedModeWarning = "WARNUNG!\n\nDie Deaktivierung des erweiterten Modus deaktiviert viele BigWigs Funktionen, inklusive:\n\nLeistenfarben, Zauberumbenennung, Timer, angepasster Sound/Stimme, Countdowns, Leisten an/aus, Extra Nachrichten, etc."
+L.blizzTimelineEnhancedWarning = "WARNUNG!\n\nDie Blizzard Zeitlinie unterstützt nicht die erweiterten BigWigs Funktionen. Es werden KEINE umbenannten Zauber angezeigt und die Timer sind ungenau.\n\nSoll diese trotzdem aktiviert werden?"
 
 -----------------------------------------------------------------------
 -- Victory.lua

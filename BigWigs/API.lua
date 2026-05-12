@@ -7,6 +7,18 @@ local API = {}
 addonTbl.API = API
 local type, next, error = type, next, error
 
+local function CopyTable(settingsTable)
+	local copy = {}
+	for key, value in next, settingsTable do
+		if type(value) == "table" then
+			copy[key] = CopyTable(value)
+		else
+			copy[key] = value
+		end
+	end
+	return copy
+end
+
 --------------------------------------------------------------------------------
 -- Addons creating bars
 --
@@ -153,6 +165,29 @@ do
 	end
 end
 
+do
+	local localeTable = {}
+	function API.GetBossModuleLocale(moduleName)
+		if localeTable[moduleName] then
+			return CopyTable(localeTable[moduleName])
+		end
+	end
+	function API.SetBossModuleLocale(moduleName, moduleLocaleTable)
+		if API.IsLocale("enUS") then error("This function is for non-default locales only.") return end
+		if type(moduleName) ~= "string" then error("Module name must be a string.") return end
+		if type(moduleLocaleTable) ~= "table" then error("Locale must be a table.") return end
+		if localeTable[moduleName] then error(("Locale table for module %q already exists."):format(moduleName)) return end
+		localeTable[moduleName] = moduleLocaleTable
+	end
+end
+
+do
+	local currentLocale = GetLocale()
+	function API.IsLocale(localeName)
+		return localeName == currentLocale
+	end
+end
+
 --------------------------------------------------------------------------------
 -- Profile import/export
 --
@@ -229,47 +264,31 @@ end
 -- Tools/Plugins option tables
 --
 
-do
-	local function CopyTable(settingsTable)
-		local copy = {}
-		for key, value in next, settingsTable do
-			if type(value) == "table" then
-				copy[key] = CopyTable(value)
-			else
-				copy[key] = value
-			end
-		end
-		return copy
+do -- Tools
+	local tbl = {}
+	-- Get all AceGUI option tables under the "Tools" category
+	function API.GetToolOptions()
+		return CopyTable(tbl)
 	end
-
-	-- Tools
-	do
-		local tbl = {}
-		-- Get all AceGUI option tables under the "Tools" category
-		function API.GetToolOptions()
-			return CopyTable(tbl)
-		end
-		-- Register an AceGUI options table for a module under the "Tools" category
-		function API.RegisterToolOptions(key, settingsTable)
-			if type(key) ~= "string" then error("The key needs to be a string.") end
-			if type(settingsTable) ~= "table" then error("The settings table needs to be a table.") end
-			tbl[key] = settingsTable
-		end
+	-- Register an AceGUI options table for a module under the "Tools" category
+	function API.RegisterToolOptions(key, settingsTable)
+		if type(key) ~= "string" then error("The key needs to be a string.") end
+		if type(settingsTable) ~= "table" then error("The settings table needs to be a table.") end
+		tbl[key] = settingsTable
 	end
+end
 
-	-- Plugins
-	do
-		local tbl = {}
-		-- Get all AceGUI option tables under the "Tools" category
-		function API.GetPluginOptions()
-			return CopyTable(tbl)
-		end
-		-- Register an AceGUI options table for a module under the "Tools" category
-		function API.RegisterPluginOptions(key, settingsTable)
-			if type(key) ~= "string" then error("The key needs to be a string.") end
-			if type(settingsTable) ~= "table" then error("The settings table needs to be a table.") end
-			tbl[key] = settingsTable
-		end
+do -- Plugins
+	local tbl = {}
+	-- Get all AceGUI option tables under the "Tools" category
+	function API.GetPluginOptions()
+		return CopyTable(tbl)
+	end
+	-- Register an AceGUI options table for a module under the "Tools" category
+	function API.RegisterPluginOptions(key, settingsTable)
+		if type(key) ~= "string" then error("The key needs to be a string.") end
+		if type(settingsTable) ~= "table" then error("The settings table needs to be a table.") end
+		tbl[key] = settingsTable
 	end
 end
 
@@ -324,6 +343,22 @@ do
 			list[k] = L[k]
 		end
 		return list
+	end
+end
+
+do
+	local pcall = pcall
+	local dummy = UIParent:CreateFontString()
+	dummy:Hide()
+	local IsKnownFile = C_UIFileAsset and C_UIFileAsset.IsKnownFile -- XXX [Mainline:✓ MoP:✗ Wrath:✗ TBC:✗ Vanilla:✗]
+	function API.IsValidMediaPath(mediaPath)
+		if IsKnownFile then
+			local result = IsKnownFile(mediaPath)
+			return result
+		else
+			local result = pcall(dummy.SetFont, dummy, mediaPath, 10)
+			return result
+		end
 	end
 end
 

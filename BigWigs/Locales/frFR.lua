@@ -591,20 +591,27 @@ L.instanceKeysEndOfRunDesc = "Par défaut, la liste ne s'affichera que si vous �
 L.instanceKeysHideTitle = "Cacher le titre"
 L.instanceKeysHideTitleDesc = "Cacher le titre \"Qui a une clef ?\"."
 
--- Progress %
+-- Challenges UI Decoration
+L.partyRatingHeader = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tCote du groupe"
+L.dungeonScoreString = "|c%s%03d|r |cFFFFFFFF+%02d|r |cFF%s%02d:%02d|r |c%s(%s)|r"
+L.dungeonScoreNoDataString = "|cFFFFFFFFPas de données|r |c%s(%s)|r"
+L.dungeonTeleportHeader = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tTéléportation"
 
+-- Progress %
 L.progressPercent = "Progrès %"
 L.progressPercentDesc = "Outils qui vous aident à calculer le progrès en mythique + que vous gagnerez sur chaque PNJ que vous tuerez."
 L.progressPercentTooltip = "Affiche le progrès en % dans la bulle d'aide lorsque vous survolez un PNJ ennemi"
 L.progressPercentTooltipText = {
-	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgrès : %.2f%%",
-	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgrès : %.2f%% (%d)",
-	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgrès : %.2f%% (%d/%d)",
+	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgrès : %s%%",
+	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgrès : %s%% (%d)",
+	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgrès : %s%% (%d/%d)",
 }
 L.progressPercentNameplate = "Affiche le progrès en % sur les barres d'infos des PNJ ennemis"
 L.progressCurrentPull = "Combat actuel"
 L.progressCurrentPullDesc = "Affiche le progrès total que vous gagnerez sur le groupe de PNJ ennemis que vous combattez actuellement.\n\nPAS ENCORE IMPLÉMENTÉ !"
 L.tempProgressAnnounce = "Vous pouvez maintenant voir le progrès en % que chaque PNJ ennemi vous rapportera lorsque vous les survolez avec votre souris et sur leur barre d'info.\n\nÀ configurer dans |cFF436EEEOutils|r > |cFF436EEEMythique +|r > |cFF436EEEProgrès %|r."
+L.settingsForCurrentTarget = "Paramètres pour votre cible actuelle"
+L.settingsForOtherTargets = "Paramètres pour les autres cibles"
 
 -----------------------------------------------------------------------
 -- LFGTimer.lua
@@ -1201,6 +1208,7 @@ L.blizzBasicAsBars = "CàR classiques de Blizzard affichés en tant que barres d
 L.blizzBasicAsBlizzTimeline = "CàR classiques de Blizzard affichés sur la ligne temporelle de Blizzard"
 L.developerMode = "Mode développeur"
 L.enhancedModeWarning = "ATTENTION !\n\nDésactiver le mode avancé désactivera beaucoup de fonctionnalités de BigWigs, incluant :\n\nles couleurs de barres, le renommage des sorts, les contres, les sons / voix personnalisées, les CàR, l'activation des barres, les messages supplémentaires, etc."
+L.blizzTimelineEnhancedWarning = "ATTENTION !\n\nLa ligne temporelle de Blizzard ne supporte pas les fonctionnalités avancées de Bigwigs. Vous n'aurez PAS les sorts renommés, et vous verrez des CàR imprécis.\n\nÊtes-vous sûr de vouloir l'activer ?"
 
 -----------------------------------------------------------------------
 -- Victory.lua

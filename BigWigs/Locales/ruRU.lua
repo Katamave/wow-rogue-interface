@@ -591,20 +591,27 @@ L.instanceKeysEndOfRunDesc = "По умолчанию список отобра�
 --L.instanceKeysHideTitle = "Hide title"
 --L.instanceKeysHideTitleDesc = "Hide the \"Who has a key?\" title."
 
--- Progress %
+-- Challenges UI Decoration
+--L.partyRatingHeader = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tParty Rating"
+L.dungeonScoreString = "|c%s%03d|r |cFFFFFFFF+%02d|r |cFF%s%02d:%02d|r |c%s(%s)|r"
+--L.dungeonScoreNoDataString = "|cFFFFFFFFNo data|r |c%s(%s)|r"
+L.dungeonTeleportHeader = "|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tТелепортация"
 
+-- Progress %
 --L.progressPercent = "Progress %"
 --L.progressPercentDesc = "Tools to help you calculate how much Mythic+ progress you will gain from each NPC you kill."
 --L.progressPercentTooltip = "Show progress % in tooltips when mousing over enemy NPCs"
 --L.progressPercentTooltipText = {
---	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgress: %.2f%%",
---	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgress: %.2f%% (%d)",
---	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgress: %.2f%% (%d/%d)",
+--	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgress: %s%%",
+--	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgress: %s%% (%d)",
+--	"|TInterface\\AddOns\\BigWigs\\Media\\Icons\\minimap_raid:0:0|tProgress: %s%% (%d/%d)",
 --}
 --L.progressPercentNameplate = "Show progress % on nameplates of enemy NPCs"
 --L.progressCurrentPull = "Current Pull"
 --L.progressCurrentPullDesc = "Show total progress you will gain from the current group of NPCs you are in combat with.\n\nNOT YET FUNCTIONAL!"
 --L.tempProgressAnnounce = "You can now see progress % each NPC will give you when mousing over them and on their nameplates.\n\nConfigure in |cFF436EEETools|r > |cFF436EEEMythic+|r > |cFF436EEEProgress %|r."
+--L.settingsForCurrentTarget = "Settings for your current target"
+--L.settingsForOtherTargets = "Settings for all other targets"
 
 -----------------------------------------------------------------------
 -- LFGTimer.lua
@@ -1201,6 +1208,7 @@ L.newFastestVictoryPrint = "Новая самая быстрая победа: (
 --L.blizzBasicAsBlizzTimeline = "Blizzard basic timers displayed on the Blizzard timeline"
 --L.developerMode = "Developer Mode"
 --L.enhancedModeWarning = "WARNING!\n\nDisabling enhanced mode will disable many BigWigs features, including:\n\nBar colors, spell renames, counters, custom sound/voice, countdowns, bars on/off, extra messages, etc."
+--L.blizzTimelineEnhancedWarning = "WARNING!\n\nThe Blizzard timeline doesn't support BigWigs enhanced features. You will NOT get renamed spells and you will see inaccurate timers.\n\nAre you sure you want to enable it?"
 
 -----------------------------------------------------------------------
 -- Victory.lua

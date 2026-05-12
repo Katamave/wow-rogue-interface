@@ -256,13 +256,18 @@ local mythicPlusSettingsToExport = {
 	-- Progress %
 	"progressTooltipFormat",
 	"progressNameplate",
-	"progressNameplateOffsetX",
-	"progressNameplateOffsetY",
+	"progressNameplateFormat",
+	"progressNameplateTargetOffsetX",
+	"progressNameplateTargetOffsetY",
+	"progressNameplateOtherOffsetX",
+	"progressNameplateOtherOffsetY",
 	"progressNameplateFontName",
 	"progressNameplateFontSize",
-	"progressNameplateFontColor",
+	"progressNameplateFontColorTarget",
+	"progressNameplateFontColorOther",
 	"progressNameplateOutline",
 	"progressNameplateMonochrome",
+	"progressNameplateSlugRendering",
 }
 
 -- BattleRes
