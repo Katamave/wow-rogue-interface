@@ -1,0 +1,22 @@
+lightweight tag dbd310ac74838729a38411f3451629e40e209a70 3.15.0-release
+Author:	Yaoxin Li (Tom) <58971826+HelloBearLYX@users.noreply.github.com>
+Date:	Thu May 28 08:51:18 2026 -0700
+
+commit dbd310ac74838729a38411f3451629e40e209a70
+Author: Yaoxin Li (Tom) <58971826+HelloBearLYX@users.noreply.github.com>
+Date:   Thu May 28 08:51:18 2026 -0700
+
+    finalize 3.15.0
+
+commit 38b04fbebacb3c2a6a7f684fc5f2e62d558597f2
+Author: Yaoxin Li (Tom) <58971826+HelloBearLYX@users.noreply.github.com>
+Date:   Wed May 27 18:51:52 2026 -0700
+
+    implemented a new module called Talent Reminder
+
+commit 34bf3f88ddc959393ac2bbcd25acc95c0a42f888
+Author: Yaoxin Li (Tom) <58971826+HelloBearLYX@users.noreply.github.com>
+Date:   Tue May 26 11:54:56 2026 -0700
+
+    implemented portal notification for warlocks
+

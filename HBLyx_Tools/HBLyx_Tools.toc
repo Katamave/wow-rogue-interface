@@ -1,0 +1,53 @@
+## Interface: 120000,120001,120005
+## Title: |cff8788eeHBLyx_Tools|r
+## Notes: A collections of features including Combat Indicator and Combat Timer, and more features are coming
+## Author: HBLyx
+## OptionalDeps: LibSharedMedia-3.0, AceConfig-3.0
+## Version: 3.15.0
+## SavedVariables: HBLyx_Tools_DB
+## IconTexture: Interface\AddOns\HBLyx_Tools\Media\HBLyx.png
+## Category: Collections
+## Category-zhCN: 整合工具
+
+embeds.xml
+
+## Locales
+Locales\enUS.lua
+Locales\zhCN.lua
+
+utilities.lua
+configure.lua
+core.lua
+data.lua
+
+# modules
+Modules\FocusInterrupt.lua
+Modules\CombatIndicator.lua
+Modules\CombatTimer.lua
+Modules\BattleRes.lua
+Modules\ChallengeEnhance.lua
+Modules\CustomAuraTracker.lua
+Modules\AutoRoll.lua
+Modules\WarlockReminder.lua
+Modules\DemonologyPortals.lua
+Modules\TalentReminder.lua
+
+# handle configuration and options
+GUI.lua
+Configs\FocusInterrupt.lua
+Configs\CombatIndicator.lua
+Configs\CombatTimer.lua
+Configs\BattleRes.lua
+Configs\ChallengeEnhance.lua
+Configs\CustomAuraTracker.lua
+Configs\AutoRoll.lua
+Configs\WarlockReminder.lua
+Configs\DemonologyPortals.lua
+Configs\TalentReminder.lua
+
+Configs\Profile.lua
+
+# developer use only
+Modules\DeveloperTools.lua
+
+main.lua
