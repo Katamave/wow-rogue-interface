@@ -1,0 +1,10 @@
+lightweight tag ea52a80395a1ac4fb6cc7710d4036d956e687c97 3.14.2-fixed
+Author:	Yaoxin Li (Tom) <58971826+HelloBearLYX@users.noreply.github.com>
+Date:	Tue Apr 21 23:53:23 2026 -0700
+
+commit ea52a80395a1ac4fb6cc7710d4036d956e687c97
+Author: Yaoxin Li (Tom) <58971826+HelloBearLYX@users.noreply.github.com>
+Date:   Tue Apr 21 23:53:23 2026 -0700
+
+    3.14.2-fixed
+
